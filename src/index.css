@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'MicrophoneCheck';
+  src: url('./assets/fonts/MicrophoneCheck-DEMO-BF65600edeb40d7.otf') format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Microphone Check Regular';
+  src: url('./assets/fonts/MicrophoneCheck-DEMO-BF65600edeb40d7.otf') format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.font-microphone {
+  font-family: 'MicrophoneCheck', 'Microphone Check Regular', cursive, sans-serif !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    background-color: #0c0c0e;
+    color: #f3f4f6;
+    font-family: 'Space Grotesk', 'Space Grotesk Placeholder', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+  }
+}
+
+/* Watermark text outline */
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(255, 30, 86, 0.12);
+  color: transparent;
+}
+
+.text-outline-subtle {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+  color: transparent;
+}
+
+/* Glow effects */
+.pink-glow {
+  box-shadow: 0 0 35px -5px rgba(255, 30, 86, 0.45);
+}
+
+.pink-glow-sm {
+  box-shadow: 0 0 20px -3px rgba(255, 30, 86, 0.35);
+}
+
+.glossy-pink-button {
+  background-color: rgb(234, 0, 68);
+  box-shadow:
+    0 0.48px 0.87px -1.17px rgba(234, 0, 68, 0.68),
+    0 1.83px 3.3px -2.33px rgba(234, 0, 68, 0.61),
+    0 8px 14.4px -3.5px rgba(234, 0, 68, 0.3),
+    inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91),
+    inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84),
+    inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66),
+    inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05);
+}
+
+.projects-pointer-button {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.75);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+  will-change: left, top, transform;
+}
+
+.projects-pointer-button.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Infinite marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes projects-carousel-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+@keyframes projects-carousel-right {
+  from {
+    transform: translateX(calc(-50% - 10px));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.projects-carousel-track {
+  animation-duration: 28s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.projects-carousel-left {
+  animation-name: projects-carousel-left;
+}
+
+.projects-carousel-right {
+  animation-name: projects-carousel-right;
+}
+
+.projects-carousel-block {
+  width: clamp(220px, 30vw, 340px);
+  aspect-ratio: 1.35;
+  flex: 0 0 auto;
+  border-radius: 28px;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  min-width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+  gap: 0.9rem;
+}
+
+.tool-icon {
+  transition: filter 180ms ease;
+  filter: none;
+}
+
+.group:hover .tool-icon {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(90%) saturate(7000%) hue-rotate(332deg) brightness(0.85) contrast(1.15);
+}
+
+.marquee-logo {
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.marquee-logo:hover {
+  transform: scale(1.15);
+  filter: brightness(0) saturate(100%) invert(22%) sepia(90%) saturate(7000%) hue-rotate(332deg) brightness(0.85) contrast(1.15);
+}
+
+.marquee-logo:active {
+  transform: scale(1.08);
+}
+
+/* Glass panel */
+.glass-nav {
+  background: rgba(20, 19, 22, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: #141316;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #232228;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34333b;
+}

@@ -1,0 +1,259 @@
+{
+  "profile": {
+    "name": "Farabi Ahad Tafim",
+    "formalName": "Md. Mehedi Hasan",
+    "brandName": "FARABI AHAD TAFIM",
+    "shortName": "Farabi Ahad Tafim",
+    "role": "Packaging & Brand Identity Designer",
+    "secondaryRole": "Product Label Designer & 3D Visualizer",
+    "location": "Dhaka, Bangladesh",
+    "tagline": "Creative packaging & brand visual systems designed with shelf impact and purpose.",
+    "heroSubtext": "5+ years crafting commercial product labels, beverage packaging, pouches, and cohesive brand systems.",
+    "clientCount": "99+ Happy clients",
+    "clientProofAvatars": [
+      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/ARmQOa71EvidN3oYWq9jWzn9OE.jpg",
+      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/W7oQ4BScxWhGC5oVOzKGxVGAD4.jpg",
+      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/UqrSyX3j0KDY0YY2JZCQuc7Wzzg.jpg",
+      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+    ],
+    "heroAvatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/GjbyNUP53yYs1eg4S93wfo7TzTI.webp",
+    "navAvatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp",
+    "aboutPhoto": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp",
+    "bioTitle": "Product Label & Packaging Designer | Visualizer",
+    "bioParagraphs": [
+      "I started my journey with visual and graphic design, exploring typography, layouts, and print production. Over the past 5+ years, I have specialized in commercial product packaging, beverage labels, cans, boxes, pouches, and comprehensive brand identities.",
+      "With time, my focus shifted from just making designs to communicating product value clearly and creating undeniable shelf impact. Every creative decision is grounded in visual hierarchy, market positioning, and print execution.",
+      "Experienced in taking projects from initial conceptualization through polished 3D mockups and commercially ready print artwork for international clients and consumer brands.",
+      "My goal is to continue delivering packaging and brand identity systems that are visually compelling, production-aware, and built for lasting commercial success."
+    ],
+    "featuredQuote": {
+      "quote": "“Farabi’s approach to packaging is structured and precise. He focuses on shelf impact and clarity before aesthetics, and that reflects in every single detail.”",
+      "author": "Phillip B.",
+      "role": "CTO of INnUP",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/3IIKOQ9VkCZyf0KlL2N5yBg1cQ.jpg"
+    },
+    "social": {
+      "email": "Farabiahadtafim@gmail.com",
+      "phone": "+880 1638 228009",
+      "whatsapp": "https://wa.me/+8801638228009",
+      "linktree": "https://linktr.ee/farabiahadtafim",
+      "linkedin": "https://www.linkedin.com/in/tafimbro/",
+      "instagram": "https://www.instagram.com/tafim_broo/",
+      "facebook": "https://www.facebook.com/FarabiAhadTafim/",
+      "behance": "https://www.behance.net/farabiahadtafim",
+      "bookingLink": "https://wa.me/+8801638228009"
+    }
+  },
+
+  "clientLogos": [
+    { "name": "HOODVERSE", "symbol": "⬡ HOODVERSE" },
+    { "name": "TEA SENSE", "symbol": "🍃 TEA SENSE" },
+    { "name": "NAKSHATRA", "symbol": "✦ NAKSHATRA" },
+    { "name": "INnUP", "symbol": "▲ INnUP" },
+    { "name": "VEDAR", "symbol": "◈ VEDAR" },
+    { "name": "PURE PULSE", "symbol": "◎ PURE PULSE" },
+    { "name": "PAPER PRO", "symbol": "❖ PAPER PRO" },
+    { "name": "THUNDER RIDGE", "symbol": "⚡ THUNDER RIDGE" }
+  ],
+
+  "projects": [
+    {
+      "id": "hoodverse",
+      "title": "HOODVERSE",
+      "category": "Branding & Visual Identity",
+      "tags": ["Branding", "Visual Identity", "3D Art"],
+      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/BiadsSjkFIzm40QWig48K7D78.webp",
+      "link": "#"
+    },
+    {
+      "id": "tea-sense",
+      "title": "Tea Sense - A Premium Tea",
+      "category": "Packaging Design, Brand Identity",
+      "tags": ["Packaging", "Brand Identity", "Print"],
+      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/5StfluFS3A1QaNIqrF0xgRDeCE.webp",
+      "link": "#"
+    },
+    {
+      "id": "fruit-blends",
+      "title": "Fruit Blends",
+      "category": "Packaging Design, Visual Identity",
+      "tags": ["Packaging", "Visual Identity", "Product"],
+      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/bOg8yA1h7qdh4IW01zhpuFB0hs.webp",
+      "link": "#"
+    },
+    {
+      "id": "ruthless",
+      "title": "Ruthless",
+      "category": "Packaging Design, Visual Identity",
+      "tags": ["Packaging", "Label Design", "Art Direction"],
+      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/iYnb2WrEmnrldAqgaUzwpkKSI.webp",
+      "link": "#"
+    }
+  ],
+
+  "tools": [
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Framer",
+    "Figma",
+    "Blender",
+    "ChatGPT",
+    "Claude",
+    "Notion"
+  ],
+
+  "services": [
+    {
+      "id": "strategy",
+      "title": "Design Strategy",
+      "description": "Understanding the problem clearly before designing the solution. Every decision is based on purpose, not guesswork.",
+      "tags": ["User Research", "Information Architecture", "User Flows", "Experience Mapping"]
+    },
+    {
+      "id": "brand-identity",
+      "title": "Brand Identity",
+      "description": "Creating strong visual systems that communicate clearly and stay consistent across every touchpoint.",
+      "tags": ["Logo Design", "Visual Identity Systems", "Typography", "Brand Guidelines"]
+    },
+    {
+      "id": "ui-ux",
+      "title": "UI/UX Design",
+      "description": "Designing interfaces that are simple, intuitive, and built around real user behavior.",
+      "tags": ["Wireframing", "Prototyping", "Usability Thinking", "Interaction Design"]
+    },
+    {
+      "id": "packaging",
+      "title": "Packaging Design",
+      "description": "Designing packaging that stands out on shelf and communicates product value instantly.",
+      "tags": ["Packaging Systems", "Label Design", "Visual Hierarchy", "Print Production"]
+    },
+    {
+      "id": "digital-design",
+      "title": "Digital Design",
+      "description": "Creating visuals that grab attention and communicate clearly across digital platforms.",
+      "tags": ["Social Media Creatives", "Ad Creatives", "Content Design", "Campaign Visuals"]
+    }
+  ],
+
+  "workHistory": [
+    {
+      "company": "Deably",
+      "role": "Senior Visualizer",
+      "period": "2025 - 2026",
+      "location": "Dhaka, Bangladesh",
+      "description": "Led product visualization & packaging focused design projects. Developed premium label concepts, 3D mockups, and commercial visuals."
+    },
+    {
+      "company": "Team Decraft",
+      "role": "Visualizer",
+      "period": "2020 - 2025",
+      "location": "Remote",
+      "description": "Specialized in product label and packaging design for global clients across beverage, food, supplement, and consumer goods."
+    },
+    {
+      "company": "Team Alfaaz",
+      "role": "Graphics Designer",
+      "period": "2019 - 2020",
+      "location": "Dhaka, Bangladesh",
+      "description": "Produced digital graphics, brand collateral, and visual content for diverse marketing campaigns."
+    },
+    {
+      "company": "Freelance & Global Clients",
+      "role": "Packaging & Visual Designer",
+      "period": "2019 - Present",
+      "location": "Fiverr & International Marketplace",
+      "description": "Crafting premium labels, beverage cans, box packaging, and 3D visual mockups for international brands."
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "B.Sc. in Computer Science",
+      "institution": "Bangladesh University",
+      "period": "2022 - 2026"
+    },
+    {
+      "degree": "HSC · Science",
+      "institution": "Mohammadpur Govt. College",
+      "period": "2018 - 2019"
+    }
+  ],
+
+  "testimonials": [
+    {
+      "id": "t1",
+      "quote": "Amazing icons. Great creativity and precision. Even with unclear input, everything was refined perfectly. Quick and reliable.",
+      "name": "Philip B.",
+      "role": "CTO at INnUP",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/3IIKOQ9VkCZyf0KlL2N5yBg1cQ.jpg"
+    },
+    {
+      "id": "t2",
+      "quote": "Smooth experience overall. Strong social media designs with attention to detail. Very patient with revisions.",
+      "name": "Daniel Carter",
+      "role": "Marketing Director at Thunder Ridge",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/9GxBhKhBKO9rBguUErEAr1S5msg.jpg"
+    },
+    {
+      "id": "t3",
+      "quote": "Great packaging work across multiple tea variants. The designs really captured our brand well.",
+      "name": "Riya Shah",
+      "role": "Brand Manager at Tea Sense",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/3IIKOQ9VkCZyf0KlL2N5yBg1cQ.jpg"
+    },
+    {
+      "id": "t4",
+      "quote": "Strong packaging designs with clear thinking behind them. Attention to detail really stood out.",
+      "name": "Arjun Mehta",
+      "role": "Founder at Pure Pulse",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/lAY61a3VYJBYnJJvnRiHal534g.jpg"
+    },
+    {
+      "id": "t5",
+      "quote": "Loved the box packaging design. Clean, creative, and well executed.",
+      "name": "Natalie Rivera",
+      "role": "Operations Head at Paper Pro",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+    },
+    {
+      "id": "t6",
+      "quote": "Great collaboration. Helped build our brand identity and supported with Shopify setup.",
+      "name": "Emma Kraft",
+      "role": "Co-Founder at GizzMart",
+      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+    }
+  ],
+
+  "faqs": [
+    {
+      "number": "01",
+      "question": "How do we get started?",
+      "answer": "We start with a quick discussion where you share your idea, goals, and what you need. From there, I suggest the right approach and next steps."
+    },
+    {
+      "number": "02",
+      "question": "What if I’m not sure what I need yet?",
+      "answer": "That’s completely fine. I help you figure that out. We break things down together and define what will actually work for your product or brand."
+    },
+    {
+      "number": "03",
+      "question": "Will I be involved in the design process?",
+      "answer": "Yes. You’ll be part of key stages like direction, feedback, and refinements. The process stays collaborative, not one-sided."
+    },
+    {
+      "number": "04",
+      "question": "How many changes can I request?",
+      "answer": "I include a reasonable number of revisions to make sure the final result feels right. The focus is on getting it correct, not rushing it."
+    },
+    {
+      "number": "05",
+      "question": "Do you only design, or also help with ideas?",
+      "answer": "I do both. I help shape the idea, not just design it. The goal is to make something that works, not just something that looks good."
+    },
+    {
+      "number": "06",
+      "question": "How long does a typical project take to complete?",
+      "answer": "Timelines depend on the scope. Smaller projects usually take 1–3 weeks, while full branding or packaging systems can take 3–6 weeks. I share a clear timeline after understanding your requirements."
+    }
+  ]
+}
