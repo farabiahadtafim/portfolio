@@ -1,14 +1,15 @@
 import { useRef, type ReactNode } from 'react';
 import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 import { usePortfolio } from '../hooks/usePortfolio';
-import photoshopIcon from '../../image/Adobe Photoshop.svg';
-import illustratorIcon from '../../image/Adobe Illustrator.svg';
-import premiereIcon from '../../image/Adobe Premiere Pro.svg';
-import figmaIcon from '../../image/Figma.svg';
-import antigravityIcon from '../../image/Antigravity.svg';
-import brandIdentityIcon from '../../image/Brand Identity.svg';
-import chatgptIcon from '../../image/ChatGPT.svg';
-import claudeIcon from '../../image/Claude.svg';
+import { getAssetUrl } from '../utils/asset';
+
+
+
+
+
+
+
+
 
 /* --- SVG Icons --- */
 function StrategyIcon({ className = 'h-6 w-6 text-[#ea0044]' }: { className?: string }) {
@@ -47,14 +48,14 @@ interface ToolItem {
 }
 
 const toolsList: ToolItem[] = [
-  { name: 'Adobe Photoshop', type: 'image', src: photoshopIcon },
-  { name: 'Adobe Illustrator', type: 'image', src: illustratorIcon },
-  { name: 'Adobe Premiere Pro', type: 'image', src: premiereIcon },
-  { name: 'Figma', type: 'image', src: figmaIcon },
-  { name: 'Antigravity', type: 'image', src: antigravityIcon },
-  { name: 'Brand Identity', type: 'image', src: brandIdentityIcon },
-  { name: 'ChatGPT', type: 'image', src: chatgptIcon },
-  { name: 'Claude', type: 'image', src: claudeIcon },
+  { name: 'Adobe Photoshop', type: 'image', src: "/image/Adobe Photoshop.svg" },
+  { name: 'Adobe Illustrator', type: 'image', src: "/image/Adobe Illustrator.svg" },
+  { name: 'Adobe Premiere Pro', type: 'image', src: "/image/Adobe Premiere Pro.svg" },
+  { name: 'Figma', type: 'image', src: "/image/Figma.svg" },
+  { name: 'Antigravity', type: 'image', src: "/image/Antigravity.svg" },
+  { name: 'Brand Identity', type: 'image', src: "/image/Brand Identity.svg" },
+  { name: 'ChatGPT', type: 'image', src: "/image/ChatGPT.svg" },
+  { name: 'Claude', type: 'image', src: "/image/Claude.svg" },
 ];
 
 /* Service card configuration */
@@ -354,7 +355,7 @@ export default function ServicesSection() {
 
                     {tool.type === 'image' && tool.src ? (
                       <img
-                        src={tool.src}
+                        src={getAssetUrl(tool.src)}
                         alt={tool.name}
                         className="h-[26px] w-[26px] sm:h-[29px] sm:w-[29px] object-contain"
                       />

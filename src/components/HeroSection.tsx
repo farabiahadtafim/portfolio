@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import tafimCartoonHead from '../../image/tafim-cartoon-head.webp';
-import farabiAhadTafim from '../../image/Farabi Ahad Tafim Front Facing.webp';
+
+
 import Magnet from './Magnet';
+import { getAssetUrl } from '../utils/asset';
 
 interface HeroSectionProps {
   onOpenContact: () => void;
@@ -64,7 +65,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             <motion.img
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              src={tafimCartoonHead}
+              src={getAssetUrl("/image/tafim-cartoon-head.webp")}
               alt="Character Avatar"
               className="w-[105%] max-w-none h-auto object-contain select-none"
             />
@@ -121,7 +122,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
                   className="overflow-hidden flex-shrink-0"
                 >
                   <img
-                    src={farabiAhadTafim}
+                    src={getAssetUrl("/image/Farabi Ahad Tafim Front Facing.webp")}
                     alt="Farabi Ahad Tafim"
                     className="w-8 h-8 rounded-full object-cover ring-1 ring-white/60 shadow-sm"
                   />

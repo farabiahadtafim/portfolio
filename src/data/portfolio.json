@@ -11,10 +11,10 @@
     "heroSubtext": "5+ years crafting commercial product labels, beverage packaging, pouches, and cohesive brand systems.",
     "clientCount": "99+ Happy clients",
     "clientProofAvatars": [
-      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/ARmQOa71EvidN3oYWq9jWzn9OE.jpg",
-      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/W7oQ4BScxWhGC5oVOzKGxVGAD4.jpg",
-      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/UqrSyX3j0KDY0YY2JZCQuc7Wzzg.jpg",
-      "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+      "/image/Clients/Chris Anderson-OBDK.webp",
+      "/image/Clients/Dr. Anthony Njapa-Dislapharm.webp",
+      "/image/Clients/Lyubomir Iliev-Metma.webp",
+      "/image/Clients/Sally Schimko-Tahini Goddess.webp"
     ],
     "heroAvatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/GjbyNUP53yYs1eg4S93wfo7TzTI.webp",
     "navAvatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp",
@@ -62,7 +62,7 @@
       "title": "HOODVERSE",
       "category": "Branding & Visual Identity",
       "tags": ["Branding", "Visual Identity", "3D Art"],
-      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/BiadsSjkFIzm40QWig48K7D78.webp",
+      "image": "/image/projects/hoodverse.webp",
       "link": "#"
     },
     {
@@ -70,7 +70,7 @@
       "title": "Tea Sense - A Premium Tea",
       "category": "Packaging Design, Brand Identity",
       "tags": ["Packaging", "Brand Identity", "Print"],
-      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/5StfluFS3A1QaNIqrF0xgRDeCE.webp",
+      "image": "/image/projects/tea-sense.webp",
       "link": "#"
     },
     {
@@ -78,7 +78,7 @@
       "title": "Fruit Blends",
       "category": "Packaging Design, Visual Identity",
       "tags": ["Packaging", "Visual Identity", "Product"],
-      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/bOg8yA1h7qdh4IW01zhpuFB0hs.webp",
+      "image": "/image/projects/fruit-blends.webp",
       "link": "#"
     },
     {
@@ -86,7 +86,7 @@
       "title": "Ruthless",
       "category": "Packaging Design, Visual Identity",
       "tags": ["Packaging", "Label Design", "Art Direction"],
-      "image": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/iYnb2WrEmnrldAqgaUzwpkKSI.webp",
+      "image": "/image/projects/ruthless.webp",
       "link": "#"
     }
   ],
@@ -182,45 +182,45 @@
   "testimonials": [
     {
       "id": "t1",
-      "quote": "Amazing icons. Great creativity and precision. Even with unclear input, everything was refined perfectly. Quick and reliable.",
-      "name": "Philip B.",
-      "role": "CTO at INnUP",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/3IIKOQ9VkCZyf0KlL2N5yBg1cQ.jpg"
+      "quote": "Their product label design service is simply top-notch! The new packaging layout completely transformed our shelf presence. Highly recommended.",
+      "name": "Chris Anderson",
+      "role": "Founder at OBDK",
+      "avatar": "/image/Clients/Chris Anderson-OBDK.webp"
     },
     {
       "id": "t2",
-      "quote": "Smooth experience overall. Strong social media designs with attention to detail. Very patient with revisions.",
-      "name": "Daniel Carter",
-      "role": "Marketing Director at Thunder Ridge",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/9GxBhKhBKO9rBguUErEAr1S5msg.jpg"
+      "quote": "We needed a clean, professional, and compliant packaging design. The attention to detail in the label layout was incredible. Fantastic service!",
+      "name": "Dr. Anthony Njapa",
+      "role": "Founder at Dislapharm",
+      "avatar": "/image/Clients/Dr. Anthony Njapa-Dislapharm.webp"
     },
     {
       "id": "t3",
-      "quote": "Great packaging work across multiple tea variants. The designs really captured our brand well.",
-      "name": "Riya Shah",
-      "role": "Brand Manager at Tea Sense",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/3IIKOQ9VkCZyf0KlL2N5yBg1cQ.jpg"
+      "quote": "The packaging service provided was absolutely stellar. The new box design perfectly captures our brand identity and looks premium on the market.",
+      "name": "Lyubomir Iliev",
+      "role": "Founder at Metma",
+      "avatar": "/image/Clients/Lyubomir Iliev-Metma.webp"
     },
     {
       "id": "t4",
-      "quote": "Strong packaging designs with clear thinking behind them. Attention to detail really stood out.",
-      "name": "Arjun Mehta",
-      "role": "Founder at Pure Pulse",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/lAY61a3VYJBYnJJvnRiHal534g.jpg"
+      "quote": "Working on our product labels was a breeze. The final packaging design exceeded all our expectations and gave our product the premium feel it deserved.",
+      "name": "Sally Schimko",
+      "role": "Founder at Tahini Goddess",
+      "avatar": "/image/Clients/Sally Schimko-Tahini Goddess.webp"
     },
     {
       "id": "t5",
-      "quote": "Loved the box packaging design. Clean, creative, and well executed.",
-      "name": "Natalie Rivera",
-      "role": "Operations Head at Paper Pro",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+      "quote": "I am amazed by the top-notch packaging design! The label accurately reflects our brand's vibe and has received great feedback from our customers.",
+      "name": "Tin Yan",
+      "role": "Founder at Amigo Rumi",
+      "avatar": "/image/Clients/Tin Yan-Amigo Rumi.webp"
     },
     {
       "id": "t6",
-      "quote": "Great collaboration. Helped build our brand identity and supported with Shopify setup.",
-      "name": "Emma Kraft",
-      "role": "Co-Founder at GizzMart",
-      "avatar": "/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg"
+      "quote": "Absolutely brilliant label design! The packaging looks incredibly sleek and professional. I couldn't be happier with the end result.",
+      "name": "Tommy Guarino",
+      "role": "Founder at Vodkyte",
+      "avatar": "/image/Clients/tommy guarino-vodkyte.webp"
     }
   ],
 

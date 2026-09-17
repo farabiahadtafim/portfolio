@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import farabiCircleFacing from '../../image/Farabi Ahad Tafim Circle facing.webp';
+import { getAssetUrl } from '../utils/asset';
+
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -54,7 +55,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
           >
             <div className="h-10 w-10 overflow-hidden rounded-full flex-shrink-0">
               <img
-                src={farabiCircleFacing}
+                src={getAssetUrl("/image/Farabi Ahad Tafim Circle facing.webp")}
                 alt="Farabi Ahad Tafim"
                 className="w-full h-full object-cover scale-105"
               />

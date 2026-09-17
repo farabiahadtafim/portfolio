@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePortfolio } from '../hooks/usePortfolio';
-import farabiSideFacing from '../../image/Farabi Ahad Tafim Side Facing.webp';
+import { getAssetUrl } from '../utils/asset';
+
+
 
 /* Clean Social Icons for the Photo Pill Overlay */
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -89,20 +91,28 @@ export default function AboutSection() {
 
             {/* Side-Facing High-Res Portrait Photo */}
             <img
-              src={farabiSideFacing}
+              src={getAssetUrl("/image/Farabi Ahad Tafim Side Facing.webp")}
               alt="Farabi Ahad Tafim"
               className="w-full h-full object-cover object-top relative z-10"
             />
 
             {/* Social Icons Overlay Pill (Bottom-Right) */}
-            <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/10 shadow-lg">
+            <div 
+              className="absolute bottom-4 right-4 z-20 flex flex-col items-center gap-3 px-2.5 py-4 rounded-full shadow-lg"
+              style={{
+                backgroundColor: 'rgba(130, 130, 130, 0.1)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                border: '1px solid rgba(184, 184, 184, 0.12)',
+              }}
+            >
               {profile.social.instagram && (
                 <a
                   href={profile.social.instagram}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -113,7 +123,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <LinkedinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -124,7 +134,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Behance"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <BehanceIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -135,7 +145,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Facebook"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <FacebookIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -146,7 +156,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="WhatsApp"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <WhatsappIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -157,7 +167,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Linktree"
-                  className="text-white/80 hover:text-[#ea0044] transition-colors"
+                  className="text-[#ea0044] hover:text-white transition-colors"
                 >
                   <LinktreeIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -235,9 +245,11 @@ export default function AboutSection() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mt-6 mb-8 select-none"
           >
-            <span className="font-handwriting text-3xl sm:text-4xl text-[#ea0044] -rotate-3 block leading-none opacity-90">
-              Farabi Ahad
-            </span>
+            <img 
+              src={getAssetUrl("/image/Tafim Signature.svg")} 
+              alt="Farabi Ahad Signature" 
+              className="h-10 sm:h-12 -rotate-3 opacity-90 object-contain" 
+            />
           </motion.div>
 
           {/* My work history Sub-section */}

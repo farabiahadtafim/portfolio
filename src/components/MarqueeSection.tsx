@@ -2,15 +2,15 @@ import { Star } from 'lucide-react';
 import { getAssetUrl } from '../utils/asset';
 
 const clientProofAvatars = [
-  '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/ARmQOa71EvidN3oYWq9jWzn9OE.jpg',
-  '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/W7oQ4BScxWhGC5oVOzKGxVGAD4.jpg',
-  '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/UqrSyX3j0KDY0YY2JZCQuc7Wzzg.jpg',
-  '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/wFJgmAuVHn37SCJR5MDBtfbFdY.jpg',
-  '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/K6cUNifhQFa6qEX3kqNwfqMkiY.jpg',
+  '/image/Clients/Chris Anderson-OBDK.webp',
+  '/image/Clients/Dr. Anthony Njapa-Dislapharm.webp',
+  '/image/Clients/Lyubomir Iliev-Metma.webp',
+  '/image/Clients/Sally Schimko-Tahini Goddess.webp',
+  '/image/Clients/Tin Yan-Amigo Rumi.webp',
 ];
 
 // Import all SVGs dynamically
-const logoModules = import.meta.glob('../../image/Brands Logo/*.svg', { eager: true });
+const logoModules = import.meta.glob('/public/image/Brands Logo/*.svg', { eager: true });
 
 // Extract, parse numbers from filenames, and sort
 const sortedLogos = Object.entries(logoModules)

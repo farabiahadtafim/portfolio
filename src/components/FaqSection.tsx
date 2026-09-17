@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, Calendar } from 'lucide-react';
 import { usePortfolio } from '../hooks/usePortfolio';
-import farabiSideFacing from '../../image/Farabi Ahad Tafim Side Facing.webp';
+import { getAssetUrl } from '../utils/asset';
+
 
 interface FaqSectionProps {
   onOpenContact?: () => void;
@@ -102,7 +103,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             {/* Profile Avatar */}
             <div className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-white/30 shadow-md mb-6 bg-black/20">
               <img
-                src={farabiSideFacing}
+                src={getAssetUrl("/image/Farabi Ahad Tafim Side Facing.webp")}
                 alt="Farabi Ahad Tafim"
                 className="w-full h-full object-cover object-top"
               />

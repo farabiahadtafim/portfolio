@@ -156,7 +156,7 @@
   display: flex;
   width: max-content;
   min-width: max-content;
-  animation: marquee-scroll 40s linear infinite;
+  animation: marquee-scroll 80s linear infinite;
   gap: 0.9rem;
 }
 
