@@ -11,6 +11,16 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  const isPortfolioPage =
+    typeof window !== 'undefined' &&
+    (window.location.pathname.includes('portfolio.html') ||
+      window.location.pathname.endsWith('/portfolio') ||
+      window.location.pathname.endsWith('/portfolio/portfolio.html'));
+
+  const homeHref = isPortfolioPage ? getAssetUrl('/') : '#home';
+  const workHref = isPortfolioPage ? '#portfolio-hero' : getAssetUrl('/portfolio.html');
+  const servicesHref = isPortfolioPage ? `${getAssetUrl('/')}#services` : '#services';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
@@ -49,7 +59,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
         {/* Left: Avatar (real photo) + Name or Status */}
         <div className="flex items-center gap-2.5 flex-shrink-0 pl-1">
           <a
-            href="#home"
+            href={homeHref}
             className="flex items-center group cursor-pointer transition-opacity hover:opacity-90 flex-shrink-0"
             aria-label="Home"
           >
@@ -78,7 +88,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             ) : (
               <motion.a
                 key="name-text"
-                href="#home"
+                href={homeHref}
                 initial={{ opacity: 0, x: -6 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -6 }}
@@ -143,13 +153,15 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             >
               <div className="flex items-center gap-3.5 sm:gap-4 text-[14px] font-normal text-[#b8b8b8]">
                 <a
-                  href="#projects"
-                  className="transition-colors duration-200 hover:text-white"
+                  href={workHref}
+                  className={`transition-colors duration-200 hover:text-white ${
+                    isPortfolioPage ? 'text-white font-medium' : ''
+                  }`}
                 >
                   Work
                 </a>
                 <a
-                  href="#services"
+                  href={servicesHref}
                   className="transition-colors duration-200 hover:text-white"
                 >
                   Services

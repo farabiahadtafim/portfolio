@@ -48,14 +48,14 @@ interface ToolItem {
 }
 
 const toolsList: ToolItem[] = [
-  { name: 'Adobe Photoshop', type: 'image', src: "/image/Adobe Photoshop.svg" },
-  { name: 'Adobe Illustrator', type: 'image', src: "/image/Adobe Illustrator.svg" },
-  { name: 'Adobe Premiere Pro', type: 'image', src: "/image/Adobe Premiere Pro.svg" },
-  { name: 'Figma', type: 'image', src: "/image/Figma.svg" },
-  { name: 'Antigravity', type: 'image', src: "/image/Antigravity.svg" },
-  { name: 'Brand Identity', type: 'image', src: "/image/Brand Identity.svg" },
-  { name: 'ChatGPT', type: 'image', src: "/image/ChatGPT.svg" },
-  { name: 'Claude', type: 'image', src: "/image/Claude.svg" },
+  { name: 'Adobe Photoshop', type: 'image', src: "/image/SVG/Adobe Photoshop.svg" },
+  { name: 'Adobe Illustrator', type: 'image', src: "/image/SVG/Adobe Illustrator.svg" },
+  { name: 'Adobe Premiere Pro', type: 'image', src: "/image/SVG/Adobe Premiere Pro.svg" },
+  { name: 'Figma', type: 'image', src: "/image/SVG/Figma.svg" },
+  { name: 'Antigravity', type: 'image', src: "/image/SVG/Antigravity.svg" },
+  { name: 'Brand Identity', type: 'image', src: "/image/SVG/Brand Identity.svg" },
+  { name: 'ChatGPT', type: 'image', src: "/image/SVG/ChatGPT.svg" },
+  { name: 'Claude', type: 'image', src: "/image/SVG/Claude.svg" },
 ];
 
 /* Service card configuration */

@@ -246,7 +246,7 @@ export default function AboutSection() {
             className="mt-6 mb-8 select-none"
           >
             <img 
-              src={getAssetUrl("/image/Tafim Signature.svg")} 
+              src={getAssetUrl("/image/SVG/Tafim Signature.svg")} 
               alt="Farabi Ahad Signature" 
               className="h-10 sm:h-12 -rotate-3 opacity-90 object-contain" 
             />
