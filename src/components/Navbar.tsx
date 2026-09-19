@@ -13,12 +13,12 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
   const isPortfolioPage =
     typeof window !== 'undefined' &&
-    (window.location.pathname.includes('portfolio.html') ||
-      window.location.pathname.endsWith('/portfolio') ||
-      window.location.pathname.endsWith('/portfolio/portfolio.html'));
+    (window.location.pathname.includes('work.html') ||
+      window.location.pathname.endsWith('/work') ||
+      window.location.pathname.endsWith('/portfolio/work.html'));
 
   const homeHref = isPortfolioPage ? getAssetUrl('/') : '#home';
-  const workHref = isPortfolioPage ? '#portfolio-hero' : getAssetUrl('/portfolio.html');
+  const workHref = isPortfolioPage ? '#portfolio-hero' : getAssetUrl('/work.html');
   const servicesHref = isPortfolioPage ? `${getAssetUrl('/')}#services` : '#services';
 
   useEffect(() => {
@@ -174,9 +174,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 onClick={onOpenContact}
                 className="h-[34px] min-w-[96px] cursor-pointer flex-shrink-0 whitespace-nowrap rounded-full px-6 text-[13px] sm:text-[14px] font-medium text-white transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center"
                 style={{
-                  backgroundColor: 'rgb(234, 0, 68)',
+                  backgroundColor: 'rgb(187, 3, 28)',
                   boxShadow:
-                    '0px 0.48px 0.87px -1.17px rgba(234, 0, 68, 0.68), 0px 1.83px 3.3px -2.33px rgba(234, 0, 68, 0.61), 0px 8px 14.4px -3.5px rgba(234, 0, 68, 0.3), inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91), inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84), inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66), inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05)',
+                    '0px 0.48px 0.87px -1.17px rgba(187, 3, 28, 0.68), 0px 1.83px 3.3px -2.33px rgba(187, 3, 28, 0.61), 0px 8px 14.4px -3.5px rgba(187, 3, 28, 0.3), inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91), inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84), inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66), inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05)',
                   WebkitTapHighlightColor: 'transparent',
                 }}
               >

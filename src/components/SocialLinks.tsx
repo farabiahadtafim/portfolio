@@ -42,7 +42,7 @@ export default function SocialLinks({
           title={label}
           target={href.startsWith('mailto:') ? undefined : '_blank'}
           rel={href.startsWith('mailto:') ? undefined : 'noreferrer'}
-          className="inline-flex items-center justify-center gap-1.5 rounded-full p-2.5 bg-white/5 hover:bg-[#FF1E56] text-white transition-all duration-200"
+          className="inline-flex items-center justify-center gap-1.5 rounded-full p-2.5 bg-white/5 hover:bg-[#bb031c] text-white transition-all duration-200"
         >
           <Icon className={iconClassName} strokeWidth={2} />
           {showLabels ? (

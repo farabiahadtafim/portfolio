@@ -95,7 +95,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-[32px] bg-[#ea0044] p-8 sm:p-10 text-white shadow-2xl relative overflow-hidden"
+            className="rounded-[32px] bg-[#bb031c] p-8 sm:p-10 text-white shadow-2xl relative overflow-hidden"
           >
             {/* Subtle radial sheen */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[50px] rounded-full pointer-events-none" />

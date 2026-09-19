@@ -15,7 +15,7 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#ea0044] selection:text-white">
+    <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white">
       {/* Floating Glassmorphism Pill Navbar (Blur is strictly clipped inside this navbar) */}
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
 

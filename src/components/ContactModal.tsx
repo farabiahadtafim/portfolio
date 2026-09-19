@@ -227,7 +227,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </button>
 
               <div className="mb-6">
-                <span className="text-xs font-semibold uppercase tracking-widest text-[#ea0044]">
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#bb031c]">
                   Get In Touch
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mt-1">
@@ -246,7 +246,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   className="flex items-center justify-between p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 transition-all text-left group cursor-pointer"
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-xl bg-[#ea0044]/15 flex items-center justify-center text-[#ea0044] flex-shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#bb031c]/15 flex items-center justify-center text-[#bb031c] flex-shrink-0">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
@@ -267,7 +267,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   href={profile.social.whatsapp || 'https://wa.me/+8801638228009'}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-2xl bg-[#ea0044] hover:bg-[#d0003c] text-white transition-all text-left group"
+                  className="flex items-center justify-between p-3.5 rounded-2xl bg-[#bb031c] hover:bg-[#9a0215] text-white transition-all text-left group"
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-white flex-shrink-0">
@@ -295,14 +295,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. John Miller"
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#ea0044] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#bb031c] transition-colors"
                   />
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <label className="block text-xs font-medium text-neutral-400">
-                      Your Email <span className="text-[#ea0044]">*</span>
+                      Your Email <span className="text-[#bb031c]">*</span>
                     </label>
                     {/* Live Validation Indicator */}
                     {emailStatus.isValid && (
@@ -327,7 +327,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         ? 'border-emerald-500/50 focus:border-emerald-400'
                         : emailStatus.type === 'invalid'
                         ? 'border-red-500/50 focus:border-red-400'
-                        : 'border-white/10 focus:border-[#ea0044]'
+                        : 'border-white/10 focus:border-[#bb031c]'
                     }`}
                   />
 
@@ -354,7 +354,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell me about your packaging, label, or brand identity project..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#ea0044] transition-colors resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#bb031c] transition-colors resize-none"
                   />
                 </div>
 
@@ -368,7 +368,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <button
                   type="submit"
                   disabled={isSending || sendSuccess || (formData.email.length > 0 && !emailStatus.isValid)}
-                  className="w-full py-3 px-5 rounded-full bg-[#ea0044] hover:bg-[#d0003c] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#ea0044]/20"
+                  className="w-full py-3 px-5 rounded-full bg-[#bb031c] hover:bg-[#9a0215] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#bb031c]/20"
                 >
                   {isSending ? (
                     <>

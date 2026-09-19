@@ -70,11 +70,11 @@
 }
 
 .glossy-pink-button {
-  background-color: rgb(234, 0, 68);
+  background-color: rgb(187, 3, 28);
   box-shadow:
-    0 0.48px 0.87px -1.17px rgba(234, 0, 68, 0.68),
-    0 1.83px 3.3px -2.33px rgba(234, 0, 68, 0.61),
-    0 8px 14.4px -3.5px rgba(234, 0, 68, 0.3),
+    0 0.48px 0.87px -1.17px rgba(187, 3, 28, 0.68),
+    0 1.83px 3.3px -2.33px rgba(187, 3, 28, 0.61),
+    0 8px 14.4px -3.5px rgba(187, 3, 28, 0.3),
     inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91),
     inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84),
     inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66),
@@ -176,7 +176,7 @@
 
 .marquee-logo:hover {
   transform: scale(1.15);
-  filter: brightness(0) saturate(100%) invert(22%) sepia(90%) saturate(7000%) hue-rotate(332deg) brightness(0.85) contrast(1.15);
+  filter: brightness(0) saturate(100%) invert(13%) sepia(87%) saturate(5488%) hue-rotate(344deg) brightness(84%) contrast(106%);
 }
 
 .marquee-logo:active {

@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        portfolio: './portfolio.html',
+        work: './work.html',
       },
     },
   },

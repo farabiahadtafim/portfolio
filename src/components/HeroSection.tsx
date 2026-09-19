@@ -18,7 +18,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
       className="relative w-full min-h-screen flex flex-col items-center justify-between pt-[96px] pb-10 sm:pb-12 bg-[#141316] select-none overflow-hidden"
     >
       {/* Subtle radial ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] sm:h-[650px] bg-[#ea0044]/10 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] sm:h-[650px] bg-[#bb031c]/10 blur-[160px] rounded-full pointer-events-none" />
 
       {/* Centerpiece Container: 1039px x 366px exactly as measured from Framer */}
       <div className="site-container relative h-[366px] flex items-center justify-center my-auto">
@@ -33,7 +33,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             <span className="relative -top-2 block text-[clamp(60px,16vw,239px)] tracking-[-0.04em] text-[#f7f7f7]">
               THINK
             </span>
-            <span className="relative top-2 block text-[clamp(48px,13vw,190px)] tracking-[-0.02em] text-[#ea0044]">
+            <span className="relative top-2 block text-[clamp(48px,13vw,190px)] tracking-[-0.02em] text-[#bb031c]">
               CREATIVELY
             </span>
           </h1>
@@ -103,12 +103,12 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             onMouseLeave={() => setIsHovered(false)}
             className="relative cursor-pointer text-white select-none inline-flex items-center justify-center transition-all duration-300 outline-none"
             style={{
-              backgroundColor: 'rgb(234, 0, 68)',
+              backgroundColor: 'rgb(187, 3, 28)',
               borderRadius: '24px',
               padding: isHovered ? '8px 20px 8px 12px' : '10px 24px',
               boxShadow: isHovered
-                ? 'rgba(234, 0, 68, 0.85) 0px 4px 25px, rgba(255, 255, 255, 0.95) 0px 1px 1px inset, rgba(255, 255, 255, 0.3) 0px 6px 12px inset'
-                : '0px 0.48px 0.87px -1.17px rgba(234, 0, 68, 0.68), 0px 1.83px 3.3px -2.33px rgba(234, 0, 68, 0.61), 0px 8px 14.4px -3.5px rgba(234, 0, 68, 0.3), inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91), inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84), inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66), inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05)',
+                ? 'rgba(187, 3, 28, 0.85) 0px 4px 25px, rgba(255, 255, 255, 0.95) 0px 1px 1px inset, rgba(255, 255, 255, 0.3) 0px 6px 12px inset'
+                : '0px 0.48px 0.87px -1.17px rgba(187, 3, 28, 0.68), 0px 1.83px 3.3px -2.33px rgba(187, 3, 28, 0.61), 0px 8px 14.4px -3.5px rgba(187, 3, 28, 0.3), inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91), inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84), inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66), inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05)',
             }}
           >
             {/* Single Avatar Expand on Hover */}

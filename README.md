@@ -1,6 +1,6 @@
 # Farabi Ahad Tafim - Packaging & Brand Identity Designer Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-ea0044?style=for-the-badge&logo=github)](https://farabiahadtafim.github.io/portfolio/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-bb031c?style=for-the-badge&logo=github)](https://farabiahadtafim.github.io/portfolio/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/farabiahadtafim/portfolio)
 
 A sleek, high-performance portfolio website for **Farabi Ahad Tafim** — Packaging & Brand Identity Designer, Product Label Specialist, and 3D Visualizer with 5+ years of industry experience.

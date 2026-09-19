@@ -72,7 +72,7 @@ export default function AboutSection() {
           className="text-4xl sm:text-5xl lg:text-6xl font-space font-bold text-white tracking-tight leading-[1.08]"
         >
           Designing experiences <br className="hidden sm:block" />
-          <span className="text-[#ea0044]">that make sense.</span>
+          <span className="text-[#bb031c]">that make sense.</span>
         </motion.h2>
       </div>
 
@@ -87,7 +87,7 @@ export default function AboutSection() {
             className="relative w-full aspect-[4/4.5] sm:aspect-[4/4.2] rounded-[32px] overflow-hidden bg-[#161519] border border-white/[0.08] shadow-2xl"
           >
             {/* Subtle ambient glow behind head */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#ea0044]/20 blur-[60px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#bb031c]/20 blur-[60px] rounded-full pointer-events-none" />
 
             {/* Side-Facing High-Res Portrait Photo */}
             <img
@@ -112,7 +112,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -123,7 +123,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <LinkedinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -134,7 +134,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Behance"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <BehanceIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -145,7 +145,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Facebook"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <FacebookIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -156,7 +156,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="WhatsApp"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <WhatsappIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -167,7 +167,7 @@ export default function AboutSection() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Linktree"
-                  className="text-[#ea0044] hover:text-white transition-colors"
+                  className="text-[#bb031c] hover:text-white transition-colors"
                 >
                   <LinktreeIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
@@ -189,20 +189,20 @@ export default function AboutSection() {
               </h3>
               {profile.formalName && (
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono tracking-wide bg-white/[0.06] border border-white/10 text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ea0044]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#bb031c]" />
                   Formal Name: {profile.formalName}
                 </span>
               )}
             </div>
             <p className="mt-1.5 text-xs sm:text-sm font-normal text-neutral-400">
-              Packaging & Brand Designer <span className="text-[#ea0044] font-bold mx-1">|</span> Product Visualizer <span className="text-[#ea0044] font-bold mx-1">|</span> Creative Strategist
+              Packaging & Brand Designer <span className="text-[#bb031c] font-bold mx-1">|</span> Product Visualizer <span className="text-[#bb031c] font-bold mx-1">|</span> Creative Strategist
             </p>
             <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-400 font-mono">
               <span>📍 Dhaka, Bangladesh</span>
               <span className="text-neutral-600">•</span>
               <span>🎓 B.Sc. in CSE (2022–2026)</span>
               <span className="text-neutral-600">•</span>
-              <span className="text-[#ea0044] font-semibold">5+ Years Experience</span>
+              <span className="text-[#bb031c] font-semibold">5+ Years Experience</span>
             </div>
           </motion.div>
         </div>
@@ -278,7 +278,7 @@ export default function AboutSection() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#ea0044] transition-colors">
+                      <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
                         {item.company}
                       </h5>
                       <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
@@ -314,7 +314,7 @@ export default function AboutSection() {
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div>
-                            <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#ea0044] transition-colors">
+                            <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
                               {item.company}
                             </h5>
                             <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">

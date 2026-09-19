@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePortfolio } from '../hooks/usePortfolio';
 
-interface FooterProps {
+interface WorkFooterProps {
   onOpenContact: () => void;
 }
 
@@ -14,13 +14,11 @@ function AnimatedFooterName() {
   useEffect(() => {
     let animId: number;
     const startTime = performance.now();
-    const period = 4500; // 4.5 seconds for complete smooth breathing cycle
+    const period = 4500;
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
-      // Smooth sinusoidal oscillation from 0 to 1 and back
       const progress = (1 - Math.cos((elapsed / period) * 2 * Math.PI)) / 2;
-      // Interpolate from 300 (Light) up to 900 (Black)
       const currentWeight = Math.round(300 + progress * 600);
       setWeight(currentWeight);
       animId = requestAnimationFrame(animate);
@@ -99,7 +97,7 @@ function LinktreeIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
   );
 }
 
-export default function Footer({ onOpenContact }: FooterProps) {
+export default function WorkFooter({ onOpenContact }: WorkFooterProps) {
   const { profile } = usePortfolio();
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -270,7 +268,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 text-xs text-neutral-400">
           <div className="flex items-center gap-6">
             <span className="text-neutral-500 font-medium">Menu</span>
-            <a href="#projects" className="hover:text-white transition-colors">Work</a>
+            <a href="#work-projects" className="hover:text-white transition-colors">Work</a>
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#about" className="hover:text-white transition-colors">About</a>
           </div>

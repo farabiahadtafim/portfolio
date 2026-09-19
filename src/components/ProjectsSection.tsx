@@ -79,7 +79,7 @@ export default function ProjectsSection() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#FF1E56]"
+              className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#bb031c]"
             >
               Selected Works
             </motion.span>
@@ -121,7 +121,7 @@ export default function ProjectsSection() {
             className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#141316] hover:bg-[#1a191e] border border-white/10 hover:border-white/20 text-white text-sm font-semibold transition-all duration-200"
           >
             <span>View all my projects</span>
-            <ArrowUpRight className="w-4 h-4 text-[#FF1E56] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-4 h-4 text-[#bb031c] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </motion.a>
         </div>
       </div>

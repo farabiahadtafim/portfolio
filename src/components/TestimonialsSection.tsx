@@ -22,7 +22,7 @@ export default function TestimonialsSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-space font-bold text-white tracking-tight leading-[1.08]"
             >
               Hear from what <br />
-              <span className="text-[#ea0044]">clients have to say.</span>
+              <span className="text-[#bb031c]">clients have to say.</span>
             </motion.h2>
           </div>
 
@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
 
             {/* Stars & Count */}
             <div className="flex flex-col">
-              <div className="flex text-[#ea0044] text-xs leading-none">
+              <div className="flex text-[#bb031c] text-xs leading-none">
                 {'★★★★★'}
               </div>
               <span className="text-[11px] font-semibold text-neutral-300 mt-0.5 whitespace-nowrap">
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
             >
               <div>
                 {/* Double Quote Icon */}
-                <div className="text-3xl text-white/20 font-serif leading-none mb-3 group-hover:text-[#ea0044]/40 transition-colors">
+                <div className="text-3xl text-white/20 font-serif leading-none mb-3 group-hover:text-[#bb031c]/40 transition-colors">
                   “
                 </div>
 
@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
 
               <div className="mt-6 pt-5 border-t border-white/[0.06]">
                 {/* 5 Red Stars */}
-                <div className="flex text-[#ea0044] text-xs mb-3.5 tracking-wider">
+                <div className="flex text-[#bb031c] text-xs mb-3.5 tracking-wider">
                   {'★★★★★'}
                 </div>
 

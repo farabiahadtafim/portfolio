@@ -12,7 +12,7 @@ import { getAssetUrl } from '../utils/asset';
 
 
 /* --- SVG Icons --- */
-function StrategyIcon({ className = 'h-6 w-6 text-[#ea0044]' }: { className?: string }) {
+function StrategyIcon({ className = 'h-6 w-6 text-[#bb031c]' }: { className?: string }) {
   return (
     <svg viewBox="0 0 84.36 100" fill="currentColor" className={className}>
       <path d="M76.94,100H7.42c-4.09,0-7.42-3.33-7.42-7.42V7.42C0,3.33,3.33,0,7.42,0h69.51c4.1,0,7.42,3.33,7.42,7.42v85.15c0,4.1-3.33,7.42-7.42,7.42ZM7.42,6.18c-.69,0-1.25.56-1.25,1.25v85.15c0,.69.56,1.25,1.25,1.25h69.51c.69,0,1.25-.56,1.25-1.25V7.42c0-.69-.56-1.25-1.25-1.25H7.42Z" />
@@ -183,7 +183,7 @@ function StackedServiceCard({ card, index, scrollYProgress }: StackedServiceCard
       }}
       className={`absolute inset-0 w-full h-full flex flex-col justify-between rounded-3xl p-6 sm:p-7 will-change-transform transition-colors duration-200 ${
         isAccent
-          ? 'bg-[#ea0044] border border-white/20'
+          ? 'bg-[#bb031c] border border-white/20'
           : 'bg-[#111111] border border-white/10 hover:border-white/20'
       }`}
     >
@@ -197,12 +197,12 @@ function StackedServiceCard({ card, index, scrollYProgress }: StackedServiceCard
           className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[12px] font-semibold tracking-wider uppercase ${
             isAccent
               ? 'border border-white/40 bg-white/15 text-white'
-              : 'border border-[#ea0044]/30 bg-[#ea0044]/10 text-[#ea0044]'
+              : 'border border-[#bb031c]/30 bg-[#bb031c]/10 text-[#bb031c]'
           }`}
         >
           <span
             className={`h-2 w-2 rounded-full ${
-              isAccent ? 'bg-white' : 'bg-[#ea0044]'
+              isAccent ? 'bg-white' : 'bg-[#bb031c]'
             }`}
           />
           <span>{card.category}</span>
@@ -211,7 +211,7 @@ function StackedServiceCard({ card, index, scrollYProgress }: StackedServiceCard
         <div className="flex items-center gap-2.5">
           {card.iconType === 'strategy' ? (
             <StrategyIcon
-              className={`h-5 w-5 sm:h-6 sm:w-6 ${isAccent ? 'text-white' : 'text-[#ea0044]'}`}
+              className={`h-5 w-5 sm:h-6 sm:w-6 ${isAccent ? 'text-white' : 'text-[#bb031c]'}`}
             />
           ) : (
             <GeometricShapesIcon
@@ -249,7 +249,7 @@ function StackedServiceCard({ card, index, scrollYProgress }: StackedServiceCard
             key={tag}
             className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
               isAccent
-                ? 'border border-white/40 bg-[#ba0036] text-white hover:border-white/60 hover:bg-[#a50030]'
+                ? 'border border-white/40 bg-[#9a0215] text-white hover:border-white/60 hover:bg-[#7a0211]'
                 : 'border border-white/10 bg-white/5 text-neutral-300 hover:border-white/25 hover:bg-white/10 hover:text-white'
             }`}
           >
@@ -311,7 +311,7 @@ export default function ServicesSection() {
             >
               What I help
               <span className="mt-1.5 sm:mt-2 block whitespace-nowrap">
-                you to <span className="text-[#ea0044]">Shape...</span>
+                you to <span className="text-[#bb031c]">Shape...</span>
               </span>
             </motion.h2>
 
@@ -349,7 +349,7 @@ export default function ServicesSection() {
                     className="group relative flex h-[48px] w-[48px] sm:h-[53px] sm:w-[53px] shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[#161616] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 hover:border-white/25 hover:bg-[#1f1f1f]"
                   >
                     {/* Tooltip */}
-                    <span className="pointer-events-none absolute -top-10 left-1/2 z-30 -translate-x-1/2 rounded-md bg-[#ea0044] px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-1 whitespace-nowrap">
+                    <span className="pointer-events-none absolute -top-10 left-1/2 z-30 -translate-x-1/2 rounded-md bg-[#bb031c] px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-1 whitespace-nowrap">
                       {tool.name}
                     </span>
 

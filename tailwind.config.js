@@ -11,8 +11,8 @@ export default {
       },
       colors: {
         brand: {
-          pink: '#FF1E56',
-          'pink-hover': '#e01648',
+          pink: '#bb031c',
+          'pink-hover': '#9a0215',
           dark: '#0c0c0e',
           card: '#141316',
           'card-hover': '#1a191e',

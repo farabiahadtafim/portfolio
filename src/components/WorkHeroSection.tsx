@@ -1,34 +1,130 @@
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../utils/asset';
+
+type TrailNodeType = 'standard' | 'typographyA' | 'typographyB' | 'frosted';
+
+type TrailNode = {
+  id: number;
+  x: number;
+  y: number;
+  type: TrailNodeType;
+};
 
 export default function WorkHeroSection() {
   const mainImageUrl = getAssetUrl('/image/Portfolio-Page-Main-Image.webp');
   const typographySvgUrl = getAssetUrl('/image/SVG/Portfolio Typography.svg');
 
+  // Trail state and refs
+  const [trailNodes, setTrailNodes] = useState<TrailNode[]>([]);
+  const lastPos = useRef<{ x: number; y: number } | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const spawnCountRef = useRef(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top; // Relative to the container
+
+    // Check distance from last spawn
+    if (lastPos.current) {
+      const dx = x - lastPos.current.x;
+      const dy = y - lastPos.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 75) return; // 75px threshold
+    }
+
+    spawnCountRef.current += 1;
+    let nodeType: TrailNodeType = 'standard';
+    
+    // Every 3rd or 4th card, spawn a special one
+    if (spawnCountRef.current % 3 === 0 || spawnCountRef.current % 4 === 0) {
+      const rand = Math.random();
+      if (rand < 0.33) {
+        nodeType = 'typographyA';
+      } else if (rand < 0.66) {
+        nodeType = 'typographyB';
+      } else {
+        nodeType = 'frosted';
+      }
+    }
+
+    const newNode = { id: Date.now() + Math.random(), x, y, type: nodeType };
+    lastPos.current = { x, y };
+
+    setTrailNodes((prev) => {
+      const updated = [...prev, newNode];
+      // Limit to max 8 nodes for performance
+      if (updated.length > 8) {
+        return updated.slice(updated.length - 8);
+      }
+      return updated;
+    });
+
+    // Automatically remove this node after 800ms
+    setTimeout(() => {
+      setTrailNodes((prev) => prev.filter((node) => node.id !== newNode.id));
+    }, 800);
+  };
+
+  const renderTrailCard = (node: TrailNode) => {
+    switch (node.type) {
+      case 'typographyA':
+        return (
+          <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
+            <div className="flex items-baseline justify-center">
+              <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px]">A</span>
+              <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px] ml-0.5">a</span>
+            </div>
+          </div>
+        );
+      case 'typographyB':
+        return (
+          <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-gradient-to-tr from-[#ff0000]/30 via-[#ff0000]/10 to-[#141316]/60 backdrop-blur-md border border-[#ff0000]/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
+            <div className="flex items-baseline justify-center">
+              <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md">A</span>
+              <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md ml-0.5">a</span>
+            </div>
+          </div>
+        );
+      case 'frosted':
+        return (
+          <div className="w-[130px] h-[130px] sm:w-[140px] sm:h-[140px] p-2.5 bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl pointer-events-none">
+            <div className="w-full h-full rounded-xl bg-neutral-800/60 overflow-hidden" />
+          </div>
+        );
+      case 'standard':
+      default:
+        return (
+          <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] rounded-2xl bg-[#1a1a1a]/80 border border-white/10 shadow-2xl backdrop-blur-md pointer-events-none" />
+        );
+    }
+  };
+
   return (
-    <section
-      id="portfolio-hero"
-      className="relative w-full h-screen min-h-[640px] max-h-[1200px] bg-[#141316] flex flex-col items-center justify-end overflow-hidden select-none"
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#141316',
-      }}
+    <div
+      id="portfolio-hero-bg"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="absolute top-0 left-0 w-full z-0 bg-[#141316] select-none"
     >
       {/* =========================================================================
           LAYER 1 (Bottom / Background Glow - z-10)
           Soft radial pure red glow centered directly behind the subject's upper body
           ========================================================================= */}
-      <div className="absolute inset-0 flex items-start justify-center pointer-events-none z-10">
+      <div className="absolute top-0 left-0 w-full h-[100vh] flex items-start justify-center pointer-events-none z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.95, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-[180px] sm:mt-[210px] md:mt-[240px] w-[340px] h-[340px] sm:w-[500px] sm:h-[500px] md:w-[680px] md:h-[680px] lg:w-[800px] lg:h-[800px] rounded-full"
+          className="mt-[180px] sm:mt-[210px] md:mt-[240px] w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] md:w-[850px] md:h-[850px] lg:w-[1050px] lg:h-[1050px] rounded-full"
           style={{
             background:
               'radial-gradient(circle at center, #ff0000 0%, rgba(255, 0, 0, 0.6) 38%, rgba(20, 19, 22, 0) 72%)',
-            filter: 'blur(75px)',
-            WebkitFilter: 'blur(75px)',
+            filter: 'blur(90px)',
+            WebkitFilter: 'blur(90px)',
           }}
           aria-hidden="true"
         />
@@ -39,20 +135,127 @@ export default function WorkHeroSection() {
           Typography SVG ("PORTFOLIO") placed over the glow and behind the subject
           Positioned clearly below the navbar so it remains completely readable
           ========================================================================= */}
-      <div className="absolute inset-0 flex items-start justify-center pointer-events-none z-20 px-4 sm:px-8">
+      <div className="absolute top-0 left-0 w-full h-[100vh] flex items-start justify-center pointer-events-none z-20 px-4 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="mt-[85px] sm:mt-[95px] md:mt-[105px] w-[94%] sm:w-[90%] md:w-[86%] lg:w-[82%] max-w-[1450px] flex justify-center"
         >
-          <img
-            src={typographySvgUrl}
-            alt="PORTFOLIO"
-            className="w-full h-auto object-contain select-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
-            draggable={false}
-          />
+          <div className="relative w-full flex justify-center">
+            <img
+              src={typographySvgUrl}
+              alt="PORTFOLIO"
+              className="w-full h-auto object-contain select-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+              draggable={false}
+            />
+            {/* Progressive Blur on Bottom 75% of Typography */}
+            <div className="absolute bottom-0 left-0 w-full h-[75%] pointer-events-none">
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(0.5px)',
+                  WebkitBackdropFilter: 'blur(0.5px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(1px)',
+                  WebkitBackdropFilter: 'blur(1px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(2px)',
+                  WebkitBackdropFilter: 'blur(2px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(3px)',
+                  WebkitBackdropFilter: 'blur(3px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%)',
+                }}
+              />
+            </div>
+          </div>
         </motion.div>
+      </div>
+
+      {/* =========================================================================
+          LAYER 2.5 (Trail Nodes - z-25)
+          Rendered behind the foreground subject but in front of Typography
+          ========================================================================= */}
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden" 
+        style={{ zIndex: 25 }}
+      >
+        <AnimatePresence>
+          {trailNodes.map((node) => (
+            <motion.div
+              key={node.id}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20, mass: 0.8 }}
+              className="absolute flex items-center justify-center pointer-events-none origin-center"
+              style={{
+                left: node.x,
+                top: node.y,
+                x: "-50%",
+                y: "-50%",
+              }}
+            >
+              {renderTrailCard(node)}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
 
       {/* =========================================================================
@@ -65,21 +268,16 @@ export default function WorkHeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-30 w-full h-full flex items-end justify-center pointer-events-none pt-[70px] sm:pt-[80px]"
+        className="relative z-30 w-full flex justify-center pointer-events-none pt-[70px] sm:pt-[80px]"
       >
         <img
           src={mainImageUrl}
           alt="Farabi Ahad Tafim Portfolio"
-          className="w-full h-full object-cover object-top select-none pointer-events-none"
+          className="w-full h-auto block object-top select-none pointer-events-none"
           draggable={false}
         />
       </motion.div>
 
-      {/* Seamless bottom transition into the projects section below */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 sm:h-36 pointer-events-none z-40 bg-gradient-to-t from-[#141316] via-[#141316]/50 to-transparent"
-        aria-hidden="true"
-      />
-    </section>
+    </div>
   );
 }

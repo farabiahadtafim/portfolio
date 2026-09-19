@@ -47,9 +47,9 @@ export default function MarqueeSection() {
 
           {/* 5 Red/Pink Stars + 99+ Happy clients */}
           <div className="flex flex-col justify-center">
-            <div className="flex text-[#ea0044] gap-0.5">
+            <div className="flex text-[#bb031c] gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-[#ea0044] text-[#ea0044]" />
+                <Star key={i} className="w-3.5 h-3.5 fill-[#bb031c] text-[#bb031c]" />
               ))}
             </div>
             <span className="text-[13px] sm:text-[14px] font-semibold text-white tracking-tight whitespace-nowrap mt-0.5 font-space">
