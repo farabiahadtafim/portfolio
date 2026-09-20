@@ -29,7 +29,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Category tag pill on top left */}
         <div className="absolute top-4 left-4 flex max-w-[calc(100%-32px)] gap-1.5 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:opacity-0">
-          {project.tags.slice(0, 2).map((tag) => (
+          {(project.tags || []).slice(0, 2).map((tag) => (
             <span
               key={tag}
               className="rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium tracking-wide text-neutral-200 backdrop-blur-md"

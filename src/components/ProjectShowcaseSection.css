@@ -1,0 +1,71 @@
+/* Scoped styles for the 3D ring showcase section */
+.showcase-ring-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.showcase-ring-wrapper #dragger,
+.showcase-ring-wrapper #ring,
+.showcase-ring-wrapper .img,
+.showcase-ring-wrapper .vignette {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  user-select: none;
+}
+
+.showcase-ring-wrapper div {
+  position: absolute;
+}
+
+.showcase-ring-wrapper .ring-container {
+  perspective: 2000px;
+  width: 300px;
+  height: 300px;  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.showcase-ring-wrapper #ring,
+.showcase-ring-wrapper .img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.showcase-ring-wrapper .vignette {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 12%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.8) 88%, rgba(0,0,0,0.95) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.showcase-ring-wrapper #dragger {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  cursor: grab;
+}
+
+.showcase-ring-wrapper #dragger:active {
+  cursor: grabbing;
+}
+
+.showcase-ring-wrapper .img {
+  background-size: 700px 300px;
+  background-repeat: no-repeat;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}

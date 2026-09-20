@@ -3,8 +3,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { usePortfolio } from '../hooks/usePortfolio';
+import { usePortfolioContent } from '../context/PortfolioContext';
+import { getAssetUrl } from '../utils/asset';
 
-const demoCarouselBlocks = [
+const defaultFallbackBlocks = [
   'bg-[#d7a56d]',
   'bg-[#5d8d9a]',
   'bg-[#c96b57]',
@@ -14,12 +16,45 @@ const demoCarouselBlocks = [
 
 export default function ProjectsSection() {
   const { projects } = usePortfolio();
+  const { homeSettings } = usePortfolioContent();
   const sectionRef = useRef<HTMLElement>(null);
   const [isCursorVisible, setIsCursorVisible] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const showcaseProjects = projects.length
-    ? Array.from({ length: 9 }, (_, index) => projects[index % projects.length])
-    : [];
+  const showcaseProjects = projects;
+
+  const carouselItems = homeSettings?.carousel_images && homeSettings.carousel_images.length > 0
+    ? homeSettings.carousel_images
+    : defaultFallbackBlocks;
+
+  const topBlocks = [...carouselItems, ...carouselItems];
+  const bottomBlocks = [...carouselItems.slice().reverse(), ...carouselItems.slice().reverse()];
+
+  const renderCarouselBlock = (item: string, key: string) => {
+    const isImage = item.startsWith('/') || item.startsWith('http') || item.startsWith('blob:');
+    if (isImage) {
+      return (
+        <div
+          key={key}
+          className="projects-carousel-block relative overflow-hidden bg-neutral-900 border border-white/10 shadow-lg cursor-pointer"
+        >
+          <img
+            src={getAssetUrl(item)}
+            alt="Portfolio showcase preview"
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
+        </div>
+      );
+    }
+    return (
+      <div
+        key={key}
+        className={`projects-carousel-block ${item}`}
+        aria-hidden="true"
+      />
+    );
+  };
 
   return (
     <section
@@ -50,23 +85,11 @@ export default function ProjectsSection() {
       {/* Full-width image placeholders marquee carousel */}
       <div className="relative mb-20 w-full overflow-hidden">
         <div className="projects-carousel-track projects-carousel-left flex w-max gap-5 pb-5">
-          {[...demoCarouselBlocks, ...demoCarouselBlocks].map((color, index) => (
-            <div
-              key={`top-${index}`}
-              className={`projects-carousel-block ${color}`}
-              aria-hidden="true"
-            />
-          ))}
+          {topBlocks.map((item, index) => renderCarouselBlock(item, `top-${index}`))}
         </div>
 
         <div className="projects-carousel-track projects-carousel-right flex w-max gap-5">
-          {[...demoCarouselBlocks.slice().reverse(), ...demoCarouselBlocks.slice().reverse()].map((color, index) => (
-            <div
-              key={`bottom-${index}`}
-              className={`projects-carousel-block ${color}`}
-              aria-hidden="true"
-            />
-          ))}
+          {bottomBlocks.map((item, index) => renderCarouselBlock(item, `bottom-${index}`))}
         </div>
       </div>
 

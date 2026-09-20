@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../utils/asset';
+import { usePortfolioContent } from '../context/PortfolioContext';
 
 type TrailNodeType = 'standard' | 'typographyA' | 'typographyB' | 'frosted';
 
@@ -12,7 +13,10 @@ type TrailNode = {
 };
 
 export default function WorkHeroSection() {
-  const mainImageUrl = getAssetUrl('/image/Portfolio-Page-Main-Image.webp');
+  const { settings } = usePortfolioContent();
+  const mainImageUrl = settings.main_image_url?.startsWith('http') || settings.main_image_url?.startsWith('blob:')
+    ? settings.main_image_url
+    : getAssetUrl(settings.main_image_url || '/image/Portfolio-Page-Main-Image.webp');
   const typographySvgUrl = getAssetUrl('/image/SVG/Portfolio Typography.svg');
 
   // Trail state and refs

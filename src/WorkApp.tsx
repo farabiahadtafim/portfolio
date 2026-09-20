@@ -5,12 +5,14 @@ import ProjectShowcaseSection from './components/ProjectShowcaseSection';
 import WorkFooter from './components/WorkFooter';
 import ContactModal from './components/ContactModal';
 import BottomBlurGradient from './components/BottomBlurGradient';
+import { PortfolioProvider } from './context/PortfolioContext';
 
 export default function WorkApp() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white">
+    <PortfolioProvider>
+      <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white">
       {/* Floating Glassmorphism Pill Navbar */}
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
@@ -36,5 +38,6 @@ export default function WorkApp() {
         onClose={() => setIsContactOpen(false)}
       />
     </div>
+    </PortfolioProvider>
   );
 }

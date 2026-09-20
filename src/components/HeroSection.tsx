@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-
 import Magnet from './Magnet';
 import { getAssetUrl } from '../utils/asset';
+import { usePortfolioContent } from '../context/PortfolioContext';
 
 interface HeroSectionProps {
   onOpenContact: () => void;
@@ -11,6 +10,13 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { homeSettings } = usePortfolioContent();
+
+  const headlineTop = homeSettings?.hero_headline_top || 'THINK';
+  const headlineBottom = homeSettings?.hero_headline_bottom || 'CREATIVELY';
+  const avatarUrl = homeSettings?.hero_avatar_url || '/image/tafim-cartoon-head.webp';
+  const tagline = homeSettings?.hero_tagline || 'I help brands turn\nideas into structured,\nmeaningful experiences';
+  const ctaText = homeSettings?.hero_cta_text || 'Book a call with me';
 
   return (
     <section
@@ -31,10 +37,10 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
         >
           <h1 className="font-space font-semibold uppercase text-center select-none leading-[115px] sm:leading-[130px] md:leading-[145.5px]">
             <span className="relative -top-2 block text-[clamp(60px,16vw,239px)] tracking-[-0.04em] text-[#f7f7f7]">
-              THINK
+              {headlineTop}
             </span>
             <span className="relative top-2 block text-[clamp(48px,13vw,190px)] tracking-[-0.02em] text-[#bb031c]">
-              CREATIVELY
+              {headlineBottom}
             </span>
           </h1>
         </motion.div>
@@ -65,7 +71,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             <motion.img
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              src={getAssetUrl("/image/tafim-cartoon-head.webp")}
+              src={getAssetUrl(avatarUrl)}
               alt="Character Avatar"
               className="w-[105%] max-w-none h-auto object-contain select-none"
             />
@@ -82,10 +88,8 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           transition={{ duration: 0.7, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="relative -top-6 w-full sm:w-[305px] text-center sm:text-left"
         >
-          <p className="text-[18px] leading-[1.45] text-[#b8b8b8] font-normal font-space tracking-normal">
-            I help brands turn<br />
-            ideas into structured,<br />
-            meaningful experiences
+          <p className="text-[18px] leading-[1.45] text-[#b8b8b8] font-normal font-space tracking-normal whitespace-pre-line">
+            {tagline}
           </p>
         </motion.div>
 
@@ -131,7 +135,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             </AnimatePresence>
 
             <span className="text-[15px] font-medium text-white tracking-tight whitespace-nowrap">
-              Book a call with me
+              {ctaText}
             </span>
           </motion.button>
         </motion.div>
@@ -139,3 +143,4 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
     </section>
   );
 }
+
