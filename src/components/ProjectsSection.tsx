@@ -22,15 +22,42 @@ export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const showcaseProjects = projects;
 
-  const carouselItems = homeSettings?.carousel_images && homeSettings.carousel_images.length > 0
-    ? homeSettings.carousel_images
+  // Limit carousel images to 40
+  const userImages = homeSettings?.carousel_images ? homeSettings.carousel_images.slice(0, 40) : [];
+  const carouselItems = userImages.length > 0
+    ? userImages
     : defaultFallbackBlocks;
 
-  const topBlocks = [...carouselItems, ...carouselItems];
-  const bottomBlocks = [...carouselItems.slice().reverse(), ...carouselItems.slice().reverse()];
+  // Split into two halves: 1-20 on top, 21-40 on bottom
+  let topHalf = carouselItems.slice(0, 20);
+  let bottomHalf = carouselItems.slice(20, 40);
+
+  // Fallback if there are no images for the bottom half
+  if (bottomHalf.length === 0 && topHalf.length > 0) {
+    bottomHalf = [...topHalf];
+  }
+
+  // Ensure each half has enough items to span a large monitor (approx minimum 8 items)
+  const MIN_ITEMS = 8;
+  if (topHalf.length > 0 && topHalf.length < MIN_ITEMS) {
+    const repeats = Math.ceil(MIN_ITEMS / topHalf.length);
+    topHalf = Array(repeats).fill(topHalf).flat();
+  }
+  if (bottomHalf.length > 0 && bottomHalf.length < MIN_ITEMS) {
+    const repeats = Math.ceil(MIN_ITEMS / bottomHalf.length);
+    bottomHalf = Array(repeats).fill(bottomHalf).flat();
+  }
+
+  // Duplicate for the infinite CSS marquee trick (-50% translation)
+  const topBlocks = [...topHalf, ...topHalf];
+  const bottomBlocks = [...bottomHalf, ...bottomHalf];
+
+  // Dynamic animation duration based on item count to maintain constant speed (4s per item)
+  const topDuration = topHalf.length * 4;
+  const bottomDuration = bottomHalf.length * 4;
 
   const renderCarouselBlock = (item: string, key: string) => {
-    const isImage = item.startsWith('/') || item.startsWith('http') || item.startsWith('blob:');
+    const isImage = item.startsWith('/') || item.startsWith('http') || item.startsWith('blob:') || item.startsWith('data:');
     if (isImage) {
       return (
         <div
@@ -84,11 +111,17 @@ export default function ProjectsSection() {
 
       {/* Full-width image placeholders marquee carousel */}
       <div className="relative mb-20 w-full overflow-hidden">
-        <div className="projects-carousel-track projects-carousel-left flex w-max gap-5 pb-5">
+        <div 
+          className="projects-carousel-track projects-carousel-left flex w-max gap-5 pb-5"
+          style={{ animationDuration: `${topDuration}s` }}
+        >
           {topBlocks.map((item, index) => renderCarouselBlock(item, `top-${index}`))}
         </div>
 
-        <div className="projects-carousel-track projects-carousel-right flex w-max gap-5">
+        <div 
+          className="projects-carousel-track projects-carousel-right flex w-max gap-5"
+          style={{ animationDuration: `${bottomDuration}s` }}
+        >
           {bottomBlocks.map((item, index) => renderCarouselBlock(item, `bottom-${index}`))}
         </div>
       </div>

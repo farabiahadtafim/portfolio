@@ -110,5 +110,5 @@ export interface PortfolioContextType {
   deleteFaq: (number: string) => Promise<{ success: boolean; error?: string }>;
 
   // Storage
-  uploadAsset: (file: File, folder?: string) => Promise<{ success: boolean; publicUrl?: string; error?: string }>;
+  uploadAsset: (file: File, folder?: string, oldFileUrl?: string) => Promise<{ success: boolean; publicUrl?: string; error?: string }>;
 }

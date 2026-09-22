@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ImageCropperModal from '../components/ImageCropperModal';
 import { 
   Lock, 
   ShieldCheck, 
@@ -26,7 +27,8 @@ import {
   MessageSquare,
   HelpCircle,
   Edit3,
-  X
+  X,
+  Save
 } from 'lucide-react';
 import { usePortfolioContent } from '../context/PortfolioContext';
 import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
@@ -127,6 +129,9 @@ export default function AdminDashboard() {
   // Home Carousel images state
   const [carouselImages, setCarouselImages] = useState<string[]>(homeSettings.carousel_images || []);
   const [carouselUploadLoading, setCarouselUploadLoading] = useState(false);
+  const [isCropperOpen, setIsCropperOpen] = useState(false);
+  const [cropImageSrc, setCropImageSrc] = useState<string | null>(null);
+  const [cropReplaceIndex, setCropReplaceIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (homeSettings.carousel_images && homeSettings.carousel_images.length > 0) {
@@ -334,34 +339,59 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleAddCarouselImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddCarouselImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setCarouselUploadLoading(true);
-    const res = await uploadAsset(file, 'carousel-assets');
-    setCarouselUploadLoading(false);
-    if (res.success && res.publicUrl) {
-      const updated = [...carouselImages, res.publicUrl];
-      setCarouselImages(updated);
-      await handleSaveCarouselImages(updated);
-      showToast('Carousel image uploaded and saved!');
-    } else {
-      showToast(res.error || 'Upload failed');
-    }
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setCropImageSrc(reader.result?.toString() || null);
+      setCropReplaceIndex(null); // null means adding a new one
+      setIsCropperOpen(true);
+    });
+    reader.readAsDataURL(file);
+    e.target.value = ''; // Reset input so same file can be selected again
   };
 
-  const handleReplaceCarouselImageUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleReplaceCarouselImageUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setCropImageSrc(reader.result?.toString() || null);
+      setCropReplaceIndex(index);
+      setIsCropperOpen(true);
+    });
+    reader.readAsDataURL(file);
+    e.target.value = ''; // Reset input
+  };
+
+  const handleCropComplete = async (croppedFile: File) => {
+    setIsCropperOpen(false);
+    setCropImageSrc(null);
     setCarouselUploadLoading(true);
-    const res = await uploadAsset(file, 'carousel-assets');
+    
+    // If replacing, grab the old URL so the backend can delete it
+    const oldUrl = cropReplaceIndex !== null ? carouselImages[cropReplaceIndex] : undefined;
+    const res = await uploadAsset(croppedFile, 'carousel-assets', oldUrl);
     setCarouselUploadLoading(false);
+    
     if (res.success && res.publicUrl) {
-      const updated = [...carouselImages];
-      updated[index] = res.publicUrl;
-      setCarouselImages(updated);
-      await handleSaveCarouselImages(updated);
-      showToast('Carousel image replaced and saved!');
+      if (cropReplaceIndex !== null) {
+        // Replacing
+        const updated = [...carouselImages];
+        updated[cropReplaceIndex] = res.publicUrl;
+        setCarouselImages(updated);
+        await handleSaveCarouselImages(updated);
+        showToast('Carousel image replaced and saved!');
+      } else {
+        // Adding
+        const updated = [...carouselImages, res.publicUrl];
+        setCarouselImages(updated);
+        await handleSaveCarouselImages(updated);
+        showToast('Carousel image uploaded and saved!');
+      }
     } else {
       showToast(res.error || 'Upload failed');
     }
@@ -989,6 +1019,17 @@ export default function AdminDashboard() {
                       onChange={handleAddCarouselImageUpload}
                     />
                   </label>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleSaveCarouselImages();
+                      showToast('Carousel changes saved to main page!');
+                    }}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-800 text-white border border-white/10 rounded-lg hover:bg-neutral-700 transition-colors text-sm font-medium"
+                  >
+                    <Save className="w-4 h-4" />
+                    <span>Save Changes</span>
+                  </button>
                 </div>
               </div>
 
@@ -1042,18 +1083,6 @@ export default function AdminDashboard() {
                             onChange={(e) => handleReplaceCarouselImageUpload(idx, e)}
                           />
                         </label>
-                        <input
-                          type="text"
-                          value={imgUrl}
-                          onChange={(e) => {
-                            const updated = [...carouselImages];
-                            updated[idx] = e.target.value;
-                            setCarouselImages(updated);
-                          }}
-                          onBlur={() => handleSaveCarouselImages()}
-                          placeholder="Image URL"
-                          className="w-full px-2 py-1 rounded bg-white/5 border border-white/10 text-white text-[10px] truncate focus:outline-none focus:border-[#ea0044]"
-                        />
                       </div>
                     </div>
                   ))}
@@ -2162,6 +2191,20 @@ export default function AdminDashboard() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* --- IMAGE CROPPER MODAL --- */}
+      {cropImageSrc && (
+        <ImageCropperModal
+          isOpen={isCropperOpen}
+          imageSrc={cropImageSrc}
+          onClose={() => {
+            setIsCropperOpen(false);
+            setCropImageSrc(null);
+          }}
+          onCropComplete={handleCropComplete}
+          aspectRatio={4 / 3}
+        />
+      )}
     </div>
   );
 }

@@ -42,11 +42,46 @@ const DEFAULT_HOME_SETTINGS: HomeSettings = {
   bio_title: portfolioJson.profile.bioTitle || 'Product Label & Packaging Designer | Visualizer',
   about_photo_url: portfolioJson.profile.aboutPhoto || '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp',
   carousel_images: [
-    '/image/projects/hoodverse.webp',
-    '/image/projects/tea-sense.webp',
-    '/image/projects/fruit-blends.webp',
-    '/image/projects/ruthless.webp',
-    '/image/tafim-cartoon-head.webp',
+    '/image/projects/Carousel Posts Main Page/1. Detox Cleanse 1.webp',
+    '/image/projects/Carousel Posts Main Page/2. Alk Labs 2.webp',
+    '/image/projects/Carousel Posts Main Page/3. Multi Vitamin Man 2.webp',
+    '/image/projects/Carousel Posts Main Page/4. Radiant Energy Lemon Burst Supplement Tubes.webp',
+    '/image/projects/Carousel Posts Main Page/5. Alk Labs 1.webp',
+    '/image/projects/Carousel Posts Main Page/6. Detox cleanse supplement bottle label Design.webp',
+    '/image/projects/Carousel Posts Main Page/7. Multi Vitamin Women 3.webp',
+    '/image/projects/Carousel Posts Main Page/8. Nitro Mango Gaming Supplement.webp',
+    '/image/projects/Carousel Posts Main Page/9. Dislapharm Chrono_Nad+_bottle Anti Aging Supplement.webp',
+    '/image/projects/Carousel Posts Main Page/10. Radiant Energy Gaming Supplement Tubes  Galatic Rush.webp',
+    '/image/projects/Carousel Posts Main Page/11. Multi Vitamin Man 3.webp',
+    '/image/projects/Carousel Posts Main Page/12. Sea Moss Gel Supplement Label 3.webp',
+    '/image/projects/Carousel Posts Main Page/13. Detox cleanse supplement bottle label Design.webp',
+    '/image/projects/Carousel Posts Main Page/14. Sea Moss Gel Supplement Label 2.webp',
+    '/image/projects/Carousel Posts Main Page/15. Radiant Energy Supplement Tubes.webp',
+    '/image/projects/Carousel Posts Main Page/16. Mushroom-10X-Complex Supplement Label Design 3.webp',
+    '/image/projects/Carousel Posts Main Page/17. Pure Pix Multi Flavour.webp',
+    '/image/projects/Carousel Posts Main Page/18. Radiant Energy Dragon Blood.webp',
+    '/image/projects/Carousel Posts Main Page/19. Sea Moss Gel Supplement Label.webp',
+    '/image/projects/Carousel Posts Main Page/20. Multi Vitamin Women 2.webp',
+    '/image/projects/Carousel Posts Main Page/21. Rx Pill Disposal Supplement .webp',
+    '/image/projects/Carousel Posts Main Page/22. Purepix Winter Green.webp',
+    '/image/projects/Carousel Posts Main Page/23. Radiant Energy Gaming Supplement Tubes .webp',
+    '/image/projects/Carousel Posts Main Page/24. Pure Pix Juicy Peach 2.webp',
+    '/image/projects/Carousel Posts Main Page/25. Radiant Energy Blue Berry Fusion.webp',
+    '/image/projects/Carousel Posts Main Page/26. Pure Pix Mixed berry.webp',
+    '/image/projects/Carousel Posts Main Page/27. Omnicoast Goods Supplement Inositol gummy jars.webp',
+    '/image/projects/Carousel Posts Main Page/28. Pure Pix Mango Strawberrie.webp',
+    '/image/projects/Carousel Posts Main Page/29. LifeSpan Fish Oil 2.webp',
+    '/image/projects/Carousel Posts Main Page/30. Pure Pix Juicy Peach.webp',
+    '/image/projects/Carousel Posts Main Page/31. Omnicoast Goods Supplement Inositol gummy jars 2.webp',
+    '/image/projects/Carousel Posts Main Page/32. Mushroom-10X-Complex Supplement Label Design 2.webp',
+    '/image/projects/Carousel Posts Main Page/33. Dislapharm Chrono_Nad+_bottle 2.webp',
+    '/image/projects/Carousel Posts Main Page/34. Mushroom-10X-Complex Supplement Label Design 1.webp',
+    '/image/projects/Carousel Posts Main Page/35. Multi Vitamin Women.webp',
+    '/image/projects/Carousel Posts Main Page/36. LifeSpan Fish Oil 1.webp',
+    '/image/projects/Carousel Posts Main Page/37. Joint Supplement.webp',
+    '/image/projects/Carousel Posts Main Page/38. Dislapharm Chrono_Nad+_bottle.webp',
+    '/image/projects/Carousel Posts Main Page/39. Radiant Energy Citrus Burst.webp',
+    '/image/projects/Carousel Posts Main Page/40. Multi Vitamin Man 1.webp',
   ],
 };
 
@@ -110,7 +145,22 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== 'undefined') {
       const cached = localStorage.getItem('cms_cached_home_settings');
       if (cached) {
-        try { return JSON.parse(cached); } catch {}
+        try {
+          const parsed = JSON.parse(cached);
+          
+          // Force update carousel images if the user is using the old defaults or has less than 40
+          if (
+            parsed.carousel_images && 
+            (parsed.carousel_images.length < 40 || 
+             parsed.carousel_images[0] === '/image/projects/hoodverse.webp' || 
+             parsed.carousel_images[0] === '/image/projects/1. Detox Cleanse 1.webp')
+          ) {
+            parsed.carousel_images = DEFAULT_HOME_SETTINGS.carousel_images;
+            localStorage.setItem('cms_cached_home_settings', JSON.stringify(parsed));
+          }
+          
+          return parsed;
+        } catch {}
       }
     }
     return DEFAULT_HOME_SETTINGS;
@@ -581,12 +631,30 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     return { success: true };
   };
 
-  const uploadAsset = async (file: File, folder = 'uploads') => {
+  const uploadAsset = async (file: File, folder = 'uploads', oldFileUrl?: string) => {
+    // If not using Supabase, upload via our Vite local endpoint
     if (!isSupabaseConfigured) {
       return new Promise<{ success: boolean; publicUrl?: string; error?: string }>((resolve) => {
         const reader = new FileReader();
-        reader.onload = () => {
-          resolve({ success: true, publicUrl: reader.result as string });
+        reader.onload = async () => {
+          const base64 = reader.result as string;
+          const ext = file.name.split('.').pop() || 'png';
+          const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${ext}`;
+          try {
+            const res = await fetch('/api/upload', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ filename, base64, oldFileUrl })
+            });
+            if (res.ok) {
+              const data = await res.json();
+              resolve({ success: true, publicUrl: data.url });
+              return;
+            }
+          } catch (err) {
+            console.error('Local upload API failed, falling back to data URL', err);
+          }
+          resolve({ success: true, publicUrl: base64 });
         };
         reader.onerror = () => {
           resolve({ success: false, error: 'Failed to read file locally' });
@@ -595,7 +663,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
       });
     }
 
-    const { url, error } = await uploadPortfolioAsset(file, folder);
+    const { url, error } = await uploadPortfolioAsset(file, folder, oldFileUrl);
     if (error || !url) {
       return { success: false, error: error || 'Failed to upload' };
     }

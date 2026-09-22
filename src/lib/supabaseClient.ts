@@ -30,13 +30,27 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
  */
 export async function uploadPortfolioAsset(
   file: File,
-  folder = 'uploads'
+  folder = 'uploads',
+  oldFileUrl?: string
 ): Promise<{ url?: string; error?: string }> {
   if (!supabase || !isSupabaseConfigured) {
     return { error: 'Supabase is not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.' };
   }
 
   try {
+    // Delete old file if provided
+    if (oldFileUrl) {
+      try {
+        const urlParts = oldFileUrl.split('portfolio-assets/');
+        if (urlParts.length > 1) {
+          const oldFilePath = urlParts[1];
+          await supabase.storage.from('portfolio-assets').remove([oldFilePath]);
+        }
+      } catch (e) {
+        console.error('Failed to delete old Supabase asset:', e);
+      }
+    }
+
     const fileExt = file.name.split('.').pop();
     const cleanFileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${fileExt}`;
     const filePath = `${folder}/${cleanFileName}`;
