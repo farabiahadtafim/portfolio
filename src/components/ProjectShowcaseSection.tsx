@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { usePortfolioContent } from '../context/PortfolioContext';
 import { getAssetUrl } from '../utils/asset';
+import SideBlurGradient from './SideBlurGradient';
 import './ProjectShowcaseSection.css';
 
 gsap.registerPlugin(Draggable);
@@ -137,6 +138,7 @@ export default function ProjectShowcaseSection() {
 
       {/* 3D Cylindrical Ring Gallery */}
       <div ref={wrapperRef} className="showcase-ring-wrapper -mt-[150px]">
+        <SideBlurGradient />
         <div className="container ring-container">
           <div id="ring" ref={ringRef}>
             {carouselImages.map((_, i) => (
