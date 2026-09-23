@@ -47,7 +47,7 @@ const DEFAULT_PROJECTS: CMSProject[] = [
   { id: '6', title: 'Peach Layout', category: 'Editorial Layout', accent_color: '#e29578', order_index: 5, is_active: true },
 ];
 
-const DEFAULT_HOME_SETTINGS: HomeSettings = {
+export const DEFAULT_HOME_SETTINGS: HomeSettings = {
   id: 'default',
   hero_headline_top: 'THINK',
   hero_headline_bottom: 'CREATIVELY',
@@ -140,7 +140,14 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== 'undefined') {
       const cached = localStorage.getItem('cms_cached_settings');
       if (cached) {
-        try { return JSON.parse(cached); } catch {}
+        try {
+          const parsed = JSON.parse(cached);
+          if (!parsed.showcase_images || !Array.isArray(parsed.showcase_images) || parsed.showcase_images.length === 0) {
+            parsed.showcase_images = DEFAULT_SETTINGS.showcase_images;
+            localStorage.setItem('cms_cached_settings', JSON.stringify(parsed));
+          }
+          return parsed;
+        } catch {}
       }
     }
     return DEFAULT_SETTINGS;
@@ -164,12 +171,13 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         try {
           const parsed = JSON.parse(cached);
           
-          // Force update carousel images if the user is using the old defaults or has less than 40
+          // Force update carousel images if missing, empty, or using old defaults
           if (
-            parsed.carousel_images && 
-            (parsed.carousel_images.length < 40 || 
-             parsed.carousel_images[0] === '/image/projects/hoodverse.webp' || 
-             parsed.carousel_images[0] === '/image/projects/1. Detox Cleanse 1.webp')
+            !parsed.carousel_images ||
+            !Array.isArray(parsed.carousel_images) ||
+            parsed.carousel_images.length < 40 || 
+            parsed.carousel_images[0] === '/image/projects/hoodverse.webp' || 
+            parsed.carousel_images[0] === '/image/projects/1. Detox Cleanse 1.webp'
           ) {
             parsed.carousel_images = DEFAULT_HOME_SETTINGS.carousel_images;
             localStorage.setItem('cms_cached_home_settings', JSON.stringify(parsed));
@@ -272,7 +280,18 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         .eq('id', 'default')
         .maybeSingle();
 
-      if (settingsData) setSettings(settingsData);
+      const resolvedSettings: SiteSettings = settingsData
+        ? {
+            ...DEFAULT_SETTINGS,
+            ...settingsData,
+            showcase_images:
+              settingsData.showcase_images && settingsData.showcase_images.length > 0
+                ? settingsData.showcase_images
+                : DEFAULT_SETTINGS.showcase_images,
+          }
+        : settings;
+
+      if (settingsData) setSettings(resolvedSettings);
 
       // 2. Fetch 3D projects
       const { data: projectsData } = await supabase
@@ -289,7 +308,18 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         .eq('id', 'default')
         .maybeSingle();
 
-      if (homeData) setHomeSettings(homeData);
+      const resolvedHomeSettings: HomeSettings = homeData
+        ? {
+            ...DEFAULT_HOME_SETTINGS,
+            ...homeData,
+            carousel_images:
+              homeData.carousel_images && homeData.carousel_images.length > 0
+                ? homeData.carousel_images
+                : DEFAULT_HOME_SETTINGS.carousel_images,
+          }
+        : homeSettings;
+
+      if (homeData) setHomeSettings(resolvedHomeSettings);
 
       // 4. Fetch Home projects
       const { data: mainProjectsData } = await supabase
@@ -312,9 +342,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
       if (faqsData && faqsData.length > 0) setFaqs(faqsData);
 
       saveLocalCache(
-        settingsData || settings,
+        resolvedSettings,
         projectsData || projects,
-        homeData || homeSettings,
+        resolvedHomeSettings,
         mainProjectsData || mainProjects,
         servicesData || services,
         testData || testimonials,
@@ -346,9 +376,17 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         (payload) => {
           if (payload.new && (payload.new as SiteSettings).id === 'default') {
             const updated = payload.new as SiteSettings;
-            setSettings(updated);
+            const mergedSettings: SiteSettings = {
+              ...DEFAULT_SETTINGS,
+              ...updated,
+              showcase_images:
+                updated.showcase_images && updated.showcase_images.length > 0
+                  ? updated.showcase_images
+                  : DEFAULT_SETTINGS.showcase_images,
+            };
+            setSettings(mergedSettings);
             setLastSynced(new Date());
-            saveLocalCache(updated, projects, homeSettings, mainProjects, services, testimonials, faqs);
+            saveLocalCache(mergedSettings, projects, homeSettings, mainProjects, services, testimonials, faqs);
           }
         }
       )
@@ -358,9 +396,17 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         (payload) => {
           if (payload.new && (payload.new as HomeSettings).id === 'default') {
             const updated = payload.new as HomeSettings;
-            setHomeSettings(updated);
+            const mergedHome: HomeSettings = {
+              ...DEFAULT_HOME_SETTINGS,
+              ...updated,
+              carousel_images:
+                updated.carousel_images && updated.carousel_images.length > 0
+                  ? updated.carousel_images
+                  : DEFAULT_HOME_SETTINGS.carousel_images,
+            };
+            setHomeSettings(mergedHome);
             setLastSynced(new Date());
-            saveLocalCache(settings, projects, updated, mainProjects, services, testimonials, faqs);
+            saveLocalCache(settings, projects, mergedHome, mainProjects, services, testimonials, faqs);
           }
         }
       )

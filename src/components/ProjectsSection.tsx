@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { usePortfolio } from '../hooks/usePortfolio';
-import { usePortfolioContent } from '../context/PortfolioContext';
+import { usePortfolioContent, DEFAULT_HOME_SETTINGS } from '../context/PortfolioContext';
 import { getAssetUrl } from '../utils/asset';
 
 const defaultFallbackBlocks = [
@@ -22,8 +22,11 @@ export default function ProjectsSection() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const showcaseProjects = projects;
 
-  // Limit carousel images to 40
-  const userImages = homeSettings?.carousel_images ? homeSettings.carousel_images.slice(0, 40) : [];
+  // Limit carousel images to 40, fallback to DEFAULT_HOME_SETTINGS images
+  const userImages =
+    homeSettings?.carousel_images && homeSettings.carousel_images.length > 0
+      ? homeSettings.carousel_images.slice(0, 40)
+      : (DEFAULT_HOME_SETTINGS.carousel_images || []);
   const carouselItems = userImages.length > 0
     ? userImages
     : defaultFallbackBlocks;
