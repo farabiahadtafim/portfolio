@@ -23,21 +23,30 @@ export default function ProjectShowcaseSection() {
     const dragger = draggerRef.current;
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
-    const getBgPos = (i: number) => {
-      const rotY = (gsap.getProperty(ring, 'rotationY') as number) || 0;
-      return (
-        -gsap.utils.wrap(0, 360, rotY - 180 - i * 36) / 360 * 400 + 'px 0px'
-      );
-    };
+    const carouselImages = [
+      '/image/projects/3D Carousel work page images/1. 3D Carousel.webp',
+      '/image/projects/3D Carousel work page images/2. 3D Carousel.webp',
+      '/image/projects/3D Carousel work page images/3. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/4. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/5. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/6. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/7. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/8. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/9. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/10. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/11. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/12. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/13. 3D Carouse.webp',
+      '/image/projects/3D Carousel work page images/14. 3D Carouse.webp',
+    ];
+
+    const totalImages = carouselImages.length;
+    const radius = Math.round((totalImages * 314) / (2 * Math.PI));
+    const anglePerImage = 360 / totalImages;
 
     const getCardBgImage = (i: number) => {
-      if (activeProjects.length > 0) {
-        const proj = activeProjects[i % activeProjects.length];
-        if (proj?.image_url) {
-          return `url(${getAssetUrl(proj.image_url)})`;
-        }
-      }
-      return `url(https://picsum.photos/id/${i + 32}/700/300/)`;
+      const path = carouselImages[i % carouselImages.length];
+      return `url("${encodeURI(getAssetUrl(path))}")`;
     };
 
     let xPos = 0;
@@ -47,19 +56,18 @@ export default function ProjectShowcaseSection() {
         .set(dragger, { opacity: 0 })
         .set(ring, { rotationY: 180 })
         .set(imgElements, {
-          rotateY: (i: number) => i * -36,
-          transformOrigin: '50% 50% 500px',
-          z: -500,
+          rotateY: (i: number) => i * -anglePerImage,
+          transformOrigin: `50% 50% ${radius}px`,
+          z: -radius,
           backgroundImage: (i: number) => getCardBgImage(i),
-          backgroundPosition: (i: number) => getBgPos(i),
           backfaceVisibility: 'hidden',
         })
         .from(imgElements, {
           duration: 1.5,
-          y: 200,
+          y: 100,
           opacity: 0,
-          stagger: 0.1,
-          ease: 'expo',
+          stagger: 0.02,
+          ease: 'expo.out',
         });
 
       Draggable.create(dragger, {
@@ -85,11 +93,6 @@ export default function ProjectShowcaseSection() {
 
           gsap.to(ring, {
             rotationY: '-=' + diff,
-            onUpdate: () => {
-              gsap.set(imgElements, {
-                backgroundPosition: (i: number) => getBgPos(i),
-              });
-            },
           });
 
           xPos = currentX;
@@ -106,9 +109,9 @@ export default function ProjectShowcaseSection() {
   }, [activeProjects]);
 
   return (
-    <section className="relative w-full pb-12 sm:pb-20 overflow-hidden bg-transparent">
+    <section className="relative w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[150px] pt-[150px]">
       {/* Title Header */}
-      <div className="site-container relative z-10 pointer-events-none mb-6 text-center pt-8 sm:pt-14">
+      <div className="site-container relative z-10 pointer-events-none mb-6 text-center pt-8 sm:pt-14 mt-[200px]">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -129,22 +132,14 @@ export default function ProjectShowcaseSection() {
       </div>
 
       {/* 3D Cylindrical Ring Gallery */}
-      <div ref={wrapperRef} className="showcase-ring-wrapper">
+      <div ref={wrapperRef} className="showcase-ring-wrapper -mt-[150px]">
         <div className="container ring-container">
           <div id="ring" ref={ringRef}>
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
-            <div className="img" />
+            {carouselImages.map((_, i) => (
+              <div key={i} className="img" />
+            ))}
           </div>
         </div>
-        <div className="vignette" />
         <div id="dragger" ref={draggerRef} />
       </div>
     </section>
