@@ -6,6 +6,7 @@
   overflow: visible;
   user-select: none;
   touch-action: pan-y;
+  isolation: isolate;
 }
 
 .showcase-ring-wrapper #dragger,
