@@ -8,6 +8,23 @@ import './ProjectShowcaseSection.css';
 
 gsap.registerPlugin(Draggable);
 
+const defaultImages = [
+  '/image/projects/3D Carousel work page images/1. 3D Carousel.webp',
+  '/image/projects/3D Carousel work page images/2. 3D Carousel.webp',
+  '/image/projects/3D Carousel work page images/3. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/4. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/5. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/6. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/7. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/8. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/9. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/10. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/11. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/12. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/13. 3D Carouse.webp',
+  '/image/projects/3D Carousel work page images/14. 3D Carouse.webp',
+];
+
 export default function ProjectShowcaseSection() {
   const { projects, settings } = usePortfolioContent();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -15,6 +32,10 @@ export default function ProjectShowcaseSection() {
   const draggerRef = useRef<HTMLDivElement>(null);
 
   const activeProjects = projects?.filter((p) => p.is_active && p.image_url) || [];
+  
+  const carouselImages = settings.showcase_images && settings.showcase_images.length > 0
+    ? settings.showcase_images
+    : defaultImages;
 
   useEffect(() => {
     if (!wrapperRef.current || !ringRef.current || !draggerRef.current) return;
@@ -22,27 +43,6 @@ export default function ProjectShowcaseSection() {
     const ring = ringRef.current;
     const dragger = draggerRef.current;
     const imgElements = wrapperRef.current.querySelectorAll('.img');
-
-    const defaultImages = [
-      '/image/projects/3D Carousel work page images/1. 3D Carousel.webp',
-      '/image/projects/3D Carousel work page images/2. 3D Carousel.webp',
-      '/image/projects/3D Carousel work page images/3. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/4. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/5. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/6. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/7. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/8. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/9. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/10. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/11. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/12. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/13. 3D Carouse.webp',
-      '/image/projects/3D Carousel work page images/14. 3D Carouse.webp',
-    ];
-
-    const carouselImages = settings.showcase_images && settings.showcase_images.length > 0
-      ? settings.showcase_images
-      : defaultImages;
 
     const totalImages = carouselImages.length;
     const radius = Math.round((totalImages * 314) / (2 * Math.PI));
@@ -110,7 +110,7 @@ export default function ProjectShowcaseSection() {
     return () => {
       ctx.revert();
     };
-  }, [activeProjects]);
+  }, [activeProjects, carouselImages]);
 
   return (
     <section className="relative w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[150px] pt-[150px]">
