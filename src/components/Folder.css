@@ -4,19 +4,30 @@
   justify-content: center;
   align-items: center;
   user-select: none;
+  transform: scale(0.95);
+}
+
+.folder-trigger {
+  position: relative;
+  width: 275px;
+  height: 215px;
+  cursor: pointer;
 }
 
 .folder {
-  position: relative;
-  width: 336px;
-  max-width: 90vw;
-  height: 238px;
-  cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-.folder:hover {
-  transform: translateY(-8px);
+.folder-trigger:hover .folder {
+  transform: translateY(-8px) translateZ(0);
 }
 
 /* =========================================
@@ -28,16 +39,16 @@
   height: 100%;
   background: linear-gradient(160deg, #ff1a1a 0%, #fb0000 45%, #cc0000 100%);
   border-radius: 20px;
-  box-shadow: 
+  box-shadow:
     0 18px 36px -8px rgba(251, 0, 0, 0.45),
     0 12px 24px -10px rgba(0, 0, 0, 0.6),
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4),
     inset 0 -2px 6px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.35s ease;
+  transition: box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.folder:hover .folder__back {
-  box-shadow: 
+.folder-trigger:hover .folder__back {
+  box-shadow:
     0 24px 48px -8px rgba(251, 0, 0, 0.6),
     0 16px 30px -8px rgba(0, 0, 0, 0.75),
     inset 0 1px 1.5px rgba(255, 255, 255, 0.5),
@@ -73,92 +84,70 @@
 .paper {
   position: absolute;
   left: 50%;
-  border-radius: 13px;
-  box-shadow: 
-    0 6px 14px -3px rgba(0, 0, 0, 0.3),
-    0 2px 5px rgba(0, 0, 0, 0.12);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 14px 16px;
-  box-sizing: border-box;
+  width: 140px;
+  height: 180px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: bottom center;
+  will-change: transform;
+  pointer-events: none;
 }
 
-/* Left paper sheet (tilted left) */
-.paper:nth-child(1) {
-  width: 190px;
-  height: 195px;
-  top: -16px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 36%,
-    rgba(255, 255, 255, 0.85) 52%,
-    rgba(235, 240, 248, 0.55) 100%
-  );
-  transform: translate(-54%, 0) rotate(-4deg);
+/* Glossy Overlay for paper */
+.paper::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  /* Edge color reflection & Glass shine */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.15) 100%);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.3),
+    inset 1px 0 4px rgba(255, 255, 255, 0.4),
+    inset -1px 0 4px rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.paper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Default State (Hidden/Resting inside folder) */
+.paper--left {
+  transform: translate(-60%, -24px) rotate(-6deg);
+  z-index: 2;
+}
+
+.paper--center {
+  transform: translate(-50%, -36px) rotate(0deg);
   z-index: 3;
 }
 
-/* Middle paper sheet (tallest) */
-.paper:nth-child(2) {
-  width: 205px;
-  height: 205px;
-  top: -24px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 38%,
-    rgba(255, 255, 255, 0.85) 54%,
-    rgba(240, 244, 250, 0.55) 100%
-  );
-  transform: translate(-50%, 0) rotate(0deg);
+.paper--right {
+  transform: translate(-40%, -22px) rotate(5deg);
+  z-index: 2;
+}
+
+/* Hover State (.folder-trigger:hover) */
+.folder-trigger:hover .paper--left {
+  transform: translate(-95%, -70px) rotate(-16deg);
+}
+
+.folder-trigger:hover .paper--center {
+  transform: translate(-50%, -90px) rotate(0deg);
   z-index: 4;
 }
 
-/* Right paper sheet (tilted right) */
-.paper:nth-child(3) {
-  width: 185px;
-  height: 185px;
-  top: -12px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 34%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(235, 240, 248, 0.55) 100%
-  );
-  transform: translate(-46%, 0) rotate(3.5deg);
-  z-index: 5;
-}
-
-/* Hover paper rise animation */
-.folder:hover .paper:nth-child(1) {
-  transform: translate(-57%, -30px) rotate(-6deg);
-}
-
-.folder:hover .paper:nth-child(2) {
-  transform: translate(-50%, -38px) rotate(0deg);
-}
-
-.folder:hover .paper:nth-child(3) {
-  transform: translate(-43%, -28px) rotate(5deg);
-}
-
-/* Skeleton content bars on paper sheets */
-.paper-line {
-  background: rgba(148, 163, 184, 0.55);
-  border-radius: 9999px;
-}
-
-.paper-line.header {
-  height: 9px;
-  background: rgba(100, 116, 139, 0.75);
-  margin-bottom: 10px;
-}
-
-.paper-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 8px;
+.folder-trigger:hover .paper--right {
+  transform: translate(-5%, -70px) rotate(16deg);
 }
 
 /* Document content inside the folder behind the flap */
@@ -175,38 +164,123 @@
   bottom: 0;
   left: -14px;
   right: -14px;
-  height: 172px;
-  z-index: 10;
+  height: 170px;
+  z-index: 20;
   transform-origin: bottom center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0);
   clip-path: url(#single-folder-flap-clip);
   -webkit-clip-path: url(#single-folder-flap-clip);
-  
+
   /* Luminous smoky frosted glass matching Image 2 */
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.38) 0%,
-    rgba(220, 230, 245, 0.18) 26%,
-    rgba(35, 40, 55, 0.38) 70%,
-    rgba(15, 20, 30, 0.55) 100%
-  );
-  backdrop-filter: blur(18px) saturate(190%) brightness(105%);
-  -webkit-backdrop-filter: blur(18px) saturate(190%) brightness(105%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 30%, rgba(0, 0, 0, 0.35) 70%, rgba(0, 0, 0, 0.65) 100%);
+  box-shadow: inset 0 1.5px 3px rgba(255, 255, 255, 0.5), inset 0 0 16px rgba(255, 255, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(190%) contrast(105%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%) contrast(105%);
   pointer-events: none;
 }
 
-.folder:hover .folder__front-single {
-  transform: scaleY(0.96) translateY(3px);
+.folder-trigger:hover .folder__front-single {
+  transform: rotateX(-12deg) translateZ(0);
+}
+/* =========================================
+   FOLDER COLOR VARIANTS
+   ========================================= */
+
+/* Default Fallback */
+.folder-container[data-variant="default"] .folder__pill {
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* Specular outline rim along outer perimeter path */
-.folder__front-rim {
-  position: absolute;
-  bottom: 0;
-  left: -14px;
-  right: -14px;
-  height: 172px;
-  width: calc(100% + 28px);
-  pointer-events: none;
-  z-index: 11;
+/* 1. MINT / CYAN */
+.folder-container[data-variant="mint"] .folder__back {
+  background: linear-gradient(145deg, #7ee8d8 0%, #4bc5b3 50%, #2ba593 100%);
+  box-shadow: 
+    0 18px 36px -8px rgba(43, 165, 147, 0.45), 
+    0 12px 24px -10px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+.folder-container[data-variant="mint"] .folder-trigger:hover .folder__back {
+  box-shadow: 
+    0 24px 48px -8px rgba(43, 165, 147, 0.6), 
+    0 16px 30px -8px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+}
+.folder-container[data-variant="mint"] .folder__front-single {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.45) 0%, rgba(126, 232, 216, 0.35) 40%, rgba(43, 165, 147, 0.45) 100%);
+}
+.folder-container[data-variant="mint"] .folder__pill {
+  background: rgba(43, 165, 147, 0.7);
+}
+
+/* 2. LAVENDER / PURPLE */
+.folder-container[data-variant="lavender"] .folder__back {
+  background: linear-gradient(145deg, #c4b5fd 0%, #a78bfa 50%, #7c3aed 100%);
+  box-shadow: 
+    0 18px 36px -8px rgba(124, 58, 237, 0.45), 
+    0 12px 24px -10px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+.folder-container[data-variant="lavender"] .folder-trigger:hover .folder__back {
+  box-shadow: 
+    0 24px 48px -8px rgba(124, 58, 237, 0.6), 
+    0 16px 30px -8px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+}
+.folder-container[data-variant="lavender"] .folder__front-single {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.45) 0%, rgba(196, 181, 253, 0.35) 40%, rgba(124, 58, 237, 0.45) 100%);
+}
+.folder-container[data-variant="lavender"] .folder__pill {
+  background: rgba(124, 58, 237, 0.7);
+}
+
+/* 3. PEACH / TANGERINE */
+.folder-container[data-variant="peach"] .folder__back {
+  background: linear-gradient(145deg, #fed7aa 0%, #fb923c 50%, #ea580c 100%);
+  box-shadow: 
+    0 18px 36px -8px rgba(234, 88, 12, 0.45), 
+    0 12px 24px -10px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+.folder-container[data-variant="peach"] .folder-trigger:hover .folder__back {
+  box-shadow: 
+    0 24px 48px -8px rgba(234, 88, 12, 0.6), 
+    0 16px 30px -8px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+}
+.folder-container[data-variant="peach"] .folder__front-single {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.45) 0%, rgba(254, 215, 170, 0.35) 40%, rgba(234, 88, 12, 0.45) 100%);
+}
+.folder-container[data-variant="peach"] .folder__pill {
+  background: rgba(234, 88, 12, 0.7);
+}
+
+/* 4. ROSE / PINK */
+.folder-container[data-variant="rose"] .folder__back {
+  background: linear-gradient(145deg, #fbcfe8 0%, #f472b6 50%, #db2777 100%);
+  box-shadow: 
+    0 18px 36px -8px rgba(219, 39, 119, 0.45), 
+    0 12px 24px -10px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+.folder-container[data-variant="rose"] .folder-trigger:hover .folder__back {
+  box-shadow: 
+    0 24px 48px -8px rgba(219, 39, 119, 0.6), 
+    0 16px 30px -8px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+}
+.folder-container[data-variant="rose"] .folder__front-single {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.45) 0%, rgba(251, 207, 232, 0.35) 40%, rgba(219, 39, 119, 0.45) 100%);
+}
+.folder-container[data-variant="rose"] .folder__pill {
+  background: rgba(219, 39, 119, 0.7);
 }

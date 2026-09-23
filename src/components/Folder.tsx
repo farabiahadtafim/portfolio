@@ -1,12 +1,44 @@
 import React from 'react';
 import './Folder.css';
 
+export type FolderVariant = 'mint' | 'lavender' | 'peach' | 'rose' | 'default';
+
 interface FolderProps {
   className?: string;
   onClick?: () => void;
+  title?: string;
+  variant?: FolderVariant;
 }
 
-export default function Folder({ className = '', onClick }: FolderProps) {
+const renderTopRightBadge = (variant: string) => {
+  const commonClasses = "w-[26px] h-[26px] opacity-90 drop-shadow-sm";
+  const getMaskStyle = (url: string, color: string) => ({
+    backgroundColor: color,
+    WebkitMaskImage: `url(${url})`,
+    WebkitMaskSize: 'contain',
+    WebkitMaskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskImage: `url(${url})`,
+    maskSize: 'contain',
+    maskRepeat: 'no-repeat',
+    maskPosition: 'center',
+  });
+
+  switch (variant) {
+    case 'mint':
+      return <div className={commonClasses} style={getMaskStyle('/portfolio/image/SVG/Supplement.svg', '#2ba593')} />;
+    case 'lavender':
+      return <div className={commonClasses} style={getMaskStyle('/portfolio/image/SVG/box.svg', '#7c3aed')} />;
+    case 'peach':
+      return <div className={commonClasses} style={getMaskStyle('/portfolio/image/SVG/Can.svg', '#ea580c')} />;
+    case 'rose':
+      return <div className={commonClasses} style={getMaskStyle('/portfolio/image/SVG/pouch.svg', '#db2777')} />;
+    default:
+      return null;
+  }
+};
+
+export default function Folder({ className = '', onClick, title = 'Supplement Label Design', variant = 'default' }: FolderProps) {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -21,26 +53,18 @@ export default function Folder({ className = '', onClick }: FolderProps) {
   };
 
   return (
-    <div className={`folder-container ${className}`}>
+    <div className={`folder-container ${className}`} data-variant={variant}>
       {/* SVG Definitions for the Single Unified Tabbed Cutout & Specular Highlight */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>
           <clipPath id="single-folder-flap-clip" clipPathUnits="objectBoundingBox">
-            <path d="M 0.070 0.930 Q 0.070 1, 0.140 1 L 0.860 1 Q 0.930 1, 0.930 0.930 L 0.985 0.280 Q 0.990 0.220, 0.940 0.220 L 0.560 0.220 C 0.510 0.220, 0.490 0, 0.430 0 L 0.070 0 C 0.025 0, 0 0.035, 0.010 0.100 Z" />
+            <path d="M 0.0462 0.8709 Q 0.0462 1, 0.1122 1 L 0.8877 1 Q 0.9538 1, 0.9538 0.8709 L 0.988 0.280 Q 0.990 0.220, 0.940 0.220 L 0.560 0.220 C 0.510 0.220, 0.490 0, 0.430 0 L 0.070 0 C 0.025 0, 0 0.035, 0.011 0.100 Z" />
           </clipPath>
-
-          <linearGradient id="rim-specular-single" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.95)" />
-            <stop offset="30%" stopColor="rgba(255, 255, 255, 0.75)" />
-            <stop offset="55%" stopColor="rgba(255, 255, 255, 0.45)" />
-            <stop offset="85%" stopColor="rgba(255, 255, 255, 0.15)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 0.35)" />
-          </linearGradient>
         </defs>
       </svg>
 
       <div
-        className="folder"
+        className="folder-trigger"
         onClick={handleClick}
         role="button"
         tabIndex={0}
@@ -51,89 +75,82 @@ export default function Folder({ className = '', onClick }: FolderProps) {
           }
         }}
       >
-        {/* =========================================
-            BACK SHAPE (#fb0000 vivid red back plate)
+        <div className="folder">
+          {/* =========================================
+            BACK SHAPE
             ========================================= */}
         <div className="folder__back">
           <div className="folder__back-shadow" />
 
           {/* =========================================
               PAPERS (Stepped document sheets inside)
-              Filled with full text lines like Image 2
               ========================================= */}
           <div className="paper-wrapper">
-            {/* Sheet 1 (Left paper, tilted -4deg) */}
-            <div className="paper">
-              <div className="paper-line header" style={{ width: '48%' }} />
-              <div className="flex flex-col gap-2 mb-2">
-                <div className="paper-line" style={{ height: '6px', width: '88%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '74%' }} />
-              </div>
-              <div className="paper-content-bottom paper-grid">
-                <div className="paper-line" style={{ height: '6px', width: '90%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '75%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '85%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '80%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '70%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '88%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '82%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '78%' }} />
-              </div>
+            <div className="paper paper--left">
+              <img src="/portfolio/image/projects/Supplement%20Label/Title/1.%20Supplement%20Label.webp" alt="Work 1" />
             </div>
-
-            {/* Sheet 2 (Middle paper, upright) */}
-            <div className="paper">
-              <div className="paper-line header" style={{ width: '56%' }} />
-              <div className="flex flex-col gap-2 mb-2">
-                <div className="paper-line" style={{ height: '6px', width: '85%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '70%' }} />
-              </div>
-              <div className="paper-content-bottom flex flex-col gap-2">
-                <div className="paper-line" style={{ height: '6px', width: '92%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '78%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '88%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '80%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '68%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '84%' }} />
-              </div>
+            <div className="paper paper--center">
+              <img src="/portfolio/image/projects/Supplement%20Label/Title/2.%20Supplement%20Label.webp" alt="Work 2" />
             </div>
-
-            {/* Sheet 3 (Right paper, tilted +3.5deg) */}
-            <div className="paper">
-              <div className="paper-line header" style={{ width: '42%' }} />
-              <div className="flex flex-col gap-2 mb-2">
-                <div className="paper-line" style={{ height: '6px', width: '80%' }} />
-              </div>
-              <div className="paper-content-bottom flex flex-col gap-2">
-                <div className="paper-line" style={{ height: '6px', width: '72%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '85%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '64%' }} />
-                <div className="paper-line" style={{ height: '6px', width: '76%' }} />
-              </div>
+            <div className="paper paper--right">
+              <img src="/portfolio/image/projects/Supplement%20Label/Title/3.%20Supplement%20Label.webp" alt="Work 3" />
             </div>
           </div>
 
           {/* =========================================
               FRONT SHAPE - ONE SINGLE SEAMLESS FLAP
-              Clip-path + backdrop-filter directly on self
               ========================================= */}
-          <div className="folder__front-single" />
+          <div className="folder__front-single">
+            {/* SVG Specular Rim Highlight */}
+            <svg 
+              className="absolute bottom-0 z-30 pointer-events-none" 
+              style={{ left: '0', width: '100%', height: '100%' }} 
+              viewBox="0 0 1 1" 
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="glass-rim-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.75)" />
+                  <stop offset="35%" stopColor="rgba(255, 255, 255, 0.35)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0.2)" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M 0.0462 0.8709 Q 0.0462 1, 0.1122 1 L 0.8877 1 Q 0.9538 1, 0.9538 0.8709 L 0.988 0.280 Q 0.990 0.220, 0.940 0.220 L 0.560 0.220 C 0.510 0.220, 0.490 0, 0.430 0 L 0.070 0 C 0.025 0, 0 0.035, 0.011 0.100 Z" 
+                fill="none" 
+                stroke="url(#glass-rim-gradient)" 
+                strokeWidth="1.5" 
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            
+            {/* Badge Icon */}
+            <div className="absolute top-4 left-6 z-40 pointer-events-none">
+              {renderTopRightBadge(variant)}
+            </div>
 
-          {/* Specular outline rim along exact perimeter path */}
-          <svg
-            className="folder__front-rim"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M 70 930 Q 70 1000, 140 1000 L 860 1000 Q 930 1000, 930 930 L 985 280 Q 990 220, 940 220 L 560 220 C 510 220, 490 0, 430 0 L 70 0 C 25 0, 0 35, 10 100 Z"
-              fill="none"
-              stroke="url(#rim-specular-single)"
-              strokeWidth="2.5"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
+            <div className="absolute bottom-5 left-6 flex flex-col text-left font-space z-40">
+              <span className="font-bold text-white text-[13px] tracking-wide">{title}</span>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/80">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="10 8 14 12 10 16"></polyline>
+                </svg>
+                <span className="text-[11px] font-medium text-white/80 tracking-wider">Farabi Ahad Tafim</span>
+              </div>
+            </div>
+            
+            {/* Pill Button */}
+            <div className="folder__pill absolute bottom-5 right-6 flex items-center justify-center w-8 h-8 rounded-full backdrop-blur-md border border-white/20 text-white shadow-inner pointer-events-auto z-40 transition-colors duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="13 17 18 12 13 7" />
+                <polyline points="6 17 11 12 6 7" />
+              </svg>
+            </div>
+          </div>
+
+
+        </div>
         </div>
       </div>
     </div>

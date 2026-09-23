@@ -16,47 +16,47 @@ export default function WorkApp() {
   return (
     <PortfolioProvider>
       <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white">
-      {/* Floating Glassmorphism Pill Navbar */}
-      <Navbar onOpenContact={() => setIsContactOpen(true)} />
+        {/* Floating Glassmorphism Pill Navbar */}
+        <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
-      {/* Background Hero Image */}
-      <WorkHeroSection />
+        {/* Background Hero Image */}
+        <WorkHeroSection />
 
-      {/* Main Content */}
-      <main className="relative z-10 w-full pt-[100vh] pointer-events-none">
-        <div className="pointer-events-auto pb-24">
-          <ProjectShowcaseSection />
-          
-          <div className="relative z-20 mt-10">
-            {/* Seamless gradient transition from hero image into #141316 */}
-            <div
-              className="w-full h-32 sm:h-48 pointer-events-none -mb-1"
-              style={{
-                background: 'linear-gradient(to bottom, transparent 0%, rgba(20, 19, 22, 0.4) 40%, rgba(20, 19, 22, 0.85) 75%, #141316 100%)',
-              }}
-            />
-            <div id="work-gallery" className="bg-[#141316]">
-              <MasonryGallerySection title="Supplement Label Design" itemCount={50} />
-              <MasonryGallerySection title="Box Label Design" itemCount={20} />
-              <MasonryGallerySection title="Pouch Label Design" itemCount={20} />
-              <MasonryGallerySection title="Can Label Design" itemCount={20} />
+        {/* Main Content */}
+        <main className="relative z-10 w-full pt-[100vh] pointer-events-none">
+          <div className="pointer-events-auto pb-24">
+            <ProjectShowcaseSection />
+
+            <div className="relative z-20 mt-10">
+              {/* Seamless gradient transition from hero image into #141316 */}
+              <div
+                className="w-full h-32 sm:h-48 pointer-events-none -mb-1"
+                style={{
+                  background: 'linear-gradient(to bottom, transparent 0%, rgba(20, 19, 22, 0.4) 40%, rgba(20, 19, 22, 0.85) 75%, #141316 100%)',
+                }}
+              />
+              <div id="work-gallery" className="bg-[#141316]">
+                <MasonryGallerySection id="gallery-supplement" title="Supplement Label Design" itemCount={50} />
+                <MasonryGallerySection id="gallery-box" title="Box Label Design" itemCount={20} />
+                <MasonryGallerySection id="gallery-can" title="Can Label Design" itemCount={20} />
+                <MasonryGallerySection id="gallery-pouch" title="Pouch Label Design" itemCount={20} />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      {/* Footer */}
-      <WorkFooter onOpenContact={() => setIsContactOpen(true)} />
+        {/* Footer */}
+        <WorkFooter onOpenContact={() => setIsContactOpen(true)} />
 
-      {/* Progressive Optical Gradient Backdrop Blur */}
-      <BottomBlurGradient />
+        {/* Progressive Optical Gradient Backdrop Blur */}
+        <BottomBlurGradient />
 
-      {/* Slide-out/Fade-in Contact Modal */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
-    </div>
+        {/* Slide-out/Fade-in Contact Modal */}
+        <ContactModal
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+        />
+      </div>
     </PortfolioProvider>
   );
 }

@@ -55,6 +55,7 @@ export default function ProjectShowcaseSection() {
     };
 
     let xPos = 0;
+    let lastDiff = 0;
 
     const ctx = gsap.context(() => {
       gsap.timeline()
@@ -95,17 +96,52 @@ export default function ProjectShowcaseSection() {
 
           const currentX = Math.round(cx ?? (xPos + (this.deltaX || 0)));
           const diff = (currentX - xPos) % 360;
+          lastDiff = diff;
 
           gsap.to(ring, {
             rotationY: '-=' + diff,
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: 'auto'
           });
 
           xPos = currentX;
         },
         onDragEnd: function () {
+          // Framer Motion style smooth inertia stop based on release velocity
+          gsap.to(ring, {
+            rotationY: '-=' + (lastDiff * 10),
+            duration: 2,
+            ease: 'power3.out',
+            overwrite: 'auto'
+          });
           gsap.set(dragger, { x: 0, y: 0 });
         },
       });
+
+      // --- Add Auto-Rotation on Page Scroll ---
+      let lastScrollY = window.scrollY;
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        const scrollDiff = currentScrollY - lastScrollY;
+        
+        if (Math.abs(scrollDiff) > 0) {
+          gsap.to(ring, {
+            rotationY: '+=' + (scrollDiff * 0.2), // Adjust scroll sensitivity
+            duration: 0.8,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+        lastScrollY = currentScrollY;
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+      
     }, wrapperRef);
 
     return () => {
@@ -148,9 +184,28 @@ export default function ProjectShowcaseSection() {
         <div id="dragger" ref={draggerRef} />
       </div>
 
-      {/* Interactive Animated Folder directly below 3D Carousel */}
-      <div className="relative z-30 flex flex-col items-center justify-center -mt-[145px] pb-6 pointer-events-auto">
-        <Folder />
+      {/* Interactive Animated Folders directly below 3D Carousel */}
+      <div className="relative z-30 flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-0 pb-6 pointer-events-auto max-w-[1600px] mx-auto px-4">
+        <Folder 
+          title="Supplements Labels Design" 
+          variant="mint" 
+          onClick={() => document.getElementById('gallery-supplement')?.scrollIntoView({ behavior: 'smooth' })} 
+        />
+        <Folder 
+          title="Box Labels Design" 
+          variant="lavender" 
+          onClick={() => document.getElementById('gallery-box')?.scrollIntoView({ behavior: 'smooth' })} 
+        />
+        <Folder 
+          title="Can Labels Design" 
+          variant="peach" 
+          onClick={() => document.getElementById('gallery-can')?.scrollIntoView({ behavior: 'smooth' })} 
+        />
+        <Folder 
+          title="Pouch Label Design" 
+          variant="rose" 
+          onClick={() => document.getElementById('gallery-pouch')?.scrollIntoView({ behavior: 'smooth' })} 
+        />
       </div>
     </section>
   );
