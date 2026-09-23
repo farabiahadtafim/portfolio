@@ -82,7 +82,7 @@ export default function ProjectShowcaseSection() {
     const ctx = gsap.context(() => {
       gsap.timeline()
         .set(dragger, { opacity: 0 })
-        .set(ring, { rotationY: 180 })
+        .set(ring, { rotationY: 180, z: -radius })
         .set(imgElements, {
           rotateY: (i: number) => i * -anglePerImage,
           transformOrigin: `50% 50% ${radius}px`,
