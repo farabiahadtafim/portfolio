@@ -4,6 +4,7 @@ export interface SiteSettings {
   hero_subtitle: string;
   main_image_url: string;
   bg_color: string;
+  showcase_images?: string[];
   updated_at?: string;
 }
 

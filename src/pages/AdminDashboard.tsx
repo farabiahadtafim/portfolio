@@ -139,6 +139,19 @@ export default function AdminDashboard() {
     }
   }, [homeSettings.carousel_images]);
 
+  // Work Showcase images state
+  const [showcaseImages, setShowcaseImages] = useState<string[]>(settings.showcase_images || []);
+  const [showcaseUploadLoading, setShowcaseUploadLoading] = useState(false);
+  const [isShowcaseCropperOpen, setIsShowcaseCropperOpen] = useState(false);
+  const [showcaseCropImageSrc, setShowcaseCropImageSrc] = useState<string | null>(null);
+  const [showcaseCropReplaceIndex, setShowcaseCropReplaceIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (settings.showcase_images && settings.showcase_images.length > 0) {
+      setShowcaseImages(settings.showcase_images);
+    }
+  }, [settings.showcase_images]);
+
   // Main Project Add / Edit Modal state
   const [isAddMainProjectOpen, setIsAddMainProjectOpen] = useState(false);
   const [editingMainProject, setEditingMainProject] = useState<MainProject | null>(null);
@@ -402,6 +415,79 @@ export default function AdminDashboard() {
     setCarouselImages(updated);
     await handleSaveCarouselImages(updated);
     showToast('Carousel image removed!');
+  };
+
+  // --- WORK SHOWCASE CAROUSEL HANDLERS ---
+  const handleSaveShowcaseImages = async (newImages?: string[]) => {
+    const imagesToSave = newImages || showcaseImages;
+    const res = await updateSettings({ showcase_images: imagesToSave });
+    if (res.success) {
+      showToast('Work page showcase images updated live!');
+    } else {
+      showToast(res.error || 'Failed to update showcase images');
+    }
+  };
+
+  const handleAddShowcaseImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setShowcaseCropImageSrc(reader.result?.toString() || null);
+      setShowcaseCropReplaceIndex(null); 
+      setIsShowcaseCropperOpen(true);
+    });
+    reader.readAsDataURL(file);
+    e.target.value = ''; 
+  };
+
+  const handleReplaceShowcaseImageUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      setShowcaseCropImageSrc(reader.result?.toString() || null);
+      setShowcaseCropReplaceIndex(index);
+      setIsShowcaseCropperOpen(true);
+    });
+    reader.readAsDataURL(file);
+    e.target.value = ''; 
+  };
+
+  const handleShowcaseCropComplete = async (croppedFile: File) => {
+    setIsShowcaseCropperOpen(false);
+    setShowcaseCropImageSrc(null);
+    setShowcaseUploadLoading(true);
+    
+    const oldUrl = showcaseCropReplaceIndex !== null ? showcaseImages[showcaseCropReplaceIndex] : undefined;
+    const res = await uploadAsset(croppedFile, 'showcase-assets', oldUrl);
+    setShowcaseUploadLoading(false);
+    
+    if (res.success && res.publicUrl) {
+      if (showcaseCropReplaceIndex !== null) {
+        const updated = [...showcaseImages];
+        updated[showcaseCropReplaceIndex] = res.publicUrl;
+        setShowcaseImages(updated);
+        await handleSaveShowcaseImages(updated);
+        showToast('Showcase image replaced and saved!');
+      } else {
+        const updated = [...showcaseImages, res.publicUrl];
+        setShowcaseImages(updated);
+        await handleSaveShowcaseImages(updated);
+        showToast('Showcase image uploaded and saved!');
+      }
+    } else {
+      showToast(res.error || 'Upload failed');
+    }
+  };
+
+  const handleRemoveShowcaseImage = async (index: number) => {
+    const updated = showcaseImages.filter((_, i) => i !== index);
+    setShowcaseImages(updated);
+    await handleSaveShowcaseImages(updated);
+    showToast('Showcase image removed!');
   };
 
   // --- MAIN PROJECT MODAL HANDLERS ---
@@ -1492,6 +1578,87 @@ export default function AdminDashboard() {
         {/* ------------------------------------------------------------------ */}
         {activeTab === 'work-showcase' && (
           <div className="space-y-6">
+            {/* ---------------------------------------------------------------- */}
+            {/* CAROUSEL IMAGES (WORK PAGE 3D CAROUSEL) */}
+            {/* ---------------------------------------------------------------- */}
+            <div className="p-6 rounded-3xl bg-[#19181d] border border-white/10 space-y-4 mb-8">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-xl font-space font-bold text-white flex items-center gap-2">
+                    <ImageIcon className="w-5 h-5 text-[#ea0044]" />
+                    Work Page 3D Carousel Images
+                  </h2>
+                  <p className="text-xs text-neutral-400 mt-1">
+                    Upload and manage the images displayed in the 3D rotating cylinder.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <label className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#ea0044] hover:bg-[#d6003d] text-white text-xs font-semibold shadow-lg shadow-[#ea0044]/30 cursor-pointer transition-all">
+                    <Upload className="w-4 h-4" />
+                    <span>{showcaseUploadLoading ? 'Uploading...' : 'Upload Image'}</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleAddShowcaseImageUpload}
+                    />
+                  </label>
+                  <button
+                    onClick={() => {
+                      handleSaveShowcaseImages();
+                    }}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold shadow-lg cursor-pointer transition-all border border-white/10"
+                  >
+                    <Save className="w-4 h-4" />
+                    <span>Save Order</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Showcase grid items */}
+              {showcaseImages.length === 0 ? (
+                <div className="p-8 border-2 border-dashed border-white/10 rounded-2xl flex items-center justify-center">
+                  <p className="text-sm text-neutral-400">No showcase images yet. Upload an image to start.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4">
+                  {showcaseImages.map((imgUrl, idx) => (
+                    <div
+                      key={idx}
+                      className="group relative aspect-[3/4] rounded-xl overflow-hidden bg-[#141316] border border-white/10 flex items-center justify-center"
+                    >
+                      <img
+                        src={getAssetUrl(imgUrl)}
+                        alt={`Showcase slot ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
+                        <label className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer transition-colors" title="Replace image">
+                          <Upload className="w-4 h-4" />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => handleReplaceShowcaseImageUpload(idx, e)}
+                          />
+                        </label>
+                        <button
+                          onClick={() => handleRemoveShowcaseImage(idx)}
+                          className="p-2 rounded-full bg-white/10 hover:bg-red-500/20 text-white hover:text-red-400 cursor-pointer transition-colors"
+                          title="Remove image"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 text-[10px] font-mono text-white/70">
+                        #{idx + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-[#19181d] border border-white/10">
               <div>
                 <h2 className="text-xl font-space font-bold text-white flex items-center gap-2">
@@ -2192,7 +2359,7 @@ export default function AdminDashboard() {
         )}
       </AnimatePresence>
 
-      {/* --- IMAGE CROPPER MODAL --- */}
+      {/* --- IMAGE CROPPER MODAL (HOME CAROUSEL) --- */}
       {cropImageSrc && (
         <ImageCropperModal
           isOpen={isCropperOpen}
@@ -2203,6 +2370,20 @@ export default function AdminDashboard() {
           }}
           onCropComplete={handleCropComplete}
           aspectRatio={4 / 3}
+        />
+      )}
+
+      {/* --- IMAGE CROPPER MODAL (WORK SHOWCASE CAROUSEL) --- */}
+      {showcaseCropImageSrc && (
+        <ImageCropperModal
+          isOpen={isShowcaseCropperOpen}
+          imageSrc={showcaseCropImageSrc}
+          onClose={() => {
+            setIsShowcaseCropperOpen(false);
+            setShowcaseCropImageSrc(null);
+          }}
+          onCropComplete={handleShowcaseCropComplete}
+          aspectRatio={3 / 4}
         />
       )}
     </div>

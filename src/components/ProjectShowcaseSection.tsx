@@ -9,7 +9,7 @@ import './ProjectShowcaseSection.css';
 gsap.registerPlugin(Draggable);
 
 export default function ProjectShowcaseSection() {
-  const { projects } = usePortfolioContent();
+  const { projects, settings } = usePortfolioContent();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const draggerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +23,7 @@ export default function ProjectShowcaseSection() {
     const dragger = draggerRef.current;
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
-    const carouselImages = [
+    const defaultImages = [
       '/image/projects/3D Carousel work page images/1. 3D Carousel.webp',
       '/image/projects/3D Carousel work page images/2. 3D Carousel.webp',
       '/image/projects/3D Carousel work page images/3. 3D Carouse.webp',
@@ -39,6 +39,10 @@ export default function ProjectShowcaseSection() {
       '/image/projects/3D Carousel work page images/13. 3D Carouse.webp',
       '/image/projects/3D Carousel work page images/14. 3D Carouse.webp',
     ];
+
+    const carouselImages = settings.showcase_images && settings.showcase_images.length > 0
+      ? settings.showcase_images
+      : defaultImages;
 
     const totalImages = carouselImages.length;
     const radius = Math.round((totalImages * 314) / (2 * Math.PI));

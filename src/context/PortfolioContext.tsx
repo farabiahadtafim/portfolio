@@ -20,6 +20,22 @@ const DEFAULT_SETTINGS: SiteSettings = {
   hero_subtitle: 'Packaging & Brand Identity Designer',
   main_image_url: '/image/Portfolio-Page-Main-Image.webp',
   bg_color: '#141316',
+  showcase_images: [
+    '/image/projects/3D Carousel work page images/1. 3D Carousel.webp',
+    '/image/projects/3D Carousel work page images/2. 3D Carousel.webp',
+    '/image/projects/3D Carousel work page images/3. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/4. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/5. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/6. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/7. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/8. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/9. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/10. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/11. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/12. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/13. 3D Carouse.webp',
+    '/image/projects/3D Carousel work page images/14. 3D Carouse.webp',
+  ],
 };
 
 const DEFAULT_PROJECTS: CMSProject[] = [
