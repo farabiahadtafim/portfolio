@@ -10,6 +10,7 @@ create table if not exists public.site_settings (
   hero_subtitle text default 'Packaging & Brand Identity Designer',
   main_image_url text default '/image/Portfolio-Page-Main-Image.webp',
   bg_color text default '#141316',
+  showcase_images text[] default array[]::text[],
   updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
