@@ -69,10 +69,7 @@ export default function ProjectShowcaseSection() {
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
     const totalImages = carouselImages.length;
-    const cardWidth = 400; 
-    const gap = 40; 
-    const arcLength = cardWidth + gap;
-    const radius = Math.round((totalImages * arcLength) / (2 * Math.PI));
+    const radius = Math.round((totalImages * 314) / (2 * Math.PI));
     const anglePerImage = 360 / totalImages;
 
     const getCardBgImage = (i: number) => {
@@ -85,7 +82,7 @@ export default function ProjectShowcaseSection() {
     const ctx = gsap.context(() => {
       gsap.timeline()
         .set(dragger, { opacity: 0 })
-        .set(ring, { rotationY: 180, z: -radius })
+        .set(ring, { rotationY: 180, z: 700 - radius })
         .set(imgElements, {
           rotateY: (i: number) => i * -anglePerImage,
           transformOrigin: `50% 50% ${radius}px`,
