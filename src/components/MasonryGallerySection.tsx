@@ -37,13 +37,18 @@ export default function MasonryGallerySection({ title, itemCount }: MasonryGalle
             <div
               key={item.id}
               className="break-inside-avoid relative group rounded-2xl overflow-hidden bg-[#1a191e]/80 border border-white/5 backdrop-blur-sm cursor-pointer transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/10"
-              style={{ minHeight: `${item.height}px` }}
+              style={{
+                minHeight: `${item.height}px`,
+                contentVisibility: 'auto',
+                containIntrinsicSize: '300px 400px',
+              }}
             >
               <img
                 src={item.imageUrl}
                 alt={`${title} - Item ${item.id + 1}`}
                 className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
               {/* Optional overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">

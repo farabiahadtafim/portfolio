@@ -277,7 +277,7 @@ export default function ServicesSection() {
     stiffness: 85,
     damping: 26,
     mass: 0.8,
-    restDelta: 0.0005,
+    restDelta: 0.01,
   });
 
   // Merge portfolio.json services with default card configs

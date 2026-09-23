@@ -11,8 +11,10 @@ import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import BottomBlurGradient from './components/BottomBlurGradient';
 import { PortfolioProvider } from './context/PortfolioContext';
+import { useLenis } from './hooks/useLenis';
 
 export default function App() {
+  useLenis();
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (

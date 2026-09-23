@@ -54,6 +54,11 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
           border: '1px solid rgba(184, 184, 184, 0.12)',
           clipPath: 'inset(0 round 32px)',
           contain: 'paint',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          willChange: 'transform, width',
         }}
       >
         {/* Left: Avatar (real photo) + Name or Status */}

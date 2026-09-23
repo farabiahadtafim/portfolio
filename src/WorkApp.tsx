@@ -7,8 +7,10 @@ import WorkFooter from './components/WorkFooter';
 import ContactModal from './components/ContactModal';
 import BottomBlurGradient from './components/BottomBlurGradient';
 import { PortfolioProvider } from './context/PortfolioContext';
+import { useLenis } from './hooks/useLenis';
 
 export default function WorkApp() {
+  useLenis();
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (

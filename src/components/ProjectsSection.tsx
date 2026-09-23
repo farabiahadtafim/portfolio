@@ -18,9 +18,32 @@ export default function ProjectsSection() {
   const { projects } = usePortfolio();
   const { homeSettings } = usePortfolioContent();
   const sectionRef = useRef<HTMLElement>(null);
-  const [isCursorVisible, setIsCursorVisible] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const cursorBtnRef = useRef<HTMLDivElement>(null);
+  const boundsRef = useRef<{ left: number; top: number }>({ left: 0, top: 0 });
   const showcaseProjects = projects;
+
+  const handleMouseEnter = () => {
+    if (sectionRef.current) {
+      const bounds = sectionRef.current.getBoundingClientRect();
+      boundsRef.current = { left: bounds.left, top: bounds.top };
+    }
+    if (cursorBtnRef.current) {
+      cursorBtnRef.current.classList.add('is-visible');
+    }
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
+    if (!cursorBtnRef.current) return;
+    const x = event.clientX - boundsRef.current.left;
+    const y = event.clientY - boundsRef.current.top;
+    cursorBtnRef.current.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (cursorBtnRef.current) {
+      cursorBtnRef.current.classList.remove('is-visible');
+    }
+  };
 
   // Limit carousel images to 40, fallback to DEFAULT_HOME_SETTINGS images
   const userImages =
@@ -72,6 +95,7 @@ export default function ProjectsSection() {
             alt="Portfolio showcase preview"
             className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
         </div>
@@ -91,22 +115,14 @@ export default function ProjectsSection() {
       id="projects"
       ref={sectionRef}
       className="relative w-full py-24 overflow-hidden"
-      onMouseEnter={() => setIsCursorVisible(true)}
-      onMouseMove={(event) => {
-        const bounds = sectionRef.current?.getBoundingClientRect();
-        if (!bounds) return;
-        setCursorPosition({
-          x: event.clientX - bounds.left,
-          y: event.clientY - bounds.top,
-        });
-      }}
-      onMouseLeave={() => setIsCursorVisible(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`projects-pointer-button glossy-pink-button ${
-          isCursorVisible ? 'is-visible' : ''
-        }`}
-        style={{ left: cursorPosition.x, top: cursorPosition.y }}
+        ref={cursorBtnRef}
+        className="projects-pointer-button glossy-pink-button"
+        style={{ left: 0, top: 0 }}
         aria-hidden="true"
       >
         View Project
