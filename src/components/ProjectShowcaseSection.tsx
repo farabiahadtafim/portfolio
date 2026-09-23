@@ -69,7 +69,8 @@ export default function ProjectShowcaseSection() {
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
     const totalImages = carouselImages.length;
-    const radius = 700; // Hardcoded to match the exact size and look of the original 14-image carousel
+    const arcLength = 220; // Densely pack cards to remove gaps and fit exactly 7 on screen
+    const radius = Math.round((totalImages * arcLength) / (2 * Math.PI));
     const anglePerImage = 360 / totalImages;
 
     const getCardBgImage = (i: number) => {
