@@ -278,7 +278,19 @@ export default function WorkHeroSection() {
           src={mainImageUrl}
           alt="Farabi Ahad Tafim Portfolio"
           className="w-full h-auto block object-top select-none pointer-events-none"
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%)',
+          }}
           draggable={false}
+        />
+
+        {/* Smooth bottom gradient overlay blending into #141316 */}
+        <div
+          className="absolute bottom-0 left-0 w-full h-[250px] sm:h-[400px] pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(20, 19, 22, 0.2) 30%, rgba(20, 19, 22, 0.7) 70%, #141316 100%)',
+          }}
         />
       </motion.div>
 

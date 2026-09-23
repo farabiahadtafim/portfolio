@@ -1,0 +1,212 @@
+/* 30% Scaled Down Interactive Frosted Glass Folder Component with True Hardware-Accelerated Native Blur */
+.folder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.folder {
+  position: relative;
+  width: 336px;
+  max-width: 90vw;
+  height: 238px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.folder:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================================
+   BACK SHAPE (#fb0000 vivid red back plate)
+   ========================================= */
+.folder__back {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #ff1a1a 0%, #fb0000 45%, #cc0000 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 18px 36px -8px rgba(251, 0, 0, 0.45),
+    0 12px 24px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.35s ease;
+}
+
+.folder:hover .folder__back {
+  box-shadow: 
+    0 24px 48px -8px rgba(251, 0, 0, 0.6),
+    0 16px 30px -8px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Subtle dark inner pocket depth */
+.folder__back-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75%;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================================
+   PAPERS (Stepped document sheets inside)
+   ========================================= */
+.paper-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.paper {
+  position: absolute;
+  left: 50%;
+  border-radius: 13px;
+  box-shadow: 
+    0 6px 14px -3px rgba(0, 0, 0, 0.3),
+    0 2px 5px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 14px 16px;
+  box-sizing: border-box;
+}
+
+/* Left paper sheet (tilted left) */
+.paper:nth-child(1) {
+  width: 190px;
+  height: 195px;
+  top: -16px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 36%,
+    rgba(255, 255, 255, 0.85) 52%,
+    rgba(235, 240, 248, 0.55) 100%
+  );
+  transform: translate(-54%, 0) rotate(-4deg);
+  z-index: 3;
+}
+
+/* Middle paper sheet (tallest) */
+.paper:nth-child(2) {
+  width: 205px;
+  height: 205px;
+  top: -24px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 38%,
+    rgba(255, 255, 255, 0.85) 54%,
+    rgba(240, 244, 250, 0.55) 100%
+  );
+  transform: translate(-50%, 0) rotate(0deg);
+  z-index: 4;
+}
+
+/* Right paper sheet (tilted right) */
+.paper:nth-child(3) {
+  width: 185px;
+  height: 185px;
+  top: -12px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 34%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(235, 240, 248, 0.55) 100%
+  );
+  transform: translate(-46%, 0) rotate(3.5deg);
+  z-index: 5;
+}
+
+/* Hover paper rise animation */
+.folder:hover .paper:nth-child(1) {
+  transform: translate(-57%, -30px) rotate(-6deg);
+}
+
+.folder:hover .paper:nth-child(2) {
+  transform: translate(-50%, -38px) rotate(0deg);
+}
+
+.folder:hover .paper:nth-child(3) {
+  transform: translate(-43%, -28px) rotate(5deg);
+}
+
+/* Skeleton content bars on paper sheets */
+.paper-line {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 9999px;
+}
+
+.paper-line.header {
+  height: 9px;
+  background: rgba(100, 116, 139, 0.75);
+  margin-bottom: 10px;
+}
+
+.paper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 8px;
+}
+
+/* Document content inside the folder behind the flap */
+.paper-content-bottom {
+  opacity: 0.85;
+}
+
+/* =========================================
+   FRONT SHAPE - ONE SINGLE SEAMLESS FLAP
+   Direct clip-path + backdrop-filter + frosted smoky glass on self
+   ========================================= */
+.folder__front-single {
+  position: absolute;
+  bottom: 0;
+  left: -14px;
+  right: -14px;
+  height: 172px;
+  z-index: 10;
+  transform-origin: bottom center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  clip-path: url(#single-folder-flap-clip);
+  -webkit-clip-path: url(#single-folder-flap-clip);
+  
+  /* Luminous smoky frosted glass matching Image 2 */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(220, 230, 245, 0.18) 26%,
+    rgba(35, 40, 55, 0.38) 70%,
+    rgba(15, 20, 30, 0.55) 100%
+  );
+  backdrop-filter: blur(18px) saturate(190%) brightness(105%);
+  -webkit-backdrop-filter: blur(18px) saturate(190%) brightness(105%);
+  pointer-events: none;
+}
+
+.folder:hover .folder__front-single {
+  transform: scaleY(0.96) translateY(3px);
+}
+
+/* Specular outline rim along outer perimeter path */
+.folder__front-rim {
+  position: absolute;
+  bottom: 0;
+  left: -14px;
+  right: -14px;
+  height: 172px;
+  width: calc(100% + 28px);
+  pointer-events: none;
+  z-index: 11;
+}

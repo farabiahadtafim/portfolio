@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { usePortfolioContent } from '../context/PortfolioContext';
 import { getAssetUrl } from '../utils/asset';
+import Folder from './Folder';
 import './ProjectShowcaseSection.css';
 
 gsap.registerPlugin(Draggable);
@@ -145,6 +146,11 @@ export default function ProjectShowcaseSection() {
           </div>
         </div>
         <div id="dragger" ref={draggerRef} />
+      </div>
+
+      {/* Interactive Animated Folder directly below 3D Carousel */}
+      <div className="relative z-30 flex flex-col items-center justify-center -mt-[145px] pb-6 pointer-events-auto">
+        <Folder />
       </div>
     </section>
   );
