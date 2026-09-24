@@ -3,14 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../utils/asset';
 import { usePortfolioContent } from '../context/PortfolioContext';
 
-type TrailNodeType = 'standard' | 'typographyA' | 'typographyB' | 'frosted';
+type TrailNodeType = 'standard' | 'framed' | 'typographyA' | 'typographyB';
 
 type TrailNode = {
   id: number;
   x: number;
   y: number;
+  imageIndex: number;
   type: TrailNodeType;
 };
+
+const mouseTrackImages = [
+  '/image/projects/Mouse Track/Frame 1.webp',
+  '/image/projects/Mouse Track/Frame 2.webp',
+  '/image/projects/Mouse Track/Frame 3.webp',
+  '/image/projects/Mouse Track/Frame 4.webp',
+  '/image/projects/Mouse Track/Frame 5.webp',
+  '/image/projects/Mouse Track/Frame 6.webp',
+];
 
 export default function WorkHeroSection() {
   const { settings } = usePortfolioContent();
@@ -24,6 +34,7 @@ export default function WorkHeroSection() {
   const lastPos = useRef<{ x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const spawnCountRef = useRef(0);
+  const imageCountRef = useRef(0);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -41,21 +52,24 @@ export default function WorkHeroSection() {
     }
 
     spawnCountRef.current += 1;
-    let nodeType: TrailNodeType = 'standard';
     
+    let nodeType: TrailNodeType = 'standard';
     // Every 3rd or 4th card, spawn a special one
-    if (spawnCountRef.current % 3 === 0 || spawnCountRef.current % 4 === 0) {
-      const rand = Math.random();
-      if (rand < 0.33) {
-        nodeType = 'typographyA';
-      } else if (rand < 0.66) {
-        nodeType = 'typographyB';
-      } else {
-        nodeType = 'frosted';
-      }
+    if (spawnCountRef.current % 4 === 0) {
+      nodeType = 'typographyA';
+    } else if (spawnCountRef.current % 3 === 0) {
+      nodeType = 'typographyB';
+    } else if (spawnCountRef.current % 5 === 0) {
+      nodeType = 'framed';
     }
-
-    const newNode = { id: Date.now() + Math.random(), x, y, type: nodeType };
+    
+    let imageIndex = 0;
+    if (nodeType === 'standard' || nodeType === 'framed') {
+      imageIndex = imageCountRef.current % mouseTrackImages.length;
+      imageCountRef.current += 1;
+    }
+    
+    const newNode = { id: Date.now() + Math.random(), x, y, imageIndex, type: nodeType };
     lastPos.current = { x, y };
 
     setTrailNodes((prev) => {
@@ -74,37 +88,51 @@ export default function WorkHeroSection() {
   };
 
   const renderTrailCard = (node: TrailNode) => {
-    switch (node.type) {
-      case 'typographyA':
-        return (
-          <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
-            <div className="flex items-baseline justify-center">
-              <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px]">A</span>
-              <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px] ml-0.5">a</span>
-            </div>
+    if (node.type === 'typographyA') {
+      return (
+        <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
+          <div className="flex items-baseline justify-center">
+            <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px]">A</span>
+            <span className="text-4xl sm:text-5xl font-sans font-medium text-white/70 drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] blur-[0.5px] ml-0.5">a</span>
           </div>
-        );
-      case 'typographyB':
-        return (
-          <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-gradient-to-tr from-[#ff0000]/30 via-[#ff0000]/10 to-[#141316]/60 backdrop-blur-md border border-[#ff0000]/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
-            <div className="flex items-baseline justify-center">
-              <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md">A</span>
-              <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md ml-0.5">a</span>
-            </div>
-          </div>
-        );
-      case 'frosted':
-        return (
-          <div className="w-[130px] h-[130px] sm:w-[140px] sm:h-[140px] p-2.5 bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl pointer-events-none">
-            <div className="w-full h-full rounded-xl bg-neutral-800/60 overflow-hidden" />
-          </div>
-        );
-      case 'standard':
-      default:
-        return (
-          <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] rounded-2xl bg-[#1a1a1a]/80 border border-white/10 shadow-2xl backdrop-blur-md pointer-events-none" />
-        );
+        </div>
+      );
     }
+
+    if (node.type === 'typographyB') {
+      return (
+        <div className="w-[95px] h-[95px] sm:w-[105px] sm:h-[105px] bg-gradient-to-tr from-[#ff0000]/30 via-[#ff0000]/10 to-[#141316]/60 backdrop-blur-md border border-[#ff0000]/20 shadow-lg rounded-2xl flex items-center justify-center pointer-events-none">
+          <div className="flex items-baseline justify-center">
+            <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md">A</span>
+            <span className="text-4xl sm:text-5xl font-serif italic text-white/90 drop-shadow-md ml-0.5">a</span>
+          </div>
+        </div>
+      );
+    }
+
+    const imageUrl = getAssetUrl(mouseTrackImages[node.imageIndex]);
+    
+    if (node.type === 'framed') {
+      return (
+        <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl pointer-events-none">
+          <img 
+            src={imageUrl} 
+            alt="Mouse Trail" 
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] rounded-2xl border border-white/10 shadow-2xl backdrop-blur-md pointer-events-none overflow-hidden">
+        <img 
+          src={imageUrl} 
+          alt="Mouse Trail" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
   };
 
   return (
