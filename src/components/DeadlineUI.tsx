@@ -25,7 +25,7 @@ export default function DeadlineUI() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div id="deadline">
-        <svg preserveAspectRatio="none" id="line" viewBox="0 0 581 158" style={{ enableBackground: 'new 0 0 581 158' }}>
+        <svg preserveAspectRatio="none" id="line" viewBox="0 0 581 158">
           <g id="fire">
             <rect id="mask-fire-black" x="511" y="41" width="38" height="34" />
             <g>
