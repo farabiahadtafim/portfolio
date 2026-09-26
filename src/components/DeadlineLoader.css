@@ -32,14 +32,16 @@
 #progress-time-fill {
   animation-name: progress-fill;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 /* Death */
 #death-group {
   animation-name: walk;
   animation-timing-function: ease;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
   transform: translateX(0);
 }
 
@@ -92,7 +94,7 @@
   left: 0;
   width: 0;
   color: #BE002A;
-  animation: text-red 4s ease infinite;
+  animation: text-red 4s ease 1 forwards;
   z-index: 2;
   background: #0c0c0e; /* matches wrapper bg */
 }
@@ -104,19 +106,19 @@
 /* Flames */
 #red-flame {
   opacity: 0;
-  animation: show-flames 4s ease infinite, red-flame 120ms ease infinite;
+  animation: show-flames 4s ease 1 forwards, red-flame 120ms ease infinite;
   transform-origin: center bottom;
 }
 
 #yellow-flame {
   opacity: 0;
-  animation: show-flames 4s ease infinite, yellow-flame 120ms ease infinite;
+  animation: show-flames 4s ease 1 forwards, yellow-flame 120ms ease infinite;
   transform-origin: center bottom;
 }
 
 #white-flame {
   opacity: 0;
-  animation: show-flames 4s ease infinite, red-flame 100ms ease infinite;
+  animation: show-flames 4s ease 1 forwards, red-flame 100ms ease infinite;
   transform-origin: center bottom;
 }
 

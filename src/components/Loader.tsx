@@ -56,7 +56,7 @@ export default function Loader({ children }: { children: React.ReactNode }) {
         
         setTimeout(() => {
           setIsFadingOut(true);
-          setTimeout(() => setIsLoading(false), 500);
+          setTimeout(() => setIsLoading(false), 1000);
         }, 300);
       }
     }, 30); // ~30 FPS

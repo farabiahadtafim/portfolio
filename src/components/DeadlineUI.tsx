@@ -15,7 +15,6 @@ export default function DeadlineUI() {
       setActualDay(Math.max(0, day));
       if (day <= 0) {
         clearInterval(timer);
-        setActualDay(deadline);
       }
     }, dayDuration);
 

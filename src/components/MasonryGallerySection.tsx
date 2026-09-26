@@ -5,6 +5,8 @@ interface MasonryGallerySectionProps {
   title: string;
   itemCount: number;
   id?: string;
+  imageFolder?: string;
+  projectData?: { brand: string; product: string }[];
 }
 
 interface RatioConfig {
@@ -24,7 +26,7 @@ const RATIO_CYCLE: RatioConfig[] = [
   { ratio: '4:3', cssRatio: '4 / 3', width: 600, height: 450 },
 ];
 
-export default function MasonryGallerySection({ title, itemCount, id }: MasonryGallerySectionProps) {
+export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData }: MasonryGallerySectionProps) {
   // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1)
   const items = useMemo(() => {
     return Array.from({ length: itemCount }).map((_, i) => {
@@ -36,10 +38,14 @@ export default function MasonryGallerySection({ title, itemCount, id }: MasonryG
         cssRatio: config.cssRatio,
         width: config.width,
         height: config.height,
-        imageUrl: `https://placehold.co/${config.width}x${config.height}/1c1b20/FFF?text=Design+${i + 1}`,
+        brand: projectData && projectData[i] ? projectData[i].brand : `View Project ${i + 1}`,
+        product: projectData && projectData[i] ? projectData[i].product : `Ratio ${config.ratio}`,
+        imageUrl: imageFolder 
+          ? `${import.meta.env.BASE_URL}image/projects/${imageFolder}/Portfolio-${String(i + 1).padStart(2, '0')}.webp`
+          : `https://placehold.co/${config.width}x${config.height}/1c1b20/FFF?text=Design+${i + 1}`,
       };
     });
-  }, [itemCount]);
+  }, [itemCount, imageFolder, projectData]);
 
   return (
     <section id={id} className="relative w-full py-16 px-4 sm:px-6 lg:px-8 z-20 scroll-mt-16 md:scroll-mt-20">
@@ -174,10 +180,10 @@ export default function MasonryGallerySection({ title, itemCount, id }: MasonryG
               {/* Optional overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                 <span className="text-white font-medium tracking-wide">
-                  View Project {item.id + 1}
+                  {item.brand}
                 </span>
                 <span className="text-[11px] text-white/50 font-mono mt-0.5">
-                  Ratio {item.ratio}
+                  {item.product}
                 </span>
               </div>
             </div>
