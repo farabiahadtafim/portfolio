@@ -69,40 +69,6 @@
   box-shadow: 0 0 20px -3px rgba(255, 30, 86, 0.35);
 }
 
-.glossy-pink-button {
-  background-color: rgb(187, 3, 28);
-  box-shadow:
-    0 0.48px 0.87px -1.17px rgba(187, 3, 28, 0.68),
-    0 1.83px 3.3px -2.33px rgba(187, 3, 28, 0.61),
-    0 8px 14.4px -3.5px rgba(187, 3, 28, 0.3),
-    inset 0.32px 0.44px 0.32px -1.19px rgba(255, 255, 255, 0.91),
-    inset 0.97px 1.33px 0.99px -2.38px rgba(255, 255, 255, 0.84),
-    inset 2.55px 3.51px 2.6px -3.56px rgba(255, 255, 255, 0.66),
-    inset 8px 11px 8.16px -4.75px rgba(255, 255, 255, 0.05);
-}
-
-.projects-pointer-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 30;
-  pointer-events: none;
-  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-  border-radius: 999px;
-  padding: 6px 12px;
-  color: white;
-  font-size: 10px;
-  font-weight: 600;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 180ms ease;
-  will-change: transform;
-}
-
-.projects-pointer-button.is-visible {
-  opacity: 1;
-}
-
 /* Infinite marquee */
 @keyframes marquee-scroll {
   0% {

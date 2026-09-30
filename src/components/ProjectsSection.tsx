@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import { usePortfolio } from '../hooks/usePortfolio';
 import { usePortfolioContent, DEFAULT_HOME_SETTINGS } from '../context/PortfolioContext';
@@ -17,33 +16,7 @@ const defaultFallbackBlocks = [
 export default function ProjectsSection() {
   const { projects } = usePortfolio();
   const { homeSettings } = usePortfolioContent();
-  const sectionRef = useRef<HTMLElement>(null);
-  const cursorBtnRef = useRef<HTMLDivElement>(null);
-  const boundsRef = useRef<{ left: number; top: number }>({ left: 0, top: 0 });
   const showcaseProjects = projects;
-
-  const handleMouseEnter = () => {
-    if (sectionRef.current) {
-      const bounds = sectionRef.current.getBoundingClientRect();
-      boundsRef.current = { left: bounds.left, top: bounds.top };
-    }
-    if (cursorBtnRef.current) {
-      cursorBtnRef.current.classList.add('is-visible');
-    }
-  };
-
-  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
-    if (!cursorBtnRef.current) return;
-    const x = event.clientX - boundsRef.current.left;
-    const y = event.clientY - boundsRef.current.top;
-    cursorBtnRef.current.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (cursorBtnRef.current) {
-      cursorBtnRef.current.classList.remove('is-visible');
-    }
-  };
 
   // Limit carousel images to 40, fallback to DEFAULT_HOME_SETTINGS images
   const userImages =
@@ -113,20 +86,8 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      ref={sectionRef}
       className="relative w-full py-24 overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
     >
-      <div
-        ref={cursorBtnRef}
-        className="projects-pointer-button glossy-pink-button"
-        style={{ left: 0, top: 0 }}
-        aria-hidden="true"
-      >
-        View Project
-      </div>
 
       {/* Full-width image placeholders marquee carousel */}
       <div className="relative mb-20 w-full overflow-hidden">

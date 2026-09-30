@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
+import type { BoxProjectItem } from '../data/boxLabelProjects';
 
 interface MasonryGallerySectionProps {
   title: string;
@@ -7,6 +8,7 @@ interface MasonryGallerySectionProps {
   id?: string;
   imageFolder?: string;
   projectData?: { brand: string; product: string }[];
+  boxProjects?: BoxProjectItem[];
 }
 
 interface RatioConfig {
@@ -26,14 +28,27 @@ const RATIO_CYCLE: RatioConfig[] = [
   { ratio: '4:3', cssRatio: '4 / 3', width: 600, height: 450 },
 ];
 
-export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData }: MasonryGallerySectionProps) {
-  // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1)
+export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData, boxProjects }: MasonryGallerySectionProps) {
+  // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1) or exact Box Project ratios
   const items = useMemo(() => {
+    if (boxProjects && boxProjects.length > 0) {
+      return boxProjects.map((item) => ({
+        id: item.id,
+        ratio: item.ratio,
+        cssRatio: item.cssRatio,
+        width: item.width,
+        height: item.height,
+        brand: projectData && projectData[item.id - 1] ? projectData[item.id - 1].brand : item.brand,
+        product: projectData && projectData[item.id - 1] ? projectData[item.id - 1].product : item.product,
+        imageUrl: `${import.meta.env.BASE_URL}image/projects/${imageFolder || 'Box Label'}/${item.filename}`,
+      }));
+    }
+
     return Array.from({ length: itemCount }).map((_, i) => {
       // Deterministic ratio assignment so layout remains rock-solid and stable
       const config = RATIO_CYCLE[(i * 3 + (i % 5)) % RATIO_CYCLE.length];
       return {
-        id: i,
+        id: i + 1,
         ratio: config.ratio,
         cssRatio: config.cssRatio,
         width: config.width,
@@ -45,7 +60,19 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
           : `https://placehold.co/${config.width}x${config.height}/1c1b20/FFF?text=Design+${i + 1}`,
       };
     });
-  }, [itemCount, imageFolder, projectData]);
+  }, [itemCount, imageFolder, projectData, boxProjects]);
+
+  // Divide into 5 columns matching Illustrator column guide: 1-24, 25-48, 49-72, 73-96, 97-120
+  const columnGroups = useMemo(() => {
+    if (!boxProjects || boxProjects.length !== 120) return null;
+    return [
+      items.slice(0, 24),   // 1 to 24 (Col 1)
+      items.slice(24, 48),  // 25 to 48 (Col 2)
+      items.slice(48, 72),  // 49 to 72 (Col 3)
+      items.slice(72, 96),  // 73 to 96 (Col 4)
+      items.slice(96, 120), // 97 to 120 (Col 5)
+    ];
+  }, [boxProjects, items]);
 
   return (
     <section id={id} className="relative w-full py-16 px-4 sm:px-6 lg:px-8 z-20 scroll-mt-16 md:scroll-mt-20">
@@ -158,37 +185,110 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
           </motion.p>
         </div>
 
-        {/* Pinterest-style CSS Columns Masonry */}
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6">
-          {items.map((item) => (
-            <div
-              key={item.id}
-              className="break-inside-avoid mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
-              style={{
-                aspectRatio: item.cssRatio,
-                contentVisibility: 'auto',
-                containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
-              }}
-            >
-              <img
-                src={item.imageUrl}
-                alt={`${title} - Item ${item.id + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-              {/* Optional overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                <span className="text-white font-medium tracking-wide">
-                  {item.brand}
-                </span>
-                <span className="text-[11px] text-white/50 font-mono mt-0.5">
-                  {item.product}
-                </span>
-              </div>
+        {/* Gallery Grid / Masonry Layout */}
+        {columnGroups ? (
+          <>
+            {/* Desktop: Exactly 5 columns matching Illustrator guide 1-24, 25-48, 49-72, 73-96, 97-120 */}
+            <div className="hidden lg:grid lg:grid-cols-5 gap-6">
+              {columnGroups.map((colItems, colIdx) => (
+                <div key={colIdx} className="flex flex-col gap-6">
+                  {colItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
+                      style={{
+                        aspectRatio: item.cssRatio,
+                        contentVisibility: 'auto',
+                        containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
+                      }}
+                    >
+                      <img
+                        src={item.imageUrl}
+                        alt={`${title} - Item ${item.id}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      {/* Optional overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                        <span className="text-white font-medium tracking-wide">
+                          {item.brand}
+                        </span>
+                        <span className="text-[11px] text-white/50 font-mono mt-0.5">
+                          {item.product}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Mobile & Tablet: Responsive CSS masonry */}
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:hidden gap-6">
+              {items.map((item) => (
+                <div
+                  key={item.id}
+                  className="break-inside-avoid mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
+                  style={{
+                    aspectRatio: item.cssRatio,
+                    contentVisibility: 'auto',
+                    containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
+                  }}
+                >
+                  <img
+                    src={item.imageUrl}
+                    alt={`${title} - Item ${item.id}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {/* Optional overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <span className="text-white font-medium tracking-wide">
+                      {item.brand}
+                    </span>
+                    <span className="text-[11px] text-white/50 font-mono mt-0.5">
+                      {item.product}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          /* Standard Pinterest-style CSS Columns Masonry */
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6">
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="break-inside-avoid mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
+                style={{
+                  aspectRatio: item.cssRatio,
+                  contentVisibility: 'auto',
+                  containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
+                }}
+              >
+                <img
+                  src={item.imageUrl}
+                  alt={`${title} - Item ${item.id}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                {/* Optional overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                  <span className="text-white font-medium tracking-wide">
+                    {item.brand}
+                  </span>
+                  <span className="text-[11px] text-white/50 font-mono mt-0.5">
+                    {item.product}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
