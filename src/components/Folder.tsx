@@ -8,6 +8,7 @@ interface FolderProps {
   onClick?: () => void;
   title?: string;
   variant?: FolderVariant;
+  images?: [string, string, string];
 }
 
 const renderTopRightBadge = (variant: string) => {
@@ -38,7 +39,17 @@ const renderTopRightBadge = (variant: string) => {
   }
 };
 
-export default function Folder({ className = '', onClick, title = 'Supplement Label Design', variant = 'default' }: FolderProps) {
+export default function Folder({ 
+  className = '', 
+  onClick, 
+  title = 'Supplement Label Design', 
+  variant = 'default',
+  images = [
+    '/portfolio/image/projects/Supplement%20Label/Title/1.%20Supplement%20Label.webp',
+    '/portfolio/image/projects/Supplement%20Label/Title/2.%20Supplement%20Label.webp',
+    '/portfolio/image/projects/Supplement%20Label/Title/3.%20Supplement%20Label.webp'
+  ]
+}: FolderProps) {
   const handleClick = () => {
     if (onClick) {
       onClick();
@@ -87,13 +98,13 @@ export default function Folder({ className = '', onClick, title = 'Supplement La
               ========================================= */}
           <div className="paper-wrapper">
             <div className="paper paper--left">
-              <img src="/portfolio/image/projects/Supplement%20Label/Title/1.%20Supplement%20Label.webp" alt="Work 1" />
+              <img src={images[0]} alt="Work 1" />
             </div>
             <div className="paper paper--center">
-              <img src="/portfolio/image/projects/Supplement%20Label/Title/2.%20Supplement%20Label.webp" alt="Work 2" />
+              <img src={images[1]} alt="Work 2" />
             </div>
             <div className="paper paper--right">
-              <img src="/portfolio/image/projects/Supplement%20Label/Title/3.%20Supplement%20Label.webp" alt="Work 3" />
+              <img src={images[2]} alt="Work 3" />
             </div>
           </div>
 

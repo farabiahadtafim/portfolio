@@ -17,8 +17,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 1"
+    "brand": "Kooky Kind",
+    "product": "Yummy miel nut"
   },
   {
     "id": 2,
@@ -27,8 +27,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 2"
+    "brand": "ILLES",
+    "product": "Endless pour latte"
   },
   {
     "id": 3,
@@ -37,8 +37,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 3"
+    "brand": "FULXR",
+    "product": "HYALURONIC ACID Vaginal Moisten Gel"
   },
   {
     "id": 4,
@@ -47,8 +47,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 4"
+    "brand": "DeskBoard Buddy",
+    "product": "Desktop Whiteboard"
   },
   {
     "id": 5,
@@ -57,8 +57,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 5"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper tissue paper"
   },
   {
     "id": 6,
@@ -67,8 +67,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 6"
+    "brand": "KOOKY KIND",
+    "product": "Big Chunks Big Cravings"
   },
   {
     "id": 7,
@@ -77,8 +77,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 7"
+    "brand": "CARELAND",
+    "product": "MENTHOL Pain Relief Patch"
   },
   {
     "id": 8,
@@ -87,8 +87,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 8"
+    "brand": "AISKIN SHEETS",
+    "product": "SCAR REMOVAL SHEETS"
   },
   {
     "id": 9,
@@ -97,8 +97,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 9"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 10,
@@ -107,8 +107,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 10"
+    "brand": "YUGEN BONSAI",
+    "product": "Blue Spruce BONSAI Tree Growing Kit"
   },
   {
     "id": 11,
@@ -117,8 +117,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 11"
+    "brand": "HOVER-1",
+    "product": "BLAST"
   },
   {
     "id": 12,
@@ -127,8 +127,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 12"
+    "brand": "METMA",
+    "product": "ROBO EGGS EGG DECORATING KIT"
   },
   {
     "id": 13,
@@ -137,8 +137,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 13"
+    "brand": "BON+BERG",
+    "product": "Hestia high-waisted panty"
   },
   {
     "id": 14,
@@ -147,8 +147,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 14"
+    "brand": "Tiny Liners",
+    "product": "Micro-sized Pantyliners"
   },
   {
     "id": 15,
@@ -157,8 +157,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 15"
+    "brand": "CHAHUA",
+    "product": "Herbal Hair Oil"
   },
   {
     "id": 16,
@@ -167,8 +167,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 16"
+    "brand": "SOCKA",
+    "product": "TURMERIC-C CALAMINE SOAP"
   },
   {
     "id": 17,
@@ -177,8 +177,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 17"
+    "brand": "Kiux",
+    "product": "Interlinked Combination smoke and carbon monoxide detector"
   },
   {
     "id": 18,
@@ -187,8 +187,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 18"
+    "brand": "METMA",
+    "product": "ROBO EGGS EGG DECORATING KIT"
   },
   {
     "id": 19,
@@ -197,8 +197,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 19"
+    "brand": "HerGrip",
+    "product": "Natural Feminine Oil Pineapple"
   },
   {
     "id": 20,
@@ -207,8 +207,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 20"
+    "brand": "TURBO GAMING",
+    "product": "2.4G Wireless Controller Gamepad"
   },
   {
     "id": 21,
@@ -217,8 +217,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 21"
+    "brand": "METMA",
+    "product": "GLOWING Eggs Dye"
   },
   {
     "id": 22,
@@ -227,8 +227,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 22"
+    "brand": "DR.@HOME",
+    "product": "N95 PARTICULATE RESPIRATOR"
   },
   {
     "id": 23,
@@ -237,8 +237,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 23"
+    "brand": "SofTouch+",
+    "product": "NITRILE POWDER FREE EXAMINATION GLOVES"
   },
   {
     "id": 24,
@@ -247,8 +247,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 24"
+    "brand": "Brookethorne Naturals",
+    "product": "AROMATHERAPY NECK & SHOULDER WRAP"
   },
   {
     "id": 25,
@@ -257,8 +257,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 25"
+    "brand": "PANSLY NEW YORK",
+    "product": "After Oil HAIR INHIBITING MOISTURE SERUM"
   },
   {
     "id": 26,
@@ -267,8 +267,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 26"
+    "brand": "AISKIN SHEETS",
+    "product": "SCAR REMOVAL SHEETS"
   },
   {
     "id": 27,
@@ -277,8 +277,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 27"
+    "brand": "CHAHUA",
+    "product": "UNANI HAIR OIL"
   },
   {
     "id": 28,
@@ -287,8 +287,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 28"
+    "brand": "CAP CHECK",
+    "product": "THE CAP RACK Packaging Box"
   },
   {
     "id": 29,
@@ -297,8 +297,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 29"
+    "brand": "BLACKOUT",
+    "product": "LIGHTOUT PACK VARIETY PACK"
   },
   {
     "id": 30,
@@ -307,8 +307,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 30"
+    "brand": "METMA",
+    "product": "basic Egg Decorating Kit"
   },
   {
     "id": 31,
@@ -317,8 +317,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 31"
+    "brand": "Ballet",
+    "product": "NEEDLES 50 FILAMENTS"
   },
   {
     "id": 32,
@@ -327,8 +327,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 32"
+    "brand": "5minskin",
+    "product": "Hair Removal Device"
   },
   {
     "id": 33,
@@ -337,8 +337,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 33"
+    "brand": "HOME SHADOWS",
+    "product": "ATTENDANCE SIMULATOR"
   },
   {
     "id": 34,
@@ -347,8 +347,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 34"
+    "brand": "METMA",
+    "product": "PLANET EGGS EGG DECORATING KIT"
   },
   {
     "id": 35,
@@ -357,8 +357,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 35"
+    "brand": "WellNORx",
+    "product": "Prostate +"
   },
   {
     "id": 36,
@@ -367,8 +367,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 36"
+    "brand": "Xpenra",
+    "product": "PROSHIELD GLOVES"
   },
   {
     "id": 37,
@@ -377,8 +377,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 37"
+    "brand": "baskbio",
+    "product": "spores built to support"
   },
   {
     "id": 38,
@@ -387,8 +387,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 38"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "100% Bamboo Toilet Paper"
   },
   {
     "id": 39,
@@ -397,8 +397,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 39"
+    "brand": "JERKY & NUTS",
+    "product": "Variety Pack"
   },
   {
     "id": 40,
@@ -407,8 +407,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 40"
+    "brand": "FULXR",
+    "product": "HYALURONIC ACID Vaginal Moisten Gel"
   },
   {
     "id": 41,
@@ -417,8 +417,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 41"
+    "brand": "WellNORx",
+    "product": "Prostate +"
   },
   {
     "id": 42,
@@ -427,8 +427,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 42"
+    "brand": "Socka",
+    "product": "Oatmeal Soap"
   },
   {
     "id": 43,
@@ -437,8 +437,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 43"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 44,
@@ -447,8 +447,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 44"
+    "brand": "THE KITCHEN SHOPPE",
+    "product": "24 PIECE SET GLASS FOOD STORAGE"
   },
   {
     "id": 45,
@@ -457,8 +457,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 45"
+    "brand": "WellNORx",
+    "product": "Prostate +"
   },
   {
     "id": 46,
@@ -467,8 +467,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 46"
+    "brand": "HOVER-1",
+    "product": "BLAST"
   },
   {
     "id": 47,
@@ -477,8 +477,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 47"
+    "brand": "WellNORx",
+    "product": "Prostate +"
   },
   {
     "id": 48,
@@ -487,8 +487,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 48"
+    "brand": "AirFico",
+    "product": "Trash Can Basketball Hoop"
   },
   {
     "id": 49,
@@ -497,8 +497,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 49"
+    "brand": "BON+BERG",
+    "product": "Hestia high-waisted panty"
   },
   {
     "id": 50,
@@ -507,8 +507,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 50"
+    "brand": "HerGrip",
+    "product": "Honey & Vanilla Oatmeal MOISTURIZING BODY BUTTER"
   },
   {
     "id": 51,
@@ -517,8 +517,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 51"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 52,
@@ -527,8 +527,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 52"
+    "brand": "THE PLAYER'S HYDRATOR",
+    "product": "32 OZ STAINLESS"
   },
   {
     "id": 53,
@@ -537,8 +537,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 53"
+    "brand": "CARELAND",
+    "product": "MENTHOL Pain Relief Patch"
   },
   {
     "id": 54,
@@ -547,8 +547,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 54"
+    "brand": "VODKYTE",
+    "product": "Premium Vodka"
   },
   {
     "id": 55,
@@ -557,8 +557,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 55"
+    "brand": "Brookethorne Naturals",
+    "product": "AROMATHERAPY NECK & SHOULDER WRAP"
   },
   {
     "id": 56,
@@ -567,8 +567,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 56"
+    "brand": "Dutch Essentials",
+    "product": "Stove Fan"
   },
   {
     "id": 57,
@@ -577,8 +577,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 57"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 58,
@@ -587,8 +587,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 58"
+    "brand": "JERKY & NUTS",
+    "product": "Variety Pack"
   },
   {
     "id": 59,
@@ -597,8 +597,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 59"
+    "brand": "VODKYTE",
+    "product": "Premium Vodka"
   },
   {
     "id": 60,
@@ -607,8 +607,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 60"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 61,
@@ -617,8 +617,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 61"
+    "brand": "VODKYTE",
+    "product": "Premium Vodka"
   },
   {
     "id": 62,
@@ -627,8 +627,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 62"
+    "brand": "SOCKA PREMIUM",
+    "product": "Whitening Soap"
   },
   {
     "id": 63,
@@ -637,8 +637,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 63"
+    "brand": "TURBO GAMING",
+    "product": "2.4G WIRELESS CONTROLLER GAMEPAD"
   },
   {
     "id": 64,
@@ -647,8 +647,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 64"
+    "brand": "BODYPROX",
+    "product": "FACE WRAP GEL PACK"
   },
   {
     "id": 65,
@@ -657,8 +657,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 65"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 66,
@@ -667,8 +667,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 66"
+    "brand": "BON+BERG",
+    "product": "Hestia high-waisted panty"
   },
   {
     "id": 67,
@@ -677,8 +677,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 67"
+    "brand": "Pincup",
+    "product": "THE PLAYER'S HYDRATOR"
   },
   {
     "id": 68,
@@ -687,8 +687,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 68"
+    "brand": "GORGEOUS",
+    "product": "PORTABLE WATER FLOSSER"
   },
   {
     "id": 69,
@@ -697,8 +697,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 69"
+    "brand": "SOCKA",
+    "product": "Whitening Soap"
   },
   {
     "id": 70,
@@ -707,8 +707,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 70"
+    "brand": "DERMIGAN",
+    "product": "CANINE AND FELINE DIETARY SUPPLEMENT"
   },
   {
     "id": 71,
@@ -717,8 +717,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 71"
+    "brand": "SURE HAND",
+    "product": "BLUE VINYL Gloves"
   },
   {
     "id": 72,
@@ -727,8 +727,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 72"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "100% Bamboo Toilet Paper"
   },
   {
     "id": 73,
@@ -737,8 +737,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 73"
+    "brand": "Tiny Liners",
+    "product": "Micro-sized Pantyliners"
   },
   {
     "id": 74,
@@ -747,8 +747,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 74"
+    "brand": "baskbio",
+    "product": "spores built to support"
   },
   {
     "id": 75,
@@ -757,8 +757,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 75"
+    "brand": "METMA",
+    "product": "Egg Decorating Kit LUXURY"
   },
   {
     "id": 76,
@@ -767,8 +767,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 76"
+    "brand": "KOOKY KIND",
+    "product": "Berry Vanilla Bliss"
   },
   {
     "id": 77,
@@ -777,8 +777,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 77"
+    "brand": "BON+BERG",
+    "product": "Hestia high-waisted panty"
   },
   {
     "id": 78,
@@ -787,8 +787,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 78"
+    "brand": "Nuha",
+    "product": "Herbal Hair Oil"
   },
   {
     "id": 79,
@@ -797,8 +797,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 79"
+    "brand": "powerUP HEALTH",
+    "product": "HYDRATION DRINK MIX"
   },
   {
     "id": 80,
@@ -807,8 +807,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 80"
+    "brand": "CAP CHECK",
+    "product": "THE CAP RACK"
   },
   {
     "id": 81,
@@ -817,8 +817,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 81"
+    "brand": "KOOKY KIND",
+    "product": "High-Protein Cookies"
   },
   {
     "id": 82,
@@ -827,8 +827,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 82"
+    "brand": "HerGrip",
+    "product": "Natural Feminine Oil Pineapple"
   },
   {
     "id": 83,
@@ -837,8 +837,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 83"
+    "brand": "Neemo",
+    "product": "Herbal Toothpaste"
   },
   {
     "id": 84,
@@ -847,8 +847,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 84"
+    "brand": "SOCKA",
+    "product": "PERMERIC-C CALAMINE SOAP"
   },
   {
     "id": 85,
@@ -857,8 +857,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 85"
+    "brand": "Nuha",
+    "product": "Herbal Hair Oil"
   },
   {
     "id": 86,
@@ -867,8 +867,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 86"
+    "brand": "5minskin",
+    "product": "The sculpt"
   },
   {
     "id": 87,
@@ -877,8 +877,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 87"
+    "brand": "Brookethorne Naturals",
+    "product": "AROMATHERAPY NECK & SHOULDER WRAP"
   },
   {
     "id": 88,
@@ -887,8 +887,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 88"
+    "brand": "DeskBoard Buddy",
+    "product": "Desktop Whiteboard"
   },
   {
     "id": 89,
@@ -897,8 +897,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 89"
+    "brand": "V6CO's",
+    "product": "PORTABLE ECG MONITOR PM 10"
   },
   {
     "id": 90,
@@ -907,8 +907,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 90"
+    "brand": "Brookethorne Naturals",
+    "product": "AROMATHERAPY NECK & SHOULDER WRAP"
   },
   {
     "id": 91,
@@ -917,8 +917,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 91"
+    "brand": "METMA",
+    "product": "Egg Coloring Kit Shake it!"
   },
   {
     "id": 92,
@@ -927,8 +927,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 92"
+    "brand": "V6CO's",
+    "product": "PORTABLE ECG MONITOR PM 10"
   },
   {
     "id": 93,
@@ -937,8 +937,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 93"
+    "brand": "powerUP HEALTH",
+    "product": "HYDRATION DRINK MIX"
   },
   {
     "id": 94,
@@ -947,8 +947,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 94"
+    "brand": "Socka",
+    "product": "Oatmeal Soap"
   },
   {
     "id": 95,
@@ -957,8 +957,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 95"
+    "brand": "METMA",
+    "product": "basic Egg Decorating Kit"
   },
   {
     "id": 96,
@@ -967,8 +967,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 96"
+    "brand": "KOOKY KIND",
+    "product": "Yummy miel nut"
   },
   {
     "id": 97,
@@ -977,8 +977,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 97"
+    "brand": "GORGEOUS",
+    "product": "PORTABLE WATER FLOSSER"
   },
   {
     "id": 98,
@@ -987,8 +987,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 98"
+    "brand": "HOME SHADOWS",
+    "product": "ATTENDANCE SIMULATOR"
   },
   {
     "id": 99,
@@ -997,8 +997,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 99"
+    "brand": "Dutch Essentials",
+    "product": "Stove Fan"
   },
   {
     "id": 100,
@@ -1007,8 +1007,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 100"
+    "brand": "Brookethorne Naturals",
+    "product": "AROMATHERAPY NECK & SHOULDER WRAP"
   },
   {
     "id": 101,
@@ -1017,8 +1017,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 101"
+    "brand": "Tiny Liners",
+    "product": "Micro-sized Pantyliners"
   },
   {
     "id": 102,
@@ -1027,8 +1027,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 102"
+    "brand": "baskbio",
+    "product": "LIQUID GANODERMA LUCIDUM"
   },
   {
     "id": 103,
@@ -1037,8 +1037,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 103"
+    "brand": "ILLES",
+    "product": "THE BEST IS YET TO POUR"
   },
   {
     "id": 104,
@@ -1047,8 +1047,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 104"
+    "brand": "BON+BERG",
+    "product": "Hestia high-waisted panty"
   },
   {
     "id": 105,
@@ -1057,8 +1057,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 105"
+    "brand": "DOWNUNDER TOILET PAPER",
+    "product": "Toilet Paper"
   },
   {
     "id": 106,
@@ -1067,8 +1067,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 106"
+    "brand": "BLACKOUT",
+    "product": "LIGHTOUT PACK VARIETY PACK"
   },
   {
     "id": 107,
@@ -1077,8 +1077,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 107"
+    "brand": "CHAHUA",
+    "product": "UNANI HAIR OIL"
   },
   {
     "id": 108,
@@ -1087,8 +1087,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 108"
+    "brand": "FULXR",
+    "product": "HYALURONIC ACID Vaginal Moisten Gel"
   },
   {
     "id": 109,
@@ -1097,8 +1097,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 109"
+    "brand": "YUGEN BONSAI",
+    "product": "Japanese Maple BONSAI Tree Growing Kit"
   },
   {
     "id": 110,
@@ -1107,8 +1107,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 110"
+    "brand": "ILLES",
+    "product": "THE BEST IS YET TO POUR"
   },
   {
     "id": 111,
@@ -1117,8 +1117,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 111"
+    "brand": "PANSLY NEW YORK",
+    "product": "After Oil HAIR INHIBITING MOISTURE SERUM"
   },
   {
     "id": 112,
@@ -1127,8 +1127,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 112"
+    "brand": "HerGrip",
+    "product": "Honey & Vanilla Oatmeal MOISTURIZING BODY BUTTER"
   },
   {
     "id": 113,
@@ -1137,8 +1137,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 811,
     "ratio": "4:3",
     "cssRatio": "4 / 3",
-    "brand": "Box Label Design",
-    "product": "Artboard 113"
+    "brand": "Tiny Liners",
+    "product": "Micro-sized Pantyliners"
   },
   {
     "id": 114,
@@ -1147,8 +1147,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 114"
+    "brand": "BODYPROX",
+    "product": "FACE WRAP GEL PACK"
   },
   {
     "id": 115,
@@ -1157,8 +1157,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 115"
+    "brand": "JERKY & NUTS",
+    "product": "Variety Pack"
   },
   {
     "id": 116,
@@ -1167,8 +1167,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1441,
     "ratio": "3:4",
     "cssRatio": "3 / 4",
-    "brand": "Box Label Design",
-    "product": "Artboard 116"
+    "brand": "Nuha",
+    "product": "Herbal Hair Oil"
   },
   {
     "id": 117,
@@ -1177,8 +1177,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 117"
+    "brand": "METMA",
+    "product": "PLANET EGGS EGG DECORATING KIT"
   },
   {
     "id": 118,
@@ -1187,8 +1187,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 118"
+    "brand": "Neemo",
+    "product": "Herbal Toothpaste"
   },
   {
     "id": 119,
@@ -1197,8 +1197,8 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 119"
+    "brand": "THE PLAYER'S HYDRATOR",
+    "product": "32 OZ STAINLESS"
   },
   {
     "id": 120,
@@ -1207,7 +1207,7 @@ export const boxLabelProjects: BoxProjectItem[] = [
     "height": 1081,
     "ratio": "1:1",
     "cssRatio": "1 / 1",
-    "brand": "Box Label Design",
-    "product": "Artboard 120"
+    "brand": "THE KITCHEN SHOPPE",
+    "product": "24 PIECE SET CONTAINERS + LIDS"
   }
 ];

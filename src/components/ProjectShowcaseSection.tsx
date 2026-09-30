@@ -195,6 +195,11 @@ export default function ProjectShowcaseSection() {
           title="Box Labels Design" 
           variant="lavender" 
           onClick={() => document.getElementById('gallery-box')?.scrollIntoView({ behavior: 'smooth' })} 
+          images={[
+            '/portfolio/image/projects/Box%20Label/Title/2.%20Box%20Label%20Design.webp',
+            '/portfolio/image/projects/Box%20Label/Title/1.%20Box%20Label%20Design.webp',
+            '/portfolio/image/projects/Box%20Label/Title/3.%20Box%20Label%20Design.webp'
+          ]}
         />
         <Folder 
           title="Can Labels Design" 
