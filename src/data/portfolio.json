@@ -58,35 +58,51 @@
 
   "projects": [
     {
-      "id": "hoodverse",
-      "title": "HOODVERSE",
-      "category": "Branding & Visual Identity",
-      "tags": ["Branding", "Visual Identity", "3D Art"],
-      "image": "/image/projects/hoodverse.webp",
+      "id": "kooky-kind-dragon-eggs",
+      "title": "Kooky Kind - Dragon Eggs Cookies",
+      "category": "Packaging Design, Branding",
+      "tags": ["Packaging Box", "Branding"],
+      "image": "/image/projects/Latest Projects/1.-Kooky-Kind---Dragon-Eggs.webp",
       "link": "#"
     },
     {
-      "id": "tea-sense",
-      "title": "Tea Sense - A Premium Tea",
-      "category": "Packaging Design, Brand Identity",
-      "tags": ["Packaging", "Brand Identity", "Print"],
-      "image": "/image/projects/tea-sense.webp",
+      "id": "radiant-energy",
+      "title": "Radiant Energy - Gaming-Hydration-Supplement",
+      "category": "Label Design, Visual Identity",
+      "tags": ["Tube Labels", "Visual Identity"],
+      "image": "/image/projects/Latest Projects/2.-Radiant-Energy---Gaming-Hydration-Supplement.webp",
       "link": "#"
     },
     {
-      "id": "fruit-blends",
-      "title": "Fruit Blends",
-      "category": "Packaging Design, Visual Identity",
-      "tags": ["Packaging", "Visual Identity", "Product"],
-      "image": "/image/projects/fruit-blends.webp",
+      "id": "tiny-liners",
+      "title": "Tiny Liners - Mricro-Sized-PantyLiners",
+      "category": "Packaging Design, Branding",
+      "tags": ["Packaging Box", "Branding"],
+      "image": "/image/projects/Latest Projects/3.-Tiny-Liners---Mricro-Sized-PantyLiners.webp",
       "link": "#"
     },
     {
-      "id": "ruthless",
-      "title": "Ruthless",
-      "category": "Packaging Design, Visual Identity",
-      "tags": ["Packaging", "Label Design", "Art Direction"],
-      "image": "/image/projects/ruthless.webp",
+      "id": "morounah",
+      "title": "Morounah - Hydration-drink",
+      "category": "Label Design, Visual Identity",
+      "tags": ["Can Label", "Visual Identity"],
+      "image": "/image/projects/Latest Projects/4.-Morounah---Hydration-drink.webp",
+      "link": "#"
+    },
+    {
+      "id": "vita-melon",
+      "title": "Vita Melon - Energy-Drink",
+      "category": "Branding, Label Design",
+      "tags": ["Branding", "Can Label"],
+      "image": "/image/projects/Latest Projects/5.-Vita-Melon---Energy-Drink.webp",
+      "link": "#"
+    },
+    {
+      "id": "bon-berg",
+      "title": "Bon+Berg - High-waisted-Panty",
+      "category": "Packaging Design",
+      "tags": ["Packaging Box"],
+      "image": "/image/projects/Latest Projects/6.-Bon+Berg---High-waisted-Panty.webp",
       "link": "#"
     }
   ],

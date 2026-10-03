@@ -13,12 +13,12 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
   const isPortfolioPage =
     typeof window !== 'undefined' &&
-    (window.location.pathname.includes('work.html') ||
+    (window.location.pathname.includes('/work/') ||
       window.location.pathname.endsWith('/work') ||
-      window.location.pathname.endsWith('/portfolio/work.html'));
+      window.location.pathname.endsWith('/portfolio/work'));
 
   const homeHref = isPortfolioPage ? getAssetUrl('/') : '#home';
-  const workHref = isPortfolioPage ? '#portfolio-hero' : getAssetUrl('/work.html');
+  const workHref = isPortfolioPage ? '#portfolio-hero' : getAssetUrl('/work/');
   const servicesHref = isPortfolioPage ? `${getAssetUrl('/')}#services` : '#services';
 
   useEffect(() => {

@@ -151,7 +151,7 @@ export default function ProjectsSection() {
         {/* View all projects CTA */}
         <div className="flex justify-center mt-12 sm:mt-16">
           <motion.a
-            href="#contact"
+            href={getAssetUrl('/work/')}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             className="group inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-[#141316] hover:bg-[#1a191e] border border-white/10 hover:border-white/20 text-white text-sm font-semibold transition-all duration-200"

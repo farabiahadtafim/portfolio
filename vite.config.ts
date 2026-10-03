@@ -76,7 +76,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        work: './work.html',
+        work: './work/index.html',
         admin: './admin.html',
       },
     },

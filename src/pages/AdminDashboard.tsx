@@ -787,7 +787,7 @@ export default function AdminDashboard() {
               <ExternalLink className="w-3 h-3 text-neutral-400" />
             </a>
             <a
-              href={getAssetUrl('/work.html')}
+              href={getAssetUrl('/work/')}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white text-xs font-medium border border-white/10 transition-colors"
