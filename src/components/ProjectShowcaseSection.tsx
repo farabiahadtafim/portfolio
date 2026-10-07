@@ -205,6 +205,11 @@ export default function ProjectShowcaseSection() {
           title="Can Labels Design" 
           variant="peach" 
           onClick={() => document.getElementById('gallery-can')?.scrollIntoView({ behavior: 'smooth' })} 
+          images={[
+            '/portfolio/image/projects/Can%20Label/Title/2.%20Can%20Label%20Design.webp',
+            '/portfolio/image/projects/Can%20Label/Title/1.%20Can%20Label%20Design.webp',
+            '/portfolio/image/projects/Can%20Label/Title/3.%20Can%20Label%20Design.webp'
+          ]}
         />
         <Folder 
           title="Pouch Label Design" 

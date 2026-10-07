@@ -8,7 +8,8 @@ interface MasonryGallerySectionProps {
   id?: string;
   imageFolder?: string;
   projectData?: { brand: string; product: string }[];
-  boxProjects?: BoxProjectItem[];
+  projects?: BoxProjectItem[];
+  imagePrefix?: string;
 }
 
 interface RatioConfig {
@@ -28,11 +29,11 @@ const RATIO_CYCLE: RatioConfig[] = [
   { ratio: '4:3', cssRatio: '4 / 3', width: 600, height: 450 },
 ];
 
-export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData, boxProjects }: MasonryGallerySectionProps) {
+export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData, projects, imagePrefix = 'Portfolio' }: MasonryGallerySectionProps) {
   // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1) or exact Box Project ratios
   const items = useMemo(() => {
-    if (boxProjects && boxProjects.length > 0) {
-      return boxProjects.map((item) => ({
+    if (projects && projects.length > 0) {
+      return projects.map((item) => ({
         id: item.id,
         ratio: item.ratio,
         cssRatio: item.cssRatio,
@@ -56,23 +57,24 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
         brand: projectData && projectData[i] ? projectData[i].brand : `View Project ${i + 1}`,
         product: projectData && projectData[i] ? projectData[i].product : `Ratio ${config.ratio}`,
         imageUrl: imageFolder 
-          ? `${import.meta.env.BASE_URL}image/projects/${imageFolder}/Portfolio-${String(i + 1).padStart(2, '0')}.webp`
+          ? `${import.meta.env.BASE_URL}image/projects/${imageFolder}/${imagePrefix}-${String(i + 1).padStart(2, '0')}.webp`
           : `https://placehold.co/${config.width}x${config.height}/1c1b20/FFF?text=Design+${i + 1}`,
       };
     });
-  }, [itemCount, imageFolder, projectData, boxProjects]);
+  }, [itemCount, imageFolder, projectData, projects, imagePrefix]);
 
-  // Divide into 5 columns matching Illustrator column guide: 1-24, 25-48, 49-72, 73-96, 97-120
+  // Divide into 5 columns matching Illustrator column guide
   const columnGroups = useMemo(() => {
-    if (!boxProjects || boxProjects.length !== 120) return null;
+    if (!projects || projects.length % 5 !== 0) return null;
+    const colSize = projects.length / 5;
     return [
-      items.slice(0, 24),   // 1 to 24 (Col 1)
-      items.slice(24, 48),  // 25 to 48 (Col 2)
-      items.slice(48, 72),  // 49 to 72 (Col 3)
-      items.slice(72, 96),  // 73 to 96 (Col 4)
-      items.slice(96, 120), // 97 to 120 (Col 5)
+      items.slice(0, colSize),               // Col 1
+      items.slice(colSize, colSize * 2),     // Col 2
+      items.slice(colSize * 2, colSize * 3), // Col 3
+      items.slice(colSize * 3, colSize * 4), // Col 4
+      items.slice(colSize * 4, projects.length), // Col 5
     ];
-  }, [boxProjects, items]);
+  }, [projects, items]);
 
   return (
     <section id={id} className="relative w-full py-16 px-4 sm:px-6 lg:px-8 z-20 scroll-mt-16 md:scroll-mt-20">

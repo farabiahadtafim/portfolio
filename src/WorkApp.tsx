@@ -10,6 +10,7 @@ import { PortfolioProvider } from './context/PortfolioContext';
 import { useLenis } from './hooks/useLenis';
 import { supplementProjects } from './data/supplementProjects';
 import { boxLabelProjects } from './data/boxLabelProjects';
+import { canLabelProjects } from './data/canLabelProjects';
 
 export default function WorkApp() {
   useLenis();
@@ -39,8 +40,8 @@ export default function WorkApp() {
               />
               <div id="work-gallery" className="bg-[#141316]">
                 <MasonryGallerySection id="gallery-supplement" title="Supplement Label Design" itemCount={51} imageFolder="Supplement Label" projectData={supplementProjects} />
-                <MasonryGallerySection id="gallery-box" title="Box Label Design" itemCount={120} imageFolder="Box Label" boxProjects={boxLabelProjects} />
-                <MasonryGallerySection id="gallery-can" title="Can Label Design" itemCount={20} />
+                <MasonryGallerySection id="gallery-box" title="Box Label Design" itemCount={120} imageFolder="Box Label" projects={boxLabelProjects} />
+                <MasonryGallerySection id="gallery-can" title="Can Label Design" itemCount={100} imageFolder="Can Label" projects={canLabelProjects} />
                 <MasonryGallerySection id="gallery-pouch" title="Pouch Label Design" itemCount={20} />
               </div>
             </div>
