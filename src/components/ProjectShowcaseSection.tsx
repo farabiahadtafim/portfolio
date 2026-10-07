@@ -77,6 +77,7 @@ export default function ProjectShowcaseSection() {
         });
 
       Draggable.create(dragger, {
+        type: 'x',
         onDragStart: function (e: any) {
           let cx = e?.clientX;
           if (e?.touches && e.touches.length > 0) {
