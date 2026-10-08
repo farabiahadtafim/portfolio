@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Send, Loader2, Calendar, Linkedin, Dribbble, MessageCircle, Clock, ChevronDown } from 'lucide-react';
+import { X, Mail, Send, Loader2, Calendar, Linkedin, Instagram, MessageCircle, Clock, ChevronDown } from 'lucide-react';
 import { usePortfolio } from '../hooks/usePortfolio';
 
 interface ContactModalProps {
@@ -395,13 +395,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.827 5.364 5.357h-7.796c.049 1.838 1.107 2.753 3.011 2.753 1.408 0 2.213-.672 2.62-1.515h2zM20.25 11.666c-.198-1.547-1.157-2.18-2.673-2.18-1.583 0-2.316.64-2.529 2.18h5.202zm-12.724 5.334c-1.396 0-2.526-.893-2.526-2.571 0-1.688 1.116-2.57 2.526-2.57 1.397 0 2.526.892 2.526 2.57 0 1.688-1.118 2.571-2.526 2.571m4.394-2.571c0 2.92-2.193 4.571-4.707 4.571h-5.213v-15h4.945c2.685 0 4.414 1.551 4.414 3.992 0 1.341-.66 2.55-1.996 3.197 1.517.659 2.557 1.868 2.557 3.24m-4.509-3.79c-1.282 0-2.361-.734-2.361-2.146 0-1.42 1.054-2.146 2.361-2.146 1.294 0 2.361.734 2.361 2.146 0 1.42-1.04 2.146-2.361 2.146"/></svg>
                 </a>
                 <a
-                  href={profile.social.dribbble}
+                  href={profile.social.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Dribbble"
+                  aria-label="Instagram"
                   className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
                 >
-                  <Dribbble className="w-4 h-4" />
+                  <Instagram className="w-4 h-4" />
                 </a>
               </div>
               
