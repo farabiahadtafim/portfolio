@@ -53,7 +53,6 @@ const toolsList: ToolItem[] = [
   { name: 'Adobe Premiere Pro', type: 'image', src: "/image/SVG/Adobe Premiere Pro.svg" },
   { name: 'Figma', type: 'image', src: "/image/SVG/Figma.svg" },
   { name: 'Antigravity', type: 'image', src: "/image/SVG/Antigravity.svg" },
-  { name: 'Brand Identity', type: 'image', src: "/image/SVG/Brand Identity.svg" },
   { name: 'ChatGPT', type: 'image', src: "/image/SVG/ChatGPT.svg" },
   { name: 'Claude', type: 'image', src: "/image/SVG/Claude.svg" },
 ];

@@ -95,44 +95,26 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-[32px] bg-[#bb031c] p-8 sm:p-10 text-white shadow-2xl relative overflow-hidden"
+            className="rounded-[32px] shadow-2xl relative overflow-hidden aspect-[4/5] sm:aspect-[4/4.5] lg:aspect-[4/5]"
           >
-            {/* Subtle radial sheen */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[50px] rounded-full pointer-events-none" />
+            {/* Background Image */}
+            <img 
+              src={getAssetUrl("/image/Book-a-Call.webp")} 
+              alt="Book a free discovery call" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
-            {/* Profile Avatar */}
-            <div className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-white/30 shadow-md mb-6 bg-black/20">
-              <img
-                src={getAssetUrl("/image/Farabi Ahad Tafim Side Facing.webp")}
-                alt="Farabi Ahad Tafim"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+            {/* Gradient Overlay for Button Visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-            {/* Heading */}
-            <h3 className="relative z-10 text-2xl sm:text-3xl lg:text-[2.2rem] font-space font-bold text-white tracking-tight leading-[1.12] mb-5">
-              Still not sure? <br />
-              Book a free discovery call.
-            </h3>
-
-            {/* Text Paragraphs */}
-            <div className="relative z-10 space-y-3 text-white/90 text-sm sm:text-[0.95rem] leading-relaxed mb-8">
-              <p>
-                It should make your brand clear, strong, and easy to trust.
-              </p>
-              <p>
-                If that’s what you’re aiming for, we should talk.
-              </p>
-            </div>
-
-            {/* CTA Button */}
-            <div className="relative z-10 flex items-center">
+            {/* CTA Button at bottom left */}
+            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-7 z-10 flex items-center">
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#141316] hover:bg-black text-white text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-lg active:scale-95"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141316] hover:bg-black text-white text-[11px] sm:text-xs font-semibold transition-all duration-200 cursor-pointer shadow-xl active:scale-95 border border-white/10 hover:border-white/20"
               >
-                <Calendar className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" />
+                <Calendar className="w-3.5 h-3.5 text-white/80 group-hover:text-white transition-colors" />
                 <span>Schedule Now</span>
               </button>
             </div>
