@@ -1,9 +1,102 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import { usePortfolio } from '../hooks/usePortfolio';
 import { getAssetUrl } from '../utils/asset';
 
+function AnimatedCounter({ 
+  value, 
+  prefix = "", 
+  suffix = "", 
+  decimals = 0, 
+  padZero = false 
+}: { 
+  value: number; 
+  prefix?: string; 
+  suffix?: string; 
+  decimals?: number;
+  padZero?: boolean;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
+  
+  useEffect(() => {
+    if (isInView && ref.current) {
+      animate(0, value, {
+        duration: 1.5,
+        ease: "easeOut",
+        onUpdate: (v) => {
+          if (ref.current) {
+            let formatted = v.toFixed(decimals);
+            if (padZero && parseFloat(formatted) < 10) {
+              formatted = formatted.padStart(2, '0');
+            }
+            ref.current.textContent = `${prefix}${formatted}${suffix}`;
+          }
+        }
+      });
+    }
+  }, [isInView, value, prefix, suffix, decimals, padZero]);
 
+  return <span ref={ref}>{prefix}{padZero ? "00" : "0"}{suffix}</span>;
+}
+
+function renderBold(text: string) {
+  if (!text) return text;
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} className="text-white font-medium">{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
+function AnimatedNameUnderPhoto({ name }: { name: string }) {
+  const [weight, setWeight] = useState(300);
+
+  useEffect(() => {
+    let animId: number;
+    const startTime = performance.now();
+    const period = 4500; // 4.5 seconds for complete smooth breathing cycle
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = (1 - Math.cos((elapsed / period) * 2 * Math.PI)) / 2;
+      const currentWeight = Math.round(300 + progress * 600);
+      setWeight(currentWeight);
+      animId = requestAnimationFrame(animate);
+    };
+
+    animId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  return (
+    <div className="w-full mt-3 overflow-hidden select-none flex justify-center">
+      <svg className="w-full h-auto" viewBox="0 0 1000 120" preserveAspectRatio="xMidYMid meet">
+        <text
+          x="50%"
+          y="50%"
+          dominantBaseline="central"
+          textAnchor="middle"
+          fill="#bb031c"
+          textLength="1000"
+          lengthAdjust="spacing"
+          style={{
+            fontWeight: weight,
+            fontVariationSettings: `'wght' ${weight}`,
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: '105px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.02em',
+          }}
+        >
+          {name}
+        </text>
+      </svg>
+    </div>
+  );
+}
 
 /* Clean Social Icons for the Photo Pill Overlay */
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -58,7 +151,6 @@ function LinktreeIcon({ className = 'w-4 h-4' }: { className?: string }) {
 
 export default function AboutSection() {
   const { profile, workHistory } = usePortfolio();
-  const [showAllHistory, setShowAllHistory] = useState(false);
 
   return (
     <section id="about" className="site-container py-24">
@@ -78,7 +170,22 @@ export default function AboutSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         {/* Left Column: Portrait Photo with bottom-right social pill & name/subtitle */}
-        <div className="lg:col-span-5 flex flex-col">
+        <div className="lg:col-span-5 flex flex-col relative">
+          
+          {/* Vertical Timeline Line */}
+          <div className="hidden lg:block absolute -right-[1.75rem] top-[15%] bottom-[-48px] w-[2px] z-0">
+            <div className="w-full h-full border-l-[2px] border-dashed border-neutral-700" />
+            <motion.div 
+              className="absolute top-0 left-0 w-[2px] overflow-hidden"
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              viewport={{ once: true, margin: "-20%" }}
+              transition={{ duration: 2, ease: "linear" }}
+            >
+              <div className="absolute top-0 left-0 w-full h-[2000px] border-l-[2px] border-dashed border-[#bb031c]" />
+            </motion.div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +204,7 @@ export default function AboutSection() {
             />
 
             {/* Social Icons Overlay Pill (Bottom-Right) */}
-            <div 
+            <div
               className="absolute bottom-4 right-4 z-20 flex flex-col items-center gap-3 px-2.5 py-4 rounded-full shadow-lg"
               style={{
                 backgroundColor: 'rgba(130, 130, 130, 0.1)',
@@ -175,143 +282,109 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
+          {/* Animated Name Under Photo */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+          >
+            <AnimatedNameUnderPhoto name={profile.name} />
+          </motion.div>
+
           {/* Name & Subtitle below photo with Formal Name badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-5"
+            className="mt-2"
           >
-            <div className="flex flex-wrap items-center gap-2.5">
-              <h3 className="text-xl sm:text-2xl font-bold font-space text-white tracking-tight">
-                {profile.name}
-              </h3>
+            <div className="flex justify-center w-full mb-3">
               {profile.formalName && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono tracking-wide bg-white/[0.06] border border-white/10 text-neutral-300">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono tracking-wide bg-white/[0.06] border border-white/10 text-neutral-300">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#bb031c]" />
                   Formal Name: {profile.formalName}
                 </span>
               )}
             </div>
-            <p className="mt-1.5 text-xs sm:text-sm font-normal text-neutral-400">
-              Packaging & Brand Designer <span className="text-[#bb031c] font-bold mx-1">|</span> Product Visualizer <span className="text-[#bb031c] font-bold mx-1">|</span> Creative Strategist
-            </p>
-            <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-400 font-mono">
-              <span>📍 Dhaka, Bangladesh</span>
-              <span className="text-neutral-600">•</span>
-              <span>🎓 B.Sc. in CSE (2022–2026)</span>
-              <span className="text-neutral-600">•</span>
-              <span className="text-[#bb031c] font-semibold">5+ Years Experience</span>
+            <div className="mt-1 flex flex-col gap-1.5">
+              <p className="text-base sm:text-lg font-bold font-space text-white tracking-tight">
+                Packaging & Brand Identity Designer
+              </p>
+              <p className="text-xs sm:text-[13px] font-normal text-neutral-400">
+                Product Visualizer <span className="text-[#bb031c] font-bold mx-1.5">·</span> Commercial Packaging <span className="text-[#bb031c] font-bold mx-1.5">·</span> 3D Visualization
+              </p>
+              <div className="mt-0.5 text-[11px] lg:text-xs whitespace-nowrap text-neutral-400 font-mono leading-relaxed">
+                <span>🌍 NY · UK · USA · CAN & International Markets</span>
+              </div>
             </div>
           </motion.div>
-        </div>
 
-        {/* Right Column: 4 Bio Paragraphs + Red Handwritten Signature + My work history accordion */}
-        <div className="lg:col-span-7 flex flex-col">
-          {/* Bio Paragraphs */}
+          {/* Proof of Experience Block (Moved to Left Column) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-5 text-[0.95rem] sm:text-[1.02rem] leading-[1.65] text-neutral-300 font-normal"
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-6 mb-4 grid grid-cols-2 gap-x-4 gap-y-6 py-6 border-y border-white/[0.08]"
           >
-            {profile.bioParagraphs?.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            )) || (
-              <>
-                <p>
-                  I started my journey with visual and graphic design, exploring typography, layouts, and print production. Over the past 5+ years, I have specialized in commercial product packaging, beverage labels, cans, boxes, pouches, and comprehensive brand identities.
-                </p>
-                <p>
-                  With time, my focus shifted from just making designs to communicating product value clearly and creating undeniable shelf impact. Every creative decision is grounded in visual hierarchy, market positioning, and print execution.
-                </p>
-                <p>
-                  Experienced in taking projects from initial conceptualization through polished 3D mockups and commercially ready print artwork for international clients and consumer brands.
-                </p>
-                <p>
-                  My goal is to continue delivering packaging and brand identity systems that are visually compelling, production-aware, and built for lasting commercial success.
-                </p>
-              </>
-            )}
-          </motion.div>
-
-          {/* Red Handwritten Signature */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-6 mb-8 select-none"
-          >
-            <img 
-              src={getAssetUrl("/image/SVG/Tafim Signature.svg")} 
-              alt="Farabi Ahad Signature" 
-              className="h-10 sm:h-12 -rotate-3 opacity-90 object-contain" 
-            />
-          </motion.div>
-
-          {/* My work history Sub-section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-2"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-lg sm:text-xl font-bold font-space text-white">
-                My work history
+            <div>
+              <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">
+                <AnimatedCounter value={5} padZero={true} suffix="+" />
               </h4>
-              <span className="text-xs font-mono text-neutral-400">
-                5+ Years Experience
-              </span>
+              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-medium mt-1 uppercase tracking-wider">Years Experience</p>
             </div>
+            <div>
+              <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">
+                <AnimatedCounter value={450} suffix="+" />
+              </h4>
+              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-medium mt-1 uppercase tracking-wider">Global Clients</p>
+            </div>
+            <div>
+              <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">
+                <AnimatedCounter value={37} prefix="$" suffix="K+" />
+              </h4>
+              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-medium mt-1 uppercase tracking-wider">Project Value Delivered</p>
+            </div>
+            <div>
+              <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">
+                <AnimatedCounter value={99.1} decimals={1} />
+                <span className="text-lg sm:text-xl">%</span>
+              </h4>
+              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-medium mt-1 uppercase tracking-wider">Project Success Rate</p>
+            </div>
+            <div className="col-span-2">
+              <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">
+                <AnimatedCounter value={4} padZero={true} suffix="+" />
+              </h4>
+              <p className="text-[10px] sm:text-[11px] text-neutral-300 font-medium mt-1 uppercase tracking-wider">Key Markets</p>
+              <p className="text-[10px] text-neutral-500 mt-0.5 font-mono tracking-wide">UK · USA · Canada · International</p>
+            </div>
+          </motion.div>
 
-            <div className="space-y-3">
-              {/* Always visible first item */}
-              {workHistory.slice(0, 1).map((item, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
-                        {item.company}
-                      </h5>
-                      <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
-                        {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
-                      </p>
-                    </div>
-                    <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
-                      {item.period}
-                    </span>
-                  </div>
-                  {item.description && (
-                    <p className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3">
-                      {item.description}
-                    </p>
-                  )}
-                </div>
-              ))}
-
-              {/* Expandable remaining items */}
-              <AnimatePresence>
-                {showAllHistory && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="space-y-3 overflow-hidden"
-                  >
-                    {workHistory.slice(1).map((item, idx) => (
+          {/* Previous Roles (Left Column) */}
+          <div className="w-full mt-2 lg:mt-4">
+            <div className="space-y-3 relative z-10">
+              {workHistory.slice(1, 3).map((item, idx) => (
                       <div
                         key={idx + 1}
-                        className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group"
+                        className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
                       >
+                        {/* Horizontal Connector (Left Card: Right to Left) */}
+                        <div className="hidden lg:block absolute top-[44px] -right-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
+                          <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
+                          <motion.div 
+                            className="absolute top-0 right-0 h-[2px] overflow-hidden"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: "100%" }}
+                            viewport={{ once: true, margin: "-20%" }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            <div className="absolute top-0 right-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
+                          </motion.div>
+                        </div>
+
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
@@ -326,35 +399,223 @@ export default function AboutSection() {
                           </span>
                         </div>
                         {item.description && (
-                          <p className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3">
-                            {item.description}
-                          </p>
+                          <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
+                            {renderBold(item.description)}
+                          </div>
+                        )}
+                        {item.proofLine && (
+                          <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
+                            {item.proofLine}
+                          </div>
                         )}
                       </div>
                     ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: 4 Bio Paragraphs + Red Handwritten Signature + My work history accordion */}
+        <div className="lg:col-span-7 flex flex-col">
+          {/* Bio Paragraphs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-5 text-[0.95rem] sm:text-[1.02rem] leading-[1.65] text-neutral-300 font-normal"
+          >
+            {profile.bioParagraphs?.map((paragraph, idx) => (
+              <p key={idx}>{renderBold(paragraph)}</p>
+            )) || (
+                <>
+                  <p>
+                    I started my journey with visual and graphic design, exploring typography, layouts, and print production. Over the past 5+ years, I have specialized in commercial product packaging, beverage labels, cans, boxes, pouches, and comprehensive brand identities.
+                  </p>
+                  <p>
+                    With time, my focus shifted from just making designs to communicating product value clearly and creating undeniable shelf impact. Every creative decision is grounded in visual hierarchy, market positioning, and print execution.
+                  </p>
+                  <p>
+                    Experienced in taking projects from initial conceptualization through polished 3D mockups and commercially ready print artwork for international clients and consumer brands.
+                  </p>
+                  <p>
+                    My goal is to continue delivering packaging and brand identity systems that are visually compelling, production-aware, and built for lasting commercial success.
+                  </p>
+                </>
+              )}
+          </motion.div>
+
+
+
+          {/* Red Handwritten Signature */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.28 }}
+            className="mt-6 mb-8 select-none"
+          >
+            <img
+              src={getAssetUrl("/image/SVG/Tafim Signature.svg")}
+              alt="Farabi Ahad Signature"
+              className="h-10 sm:h-12 -rotate-3 opacity-90 object-contain"
+            />
+          </motion.div>
+
+          {/* My work history Sub-section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-2"
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h4 className="text-2xl sm:text-3xl font-bold font-space text-white tracking-tight">
+                My work history
+              </h4>
+              <span className="text-xs font-mono text-neutral-400">
+                5+ Years Experience
+              </span>
             </div>
 
-            {/* Show all / Hide Toggle Button */}
-            {workHistory.length > 1 && (
-              <div className="flex justify-center mt-5">
-                <button
-                  type="button"
-                  onClick={() => setShowAllHistory(!showAllHistory)}
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1c1b20] hover:bg-[#26252b] border border-white/[0.08] text-xs font-medium text-neutral-300 hover:text-white transition-all duration-200 cursor-pointer"
+            <div className="space-y-3 relative z-10">
+              {/* Always visible first item */}
+              {workHistory.slice(0, 1).map((item, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
                 >
-                  <span>{showAllHistory ? 'Hide' : 'Show all'}</span>
-                  <span className="flex items-center justify-center w-3.5 h-3.5 rounded-full bg-white/10 text-[9px]">
-                    {showAllHistory ? '▲' : '▼'}
-                  </span>
-                </button>
-              </div>
-            )}
+                  {/* Horizontal Connector (Pathao: Right to Left) */}
+                  <div className="hidden lg:block absolute top-[44px] -left-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
+                    <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
+                    <motion.div 
+                      className="absolute top-0 right-0 h-[2px] overflow-hidden"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true, margin: "-20%" }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <div className="absolute top-0 right-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
+                    </motion.div>
+                  </div>
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
+                        {item.company}
+                      </h5>
+                      <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
+                        {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
+                      </p>
+                    </div>
+                    <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
+                      {item.period}
+                    </span>
+                  </div>
+                  {item.description && (
+                    <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
+                      {renderBold(item.description)}
+                    </div>
+                  )}
+                  {item.proofLine && (
+                    <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
+                      {item.proofLine}
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Previous Roles (Right Column) */}
+              {workHistory.slice(3, 4).map((item, idx) => (
+                      <div
+                        key={idx + 3}
+                        className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
+                      >
+                        {/* Horizontal Connector (Decraft: Left to Right) */}
+                        <div className="hidden lg:block absolute top-[44px] -left-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
+                          <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
+                          <motion.div 
+                            className="absolute top-0 left-0 h-[2px] overflow-hidden"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: "100%" }}
+                            viewport={{ once: true, margin: "-20%" }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            <div className="absolute top-0 left-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
+                          </motion.div>
+                        </div>
+
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
+                              {item.company}
+                            </h5>
+                            <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
+                              {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
+                            </p>
+                          </div>
+                          <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
+                            {item.period}
+                          </span>
+                        </div>
+                        {item.description && (
+                          <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
+                            {renderBold(item.description)}
+                          </div>
+                        )}
+                        {item.proofLine && (
+                          <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
+                            {item.proofLine}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+            </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Full Width Role (Team Alfaaz) */}
+      {workHistory.length > 4 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-6 sm:mt-10 lg:mt-12"
+        >
+          {workHistory.slice(4).map((item, idx) => (
+            <div
+              key={idx + 4}
+              className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
+                    {item.company}
+                  </h5>
+                  <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
+                    {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
+                  </p>
+                </div>
+                <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
+                  {item.period}
+                </span>
+              </div>
+              {item.description && (
+                <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
+                  {renderBold(item.description)}
+                </div>
+              )}
+              {item.proofLine && (
+                <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
+                  {item.proofLine}
+                </div>
+              )}
+            </div>
+          ))}
+        </motion.div>
+      )}
     </section>
   );
 }

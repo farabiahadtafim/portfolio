@@ -64,6 +64,7 @@ export interface WorkHistoryItem {
   period: string;
   location?: string;
   description?: string;
+  proofLine?: string;
 }
 
 export interface EducationItem {
