@@ -80,7 +80,7 @@ create table if not exists public.home_settings (
   hero_headline_bottom text not null default 'CREATIVELY',
   hero_tagline text default 'I help brands turn\nideas into structured,\nmeaningful experiences',
   hero_avatar_url text default '/image/tafim-cartoon-head.webp',
-  hero_cta_text text default 'Book a call with me',
+  hero_cta_text text default 'Book a meet with me',
   client_count text default '99+ Happy clients',
   bio_title text default 'Product Label & Packaging Designer | Visualizer',
   about_photo_url text default '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp',
@@ -88,7 +88,7 @@ create table if not exists public.home_settings (
 );
 
 insert into public.home_settings (id, hero_headline_top, hero_headline_bottom, hero_tagline, hero_avatar_url, hero_cta_text)
-values ('default', 'THINK', 'CREATIVELY', 'I help brands turn\nideas into structured,\nmeaningful experiences', '/image/tafim-cartoon-head.webp', 'Book a call with me')
+values ('default', 'THINK', 'CREATIVELY', 'I help brands turn\nideas into structured,\nmeaningful experiences', '/image/tafim-cartoon-head.webp', 'Book a meet with me')
 on conflict (id) do nothing;
 
 create table if not exists public.home_projects (

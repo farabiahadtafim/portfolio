@@ -103,7 +103,11 @@ export default function AdminDashboard() {
   const [homeHeadlineBottom, setHomeHeadlineBottom] = useState(homeSettings.hero_headline_bottom || 'CREATIVELY');
   const [homeTagline, setHomeTagline] = useState(homeSettings.hero_tagline || '');
   const [homeAvatarUrl, setHomeAvatarUrl] = useState(homeSettings.hero_avatar_url || '');
-  const [homeCtaText, setHomeCtaText] = useState(homeSettings.hero_cta_text || 'Book a call with me');
+  const [homeCtaText, setHomeCtaText] = useState(
+    (!homeSettings.hero_cta_text || homeSettings.hero_cta_text === 'Book a call with me')
+      ? 'Book a meet with me'
+      : homeSettings.hero_cta_text
+  );
   const [homeClientCount, setHomeClientCount] = useState(homeSettings.client_count || '99+ Happy clients');
   const [homeBioTitle, setHomeBioTitle] = useState(homeSettings.bio_title || '');
   const [isSavingHomeHero, setIsSavingHomeHero] = useState(false);
@@ -121,7 +125,11 @@ export default function AdminDashboard() {
     setHomeHeadlineBottom(homeSettings.hero_headline_bottom || 'CREATIVELY');
     setHomeTagline(homeSettings.hero_tagline || '');
     setHomeAvatarUrl(homeSettings.hero_avatar_url || '');
-    setHomeCtaText(homeSettings.hero_cta_text || 'Book a call with me');
+    setHomeCtaText(
+      (!homeSettings.hero_cta_text || homeSettings.hero_cta_text === 'Book a call with me')
+        ? 'Book a meet with me'
+        : homeSettings.hero_cta_text
+    );
     setHomeClientCount(homeSettings.client_count || '99+ Happy clients');
     setHomeBioTitle(homeSettings.bio_title || '');
   }, [homeSettings]);
@@ -971,7 +979,7 @@ export default function AdminDashboard() {
                         type="text"
                         value={homeCtaText}
                         onChange={(e) => setHomeCtaText(e.target.value)}
-                        placeholder="Book a call with me"
+                        placeholder="Book a meet with me"
                         className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-[#ea0044]"
                       />
                     </div>
@@ -1065,7 +1073,7 @@ export default function AdminDashboard() {
                       {homeTagline || 'I help brands turn ideas into...'}
                     </span>
                     <span className="px-3 py-1 rounded-full bg-[#bb031c] text-white font-medium text-[10px]">
-                      {homeCtaText || 'Book a call'}
+                      {homeCtaText || 'Book a meet with me'}
                     </span>
                   </div>
                 </div>

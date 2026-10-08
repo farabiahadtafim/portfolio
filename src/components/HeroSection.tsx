@@ -16,7 +16,9 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   const headlineBottom = homeSettings?.hero_headline_bottom || 'CREATIVELY';
   const avatarUrl = homeSettings?.hero_avatar_url || '/image/tafim-cartoon-head.webp';
   const tagline = homeSettings?.hero_tagline || 'I help brands turn\nideas into structured,\nmeaningful experiences';
-  const ctaText = homeSettings?.hero_cta_text || 'Book a call with me';
+  const ctaText = (!homeSettings?.hero_cta_text || homeSettings?.hero_cta_text === 'Book a call with me')
+    ? 'Book a meet with me'
+    : homeSettings.hero_cta_text;
 
   return (
     <section
@@ -128,7 +130,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
                   <img
                     src={getAssetUrl("/image/Farabi Ahad Tafim Front Facing.webp")}
                     alt="Farabi Ahad Tafim"
-                    className="w-8 h-8 rounded-full object-cover ring-1 ring-white/60 shadow-sm"
+                    className="w-8 h-8 rounded-full object-cover shadow-sm"
                   />
                 </motion.div>
               )}

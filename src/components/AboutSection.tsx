@@ -149,8 +149,122 @@ function LinktreeIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
+function CurvedTimelinePath({
+  width,
+  height,
+  d
+}: {
+  width: number;
+  height: number;
+  d: string;
+}) {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      className="overflow-visible pointer-events-none"
+      fill="none"
+    >
+      {/* Subtle background rail track */}
+      <path
+        d={d}
+        stroke="rgba(255, 255, 255, 0.08)"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      {/* Moving red dashed line with rounded dash ends */}
+      <path
+        d={d}
+        stroke="#bb031c"
+        strokeWidth="2"
+        strokeDasharray="6 6"
+        strokeLinecap="round"
+        className="timeline-svg-dash-flow"
+      />
+    </svg>
+  );
+}
+
 export default function AboutSection() {
   const { profile, workHistory } = usePortfolio();
+  const pathaoConnectorRef = useRef<HTMLDivElement>(null);
+  const freelanceTopConnectorRef = useRef<HTMLDivElement>(null);
+  const freelanceBottomConnectorRef = useRef<HTMLDivElement>(null);
+  const deablyTopConnectorRef = useRef<HTMLDivElement>(null);
+  const deablyToDecraftConnectorRef = useRef<HTMLDivElement>(null);
+  const decraftConnectorRef = useRef<HTMLDivElement>(null);
+  const decraftToAlfaazConnectorRef = useRef<HTMLDivElement>(null);
+  const teamAlfaazCardRef = useRef<HTMLDivElement>(null);
+
+  const [pathaoToFreelanceHeight, setPathaoToFreelanceHeight] = useState<number>(143);
+  const [freelanceToDeablyHeight, setFreelanceToDeablyHeight] = useState<number>(88);
+  const [deablyToDecraftHeight, setDeablyToDecraftHeight] = useState<number>(84);
+  const [decraftToAlfaazHeight, setDecraftToAlfaazHeight] = useState<number>(488);
+
+  useEffect(() => {
+    const updateHeights = () => {
+      if (pathaoConnectorRef.current && freelanceTopConnectorRef.current) {
+        const pathaoRect = pathaoConnectorRef.current.getBoundingClientRect();
+        const freelanceTopRect = freelanceTopConnectorRef.current.getBoundingClientRect();
+        const h1 = freelanceTopRect.top - pathaoRect.top;
+        if (h1 > 0) {
+          setPathaoToFreelanceHeight(Math.round(h1));
+        }
+      }
+
+      if (freelanceBottomConnectorRef.current && deablyTopConnectorRef.current) {
+        const freelanceBottomRect = freelanceBottomConnectorRef.current.getBoundingClientRect();
+        const deablyTopRect = deablyTopConnectorRef.current.getBoundingClientRect();
+        const h2 = deablyTopRect.top - freelanceBottomRect.top;
+        if (h2 > 0) {
+          setFreelanceToDeablyHeight(Math.round(h2));
+        }
+      }
+
+      if (deablyToDecraftConnectorRef.current && decraftConnectorRef.current) {
+        const deablyExitRect = deablyToDecraftConnectorRef.current.getBoundingClientRect();
+        const decraftRect = decraftConnectorRef.current.getBoundingClientRect();
+        const h3 = decraftRect.top - deablyExitRect.top;
+        if (h3 > 10) {
+          setDeablyToDecraftHeight(Math.round(h3));
+        }
+      }
+
+      if (decraftToAlfaazConnectorRef.current && teamAlfaazCardRef.current) {
+        const decraftExitRect = decraftToAlfaazConnectorRef.current.getBoundingClientRect();
+        const alfaazRect = teamAlfaazCardRef.current.getBoundingClientRect();
+        const h4 = alfaazRect.top - decraftExitRect.top;
+        if (h4 > 10) {
+          setDecraftToAlfaazHeight(Math.round(h4));
+        }
+      }
+    };
+
+    updateHeights();
+    const t1 = setTimeout(updateHeights, 150);
+    const t2 = setTimeout(updateHeights, 600);
+    const t3 = setTimeout(updateHeights, 1200);
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(updateHeights);
+      const aboutEl = document.getElementById('about');
+      if (aboutEl) ro.observe(aboutEl);
+      if (teamAlfaazCardRef.current) ro.observe(teamAlfaazCardRef.current);
+    }
+    window.addEventListener('resize', updateHeights);
+    window.addEventListener('scroll', updateHeights, { passive: true });
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      if (ro) ro.disconnect();
+      window.removeEventListener('resize', updateHeights);
+      window.removeEventListener('scroll', updateHeights);
+    };
+  }, [workHistory]);
 
   return (
     <section id="about" className="site-container py-24">
@@ -171,20 +285,6 @@ export default function AboutSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         {/* Left Column: Portrait Photo with bottom-right social pill & name/subtitle */}
         <div className="lg:col-span-5 flex flex-col relative">
-          
-          {/* Vertical Timeline Line */}
-          <div className="hidden lg:block absolute -right-[1.75rem] top-[15%] bottom-[-48px] w-[2px] z-0">
-            <div className="w-full h-full border-l-[2px] border-dashed border-neutral-700" />
-            <motion.div 
-              className="absolute top-0 left-0 w-[2px] overflow-hidden"
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              viewport={{ once: true, margin: "-20%" }}
-              transition={{ duration: 2, ease: "linear" }}
-            >
-              <div className="absolute top-0 left-0 w-full h-[2000px] border-l-[2px] border-dashed border-[#bb031c]" />
-            </motion.div>
-          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -366,50 +466,115 @@ export default function AboutSection() {
           {/* Previous Roles (Left Column) */}
           <div className="w-full mt-2 lg:mt-4">
             <div className="space-y-3 relative z-10">
-              {workHistory.slice(1, 3).map((item, idx) => (
-                      <div
-                        key={idx + 1}
-                        className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
+              {workHistory.slice(1, 3).map((item, idx) => {
+                const isFreelance = idx === 0;
+                const isDeably = idx === 1;
+
+                return (
+                  <div
+                    key={idx + 1}
+                    className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
+                  >
+                    {/* Top Anchor for Freelance (Receives line from Pathao) */}
+                    {isFreelance && (
+                      <div 
+                        ref={freelanceTopConnectorRef}
+                        className="hidden lg:block absolute top-[44px] -right-[1.75rem] w-[1.75rem] h-[2px] z-0 pointer-events-none"
                       >
-                        {/* Horizontal Connector (Left Card: Right to Left) */}
-                        <div className="hidden lg:block absolute top-[44px] -right-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
-                          <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
-                          <motion.div 
-                            className="absolute top-0 right-0 h-[2px] overflow-hidden"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "100%" }}
-                            viewport={{ once: true, margin: "-20%" }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <div className="absolute top-0 right-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
-                          </motion.div>
+                        {/* Circle Node at Freelance card border */}
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
+                      </div>
+                    )}
+
+                    {/* Top Anchor for Deably (Receives line from Freelance) */}
+                    {isDeably && (
+                      <div 
+                        ref={deablyTopConnectorRef}
+                        className="hidden lg:block absolute top-[44px] -right-[1.75rem] w-[1.75rem] h-[2px] z-0 pointer-events-none"
+                      >
+                        {/* Circle Node at Deably card border */}
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
+                      </div>
+                    )}
+
+                    {/* Curved Connector: Deably -> Team Decraft */}
+                    {isDeably && (
+                      <div 
+                        ref={deablyToDecraftConnectorRef}
+                        className="hidden lg:block absolute top-[135px] -right-[3.5rem] w-[3.5rem] pointer-events-none z-0"
+                        style={{ height: `${deablyToDecraftHeight}px` }}
+                      >
+                        {(() => {
+                          const r = Math.min(16, Math.max(4, Math.floor(deablyToDecraftHeight / 2) - 1));
+                          const d = `M 0 0 L ${28 - r} 0 A ${r} ${r} 0 0 1 28 ${r} L 28 ${deablyToDecraftHeight - r} A ${r} ${r} 0 0 0 ${28 + r} ${deablyToDecraftHeight} L 56 ${deablyToDecraftHeight}`;
+                          return (
+                            <CurvedTimelinePath
+                              width={56}
+                              height={deablyToDecraftHeight}
+                              d={d}
+                            />
+                          );
+                        })()}
+
+                        {/* Circle Node at Deably card border */}
+                        <div className="absolute left-0 top-0 -translate-y-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
+                      </div>
+                    )}
+
+                    {/* Curved Connector: Freelance -> Deably */}
+                    {isFreelance && (
+                      <div 
+                        ref={freelanceBottomConnectorRef}
+                        className="hidden lg:block absolute bottom-[28px] -right-[1.75rem] w-[1.75rem] h-[2px] z-0 pointer-events-none"
+                      >
+                        <div 
+                          className="absolute top-0 left-0 pointer-events-none"
+                          style={{ width: '28px', height: `${freelanceToDeablyHeight}px` }}
+                        >
+                          {(() => {
+                            const r = Math.min(16, Math.max(4, Math.floor(freelanceToDeablyHeight / 2) - 1));
+                            const d = `M 0 0 L ${28 - r} 0 A ${r} ${r} 0 0 1 28 ${r} L 28 ${freelanceToDeablyHeight - r} A ${r} ${r} 0 0 1 ${28 - r} ${freelanceToDeablyHeight} L 0 ${freelanceToDeablyHeight}`;
+                            return (
+                              <CurvedTimelinePath
+                                width={28}
+                                height={freelanceToDeablyHeight}
+                                d={d}
+                              />
+                            );
+                          })()}
                         </div>
 
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
-                              {item.company}
-                            </h5>
-                            <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
-                              {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
-                            </p>
-                          </div>
-                          <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
-                            {item.period}
-                          </span>
-                        </div>
-                        {item.description && (
-                          <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
-                            {renderBold(item.description)}
-                          </div>
-                        )}
-                        {item.proofLine && (
-                          <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
-                            {item.proofLine}
-                          </div>
-                        )}
+                        {/* Circle Node at Freelance bottom border */}
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
                       </div>
-                    ))}
+                    )}
+
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h5 className="text-base sm:text-lg font-bold font-space text-white tracking-tight group-hover:text-[#bb031c] transition-colors">
+                          {item.company}
+                        </h5>
+                        <p className="text-xs sm:text-sm text-neutral-300 font-medium mt-0.5">
+                          {item.role} {item.location && <span className="text-neutral-500 font-normal">· {item.location}</span>}
+                        </p>
+                      </div>
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 shrink-0">
+                        {item.period}
+                      </span>
+                    </div>
+                    {item.description && (
+                      <div className="mt-3 text-xs sm:text-[13px] text-neutral-400 leading-relaxed border-t border-white/[0.05] pt-3 whitespace-pre-wrap">
+                        {renderBold(item.description)}
+                      </div>
+                    )}
+                    {item.proofLine && (
+                      <div className="mt-2.5 text-[11px] sm:text-xs text-[#bb031c] font-mono tracking-wide font-medium">
+                        {item.proofLine}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -463,8 +628,8 @@ export default function AboutSection() {
 
           {/* My work history Sub-section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-2"
@@ -485,18 +650,26 @@ export default function AboutSection() {
                   key={idx}
                   className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
                 >
-                  {/* Horizontal Connector (Pathao: Right to Left) */}
-                  <div className="hidden lg:block absolute top-[44px] -left-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
-                    <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
-                    <motion.div 
-                      className="absolute top-0 right-0 h-[2px] overflow-hidden"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
-                      viewport={{ once: true, margin: "-20%" }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <div className="absolute top-0 right-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
-                    </motion.div>
+                  {/* Curved Connector: Pathao -> Freelance */}
+                  <div 
+                    ref={pathaoConnectorRef}
+                    className="hidden lg:block absolute top-[44px] -left-[3.5rem] w-[3.5rem] pointer-events-none z-0"
+                    style={{ height: `${pathaoToFreelanceHeight}px` }}
+                  >
+                    {(() => {
+                      const r = Math.min(16, Math.max(4, Math.floor(pathaoToFreelanceHeight / 2) - 1));
+                      const d = `M 56 0 L ${28 + r} 0 A ${r} ${r} 0 0 0 28 ${r} L 28 ${pathaoToFreelanceHeight - r} A ${r} ${r} 0 0 1 ${28 - r} ${pathaoToFreelanceHeight} L 0 ${pathaoToFreelanceHeight}`;
+                      return (
+                        <CurvedTimelinePath
+                          width={56}
+                          height={pathaoToFreelanceHeight}
+                          d={d}
+                        />
+                      );
+                    })()}
+
+                    {/* Circle Node at Pathao card border */}
+                    <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
                   </div>
 
                   <div className="flex items-start justify-between gap-4">
@@ -531,18 +704,41 @@ export default function AboutSection() {
                         key={idx + 3}
                         className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group relative"
                       >
-                        {/* Horizontal Connector (Decraft: Left to Right) */}
-                        <div className="hidden lg:block absolute top-[44px] -left-[1.75rem] w-[1.75rem] h-[2px] z-[-1]">
-                          <div className="w-full h-full border-b-[2px] border-dashed border-neutral-700" />
-                          <motion.div 
-                            className="absolute top-0 left-0 h-[2px] overflow-hidden"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "100%" }}
-                            viewport={{ once: true, margin: "-20%" }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <div className="absolute top-0 left-0 w-[1.75rem] h-full border-b-[2px] border-dashed border-[#bb031c]" />
-                          </motion.div>
+                        {/* Top Anchor for Team Decraft (Receives line from Deably) */}
+                        <div 
+                          ref={decraftConnectorRef}
+                          className="hidden lg:block absolute top-[44px] -left-[1.75rem] w-[1.75rem] h-[2px] z-0 pointer-events-none"
+                        >
+                          {/* Circle Node at Team Decraft card border */}
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
+                        </div>
+
+                        {/* Curved Connector: Team Decraft -> Team Alfaaz */}
+                        <div 
+                          ref={decraftToAlfaazConnectorRef}
+                          className="hidden lg:block absolute top-[85px] -left-[1.75rem] w-[1.75rem] pointer-events-none z-0"
+                          style={{ height: `${decraftToAlfaazHeight}px` }}
+                        >
+                          {(() => {
+                            const r = Math.min(16, Math.max(4, Math.floor(decraftToAlfaazHeight / 2) - 1));
+                            const d = `M 28 0 L ${r} 0 A ${r} ${r} 0 0 0 0 ${r} L 0 ${decraftToAlfaazHeight}`;
+                            return (
+                              <CurvedTimelinePath
+                                width={28}
+                                height={decraftToAlfaazHeight}
+                                d={d}
+                              />
+                            );
+                          })()}
+
+                          {/* Circle Node at Team Decraft card border */}
+                          <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" />
+
+                          {/* Circle Node at Team Alfaaz top border */}
+                          <div 
+                            className="absolute left-0 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#bb031c] border-2 border-[#141316] ring-1 ring-[#bb031c]/50 shadow-[0_0_8px_rgba(187,3,28,0.8)] z-20" 
+                            style={{ top: `${decraftToAlfaazHeight}px` }} 
+                          />
                         </div>
 
                         <div className="flex items-start justify-between gap-4">
@@ -578,8 +774,8 @@ export default function AboutSection() {
       {/* Full Width Role (Team Alfaaz) */}
       {workHistory.length > 4 && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-6 sm:mt-10 lg:mt-12"
@@ -587,6 +783,7 @@ export default function AboutSection() {
           {workHistory.slice(4).map((item, idx) => (
             <div
               key={idx + 4}
+              ref={teamAlfaazCardRef}
               className="rounded-2xl bg-[#141316] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-white/20 transition-all group"
             >
               <div className="flex items-start justify-between gap-4">

@@ -71,12 +71,12 @@ interface CardConfig {
 
 const defaultCards: CardConfig[] = [
   {
-    id: 'strategy',
-    title: 'Design Strategy',
-    category: '01 / Strategy',
+    id: 'creative-strategy',
+    title: 'Creative Direction',
+    category: '01 / Creative Strategy',
     description:
-      'Understanding the problem clearly before designing the solution. Every decision is based on purpose, not guesswork.',
-    tags: ['User Research', 'Information Architecture', 'User Flows', 'Experience Mapping'],
+      'Brand, product, audience, and market understanding that gives every visual decision a clear purpose.',
+    tags: ['Creative Direction', 'Visual Research', 'Market Research', 'Concept Development'],
     theme: 'dark',
     iconType: 'strategy',
   },
@@ -85,38 +85,38 @@ const defaultCards: CardConfig[] = [
     title: 'Brand Identity',
     category: '02 / Brand Identity',
     description:
-      'Creating strong visual systems that communicate clearly and stay consistent across every touchpoint.',
-    tags: ['Logo Design', 'Visual Identity Systems', 'Typography', 'Brand Guidelines'],
+      'Distinctive visual systems that build consistency across packaging, digital platforms, and marketing touchpoints.',
+    tags: ['Logo Design', 'Visual Identity', 'Typography', 'Color Systems', 'Brand Guidelines'],
     theme: 'accent',
-    iconType: 'geometric',
-  },
-  {
-    id: 'ui-ux',
-    title: 'UI/UX Design',
-    category: '03 / Product Design',
-    description:
-      'Designing interfaces that are simple, intuitive, and built around real user behavior.',
-    tags: ['Wireframing', 'Prototyping', 'Usability Thinking', 'Interaction Design'],
-    theme: 'dark',
     iconType: 'geometric',
   },
   {
     id: 'packaging',
     title: 'Packaging Design',
-    category: '04 / Packaging Design',
+    category: '03 / Packaging Design',
     description:
-      'Designing packaging that stands out on shelf and communicates product value instantly.',
-    tags: ['Packaging Systems', 'Label Design', 'Visual Hierarchy', 'Print Production'],
+      'Strategic, production-aware packaging designed to communicate product value and compete in real-world markets.',
+    tags: ['Label Design', 'Beverage Packaging', 'Supplement Packaging', 'Boxes & Pouches', 'Print Production'],
+    theme: 'dark',
+    iconType: 'geometric',
+  },
+  {
+    id: 'product-visualization',
+    title: 'Product Visualization',
+    category: '04 / Product Visualization',
+    description:
+      'High-quality 3D product visuals that bring packaging concepts to life for presentations, marketing, and commercial use.',
+    tags: ['3D Mockups', 'Product Rendering', 'Commercial Visuals', 'Product Presentation', 'AI Visualization'],
     theme: 'accent',
     iconType: 'geometric',
   },
   {
-    id: 'digital-design',
-    title: 'Digital Design',
-    category: '05 / Digital Media',
+    id: 'digital-motion',
+    title: 'Digital & Motion',
+    category: '05 / Digital & Motion',
     description:
-      'Creating visuals that grab attention and communicate clearly across digital platforms.',
-    tags: ['Social Media Creatives', 'Ad Creatives', 'Content Design', 'Campaign Visuals'],
+      'Visual content designed for digital campaigns, social media, video, and modern brand communication.',
+    tags: ['Social Media', 'Video Graphics', 'Thumbnail Design', 'Motion Assets', 'Video Editing'],
     theme: 'dark',
     iconType: 'geometric',
   },
@@ -247,7 +247,7 @@ function StackedServiceCard({ card, index, scrollYProgress }: StackedServiceCard
         {card.tags.map((tag) => (
           <span
             key={tag}
-            className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
+            className={`rounded-full px-3 sm:px-3.5 py-1 sm:py-1.5 text-[12px] sm:text-[12.5px] font-medium transition-colors ${
               isAccent
                 ? 'border border-white/40 bg-[#9a0215] text-white hover:border-white/60 hover:bg-[#7a0211]'
                 : 'border border-white/10 bg-white/5 text-neutral-300 hover:border-white/25 hover:bg-white/10 hover:text-white'
@@ -301,7 +301,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Sticky heading & tools (scaled by 20%) */}
-          <div className="lg:col-span-5 self-start">
+          <div className="lg:col-span-6 self-start">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -320,9 +320,11 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-4 sm:mt-6 text-[1rem] sm:text-[1.06rem] lg:text-[1.1rem] leading-[1.6] text-neutral-400 max-w-[490px]"
+              className="mt-4 sm:mt-6 text-[0.88rem] sm:text-[0.92rem] lg:text-[0.95rem] leading-[1.65] text-neutral-400 max-w-xl"
             >
-              From discovery and brand architecture to intuitive user interfaces and striking visual assets, I craft comprehensive systems tailored for growth.
+              From brand direction and visual identity to packaging systems, <br className="hidden sm:inline" />
+              product visualization, and digital content, I create <br className="hidden sm:inline" />
+              cohesive visual solutions built for real-world brands.
             </motion.p>
 
             <motion.div
@@ -369,7 +371,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Column: Multi-card stacked deck container (chained aspect-ratio scale) */}
-          <div className="lg:col-span-7 relative w-full max-w-[490px] h-[352px] sm:h-[370px] aspect-[490/370] lg:ml-auto">
+          <div className="lg:col-span-6 relative w-full max-w-[490px] h-[352px] sm:h-[370px] aspect-[490/370] lg:ml-auto">
             {cards.map((card, index) => (
               <StackedServiceCard
                 key={card.id}

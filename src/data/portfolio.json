@@ -123,34 +123,63 @@
 
   "services": [
     {
-      "id": "strategy",
-      "title": "Design Strategy",
-      "description": "Understanding the problem clearly before designing the solution. Every decision is based on purpose, not guesswork.",
-      "tags": ["User Research", "Information Architecture", "User Flows", "Experience Mapping"]
+      "id": "creative-strategy",
+      "title": "Creative Direction",
+      "description": "Brand, product, audience, and market understanding that gives every visual decision a clear purpose.",
+      "tags": [
+        "Creative Direction",
+        "Visual Research",
+        "Market Research",
+        "Concept Development"
+      ]
     },
     {
       "id": "brand-identity",
       "title": "Brand Identity",
-      "description": "Creating strong visual systems that communicate clearly and stay consistent across every touchpoint.",
-      "tags": ["Logo Design", "Visual Identity Systems", "Typography", "Brand Guidelines"]
-    },
-    {
-      "id": "ui-ux",
-      "title": "UI/UX Design",
-      "description": "Designing interfaces that are simple, intuitive, and built around real user behavior.",
-      "tags": ["Wireframing", "Prototyping", "Usability Thinking", "Interaction Design"]
+      "description": "Distinctive visual systems that build consistency across packaging, digital platforms, and marketing touchpoints.",
+      "tags": [
+        "Logo Design",
+        "Visual Identity",
+        "Typography",
+        "Color Systems",
+        "Brand Guidelines"
+      ]
     },
     {
       "id": "packaging",
       "title": "Packaging Design",
-      "description": "Designing packaging that stands out on shelf and communicates product value instantly.",
-      "tags": ["Packaging Systems", "Label Design", "Visual Hierarchy", "Print Production"]
+      "description": "Strategic, production-aware packaging designed to communicate product value and compete in real-world markets.",
+      "tags": [
+        "Label Design",
+        "Beverage Packaging",
+        "Supplement Packaging",
+        "Boxes & Pouches",
+        "Print Production"
+      ]
     },
     {
-      "id": "digital-design",
-      "title": "Digital Design",
-      "description": "Creating visuals that grab attention and communicate clearly across digital platforms.",
-      "tags": ["Social Media Creatives", "Ad Creatives", "Content Design", "Campaign Visuals"]
+      "id": "product-visualization",
+      "title": "Product Visualization",
+      "description": "High-quality 3D product visuals that bring packaging concepts to life for presentations, marketing, and commercial use.",
+      "tags": [
+        "3D Mockups",
+        "Product Rendering",
+        "Commercial Visuals",
+        "Product Presentation",
+        "AI Visualization"
+      ]
+    },
+    {
+      "id": "digital-motion",
+      "title": "Digital & Motion",
+      "description": "Visual content designed for digital campaigns, social media, video, and modern brand communication.",
+      "tags": [
+        "Social Media",
+        "Video Graphics",
+        "Thumbnail Design",
+        "Motion Assets",
+        "Video Editing"
+      ]
     }
   ],
 

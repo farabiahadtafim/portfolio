@@ -53,7 +53,7 @@ export const DEFAULT_HOME_SETTINGS: HomeSettings = {
   hero_headline_bottom: 'CREATIVELY',
   hero_tagline: 'I help brands turn\nideas into structured,\nmeaningful experiences',
   hero_avatar_url: '/image/tafim-cartoon-head.webp',
-  hero_cta_text: 'Book a call with me',
+  hero_cta_text: 'Book a meet with me',
   client_count: portfolioJson.profile.clientCount || '99+ Happy clients',
   bio_title: portfolioJson.profile.bioTitle || 'Product Label & Packaging Designer | Visualizer',
   about_photo_url: portfolioJson.profile.aboutPhoto || '/Brand Identity & Packaging Designer Portfolio _ UI_UX Designer_files/pYrkmWKg9iMIMEQDan7ESNhHlA.webp',
@@ -182,6 +182,11 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
             parsed.carousel_images = DEFAULT_HOME_SETTINGS.carousel_images;
             localStorage.setItem('cms_cached_home_settings', JSON.stringify(parsed));
           }
+
+          if (!parsed.hero_cta_text || parsed.hero_cta_text === 'Book a call with me') {
+            parsed.hero_cta_text = 'Book a meet with me';
+            localStorage.setItem('cms_cached_home_settings', JSON.stringify(parsed));
+          }
           
           return parsed;
         } catch {}
@@ -204,7 +209,14 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== 'undefined') {
       const cached = localStorage.getItem('cms_cached_services');
       if (cached) {
-        try { return JSON.parse(cached); } catch {}
+        try {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length && (parsed[0]?.title === 'Design Strategy' || parsed[0]?.title === 'Creative Strategy')) {
+            localStorage.setItem('cms_cached_services', JSON.stringify(DEFAULT_SERVICES));
+            return DEFAULT_SERVICES;
+          }
+          return parsed;
+        } catch {}
       }
     }
     return DEFAULT_SERVICES;
