@@ -68,6 +68,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
                 transition={{ duration: 0.3 }}
                 className="space-y-3"
               >
+                <p className="text-white hidden">Debug: Found {filteredFaqs.length} FAQs for {activeTab}</p>
                 {filteredFaqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
@@ -75,8 +76,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
                 <motion.div
                   key={faq.number}
                   initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                     isOpen
