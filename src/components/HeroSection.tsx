@@ -23,13 +23,13 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="relative w-full h-[500px] sm:h-auto sm:min-h-screen flex flex-col items-center justify-between pt-[96px] pb-4 sm:pb-12 bg-[#141316] select-none overflow-hidden"
+      className="relative w-full h-auto sm:min-h-screen flex flex-col items-center justify-between pt-[70px] sm:pt-[96px] pb-4 sm:pb-12 bg-[#141316] select-none overflow-hidden"
     >
       {/* Subtle radial ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] sm:h-[650px] bg-[#bb031c]/10 blur-[160px] rounded-full pointer-events-none" />
 
       {/* Centerpiece Container: 1039px x 366px exactly as measured from Framer */}
-      <div className="site-container relative h-[366px] flex items-center justify-center my-auto">
+      <div className="site-container relative h-[180px] sm:h-[366px] flex items-center justify-center my-auto mt-4 sm:mt-auto">
         {/* Title Stack: THINK (white) & CREATIVELY (pink) */}
         <motion.div
           initial={{ opacity: 0, y: 28, scale: 0.96 }}
@@ -55,7 +55,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           strength={7}
           activeTransition="none"
           inactiveTransition="none"
-          className="absolute bottom-[20px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
+          className="absolute bottom-[-10px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
           style={{
             filter: 'drop-shadow(79px 30px 42px rgba(0,0,0,0.35))',
           }}
@@ -82,7 +82,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
       </div>
 
       {/* Lower Row: Tagline on Left, "Book a call with me" Button on Right (.framer-q4zb98) */}
-      <div className="site-container relative z-20 flex flex-row items-end justify-between pt-4 pb-2 gap-2 w-full px-4 sm:px-8">
+      <div className="site-container relative z-20 flex flex-row items-end justify-between pt-0 sm:pt-4 pb-0 sm:pb-2 gap-2 w-full px-4 sm:px-8 mt-6 sm:mt-0">
         {/* Left Tagline: 305px width, 3 lines, color #b8b8b8 */}
         <motion.div
           initial={{ opacity: 0, x: -42 }}

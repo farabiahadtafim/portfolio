@@ -154,7 +154,7 @@ export default function ProjectShowcaseSection() {
   return (
     <section className="relative w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[150px] pt-[150px]">
       {/* Title Header */}
-      <div className="site-container relative z-10 pointer-events-none mb-6 text-center pt-8 sm:pt-14 mt-[200px]">
+      <div className="site-container relative z-10 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
