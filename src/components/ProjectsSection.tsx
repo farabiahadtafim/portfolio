@@ -86,20 +86,20 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full py-24 overflow-hidden"
+      className="relative w-full py-8 sm:py-24 overflow-hidden"
     >
 
       {/* Full-width image placeholders marquee carousel */}
-      <div className="relative mb-20 w-full overflow-hidden">
+      <div className="relative mb-8 sm:mb-20 w-full overflow-hidden">
         <div 
-          className="projects-carousel-track projects-carousel-left flex w-max gap-5 pb-5"
+          className="projects-carousel-track projects-carousel-left flex w-max gap-2 sm:gap-5 pb-2 sm:pb-5"
           style={{ animationDuration: `${topDuration}s` }}
         >
           {topBlocks.map((item, index) => renderCarouselBlock(item, `top-${index}`))}
         </div>
 
         <div 
-          className="projects-carousel-track projects-carousel-right flex w-max gap-5"
+          className="projects-carousel-track projects-carousel-right flex w-max gap-2 sm:gap-5"
           style={{ animationDuration: `${bottomDuration}s` }}
         >
           {bottomBlocks.map((item, index) => renderCarouselBlock(item, `bottom-${index}`))}

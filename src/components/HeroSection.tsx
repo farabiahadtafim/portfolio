@@ -23,7 +23,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="relative w-full h-auto sm:min-h-screen flex flex-col items-center justify-between pt-[70px] sm:pt-[96px] pb-4 sm:pb-12 bg-[#141316] select-none overflow-hidden"
+      className="relative w-full h-auto sm:min-h-screen flex flex-col items-center justify-between pt-[110px] sm:pt-[96px] pb-4 sm:pb-12 bg-[#141316] select-none overflow-hidden"
     >
       {/* Subtle radial ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] sm:h-[650px] bg-[#bb031c]/10 blur-[160px] rounded-full pointer-events-none" />
