@@ -11,7 +11,12 @@ interface FaqSectionProps {
 
 export default function FaqSection({ onOpenContact }: FaqSectionProps) {
   const { faqs } = usePortfolio();
-  const categories = ['Services & Capabilities', 'Process & Collaboration', 'Deliverables & Files', 'Pricing & Timeline'];
+  const categories = [
+    'Process & Collaboration',
+    'Services & Capabilities',
+    'Pricing & Timeline',
+    'Deliverables & Files'
+  ];
   const [activeTab, setActiveTab] = useState(categories[0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
 
