@@ -207,3 +207,20 @@
   50% { transform: translateY(-30px) scale(1.1, 1.2); }
   100% { transform: translateY(-30px) scale(1, 1); }
 }
+
+@media (max-width: 768px) {
+  #deadline {
+    max-width: 240px; /* make line element even smaller */
+  }
+  
+  .deadline-days {
+    font-size: 18px; /* make text bigger */
+    width: 160px;
+    height: 25px;
+    margin-top: 15px;
+  }
+  
+  .deadline-days .inner {
+    width: 160px;
+  }
+}
