@@ -15,12 +15,65 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
   const [activeTab, setActiveTab] = useState(categories[0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
 
-  const filteredFaqs = faqs.filter(faq => faq.category === activeTab || faq.category === 'Other');
-
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
     setOpenIndex(0);
   };
+
+  const getCategoryForFaq = (question: string) => {
+    const tabsMap: Record<string, string[]> = {
+      'Services & Capabilities': [
+        'What packaging formats do you design?',
+        'Do you design the whole packaging or only the front label?',
+        'Can you create the packaging concept from scratch?',
+        'What if I already have a logo and brand identity?',
+        "What if I don't have a brand identity yet?",
+        'Do you have experience with international packaging markets?',
+        'Do you have experience with supplement and nutrition packaging?',
+        'Can you design FDA-compliant packaging?',
+        'Can you design multiple flavors/SKUs under the same packaging system?',
+        'Can you redesign an existing package instead of starting from scratch?',
+        'Can you create packaging for Amazon/FBA products?'
+      ],
+      'Process & Collaboration': [
+        'How do we get started?',
+        'What information do you need before starting a packaging project?',
+        'Can you create the packaging dieline?',
+        'Can you work with an existing printer/manufacturer dieline?',
+        'Can you help with the packaging copy and content?',
+        'Can you work directly with my printer or manufacturer?',
+        'Can you make revisions after I see the first concept?',
+        "What happens if I don't have the physical product yet?",
+        'Do you provide printing services?',
+        'Can you help choose the right packaging material or printing finish?',
+        'What if my printer rejects the artwork?',
+        'Can you work with international clients remotely?',
+        'How do you handle confidential product launches or unreleased brands?'
+      ],
+      'Deliverables & Files': [
+        'Can you make the packaging print-ready?',
+        'What files will I receive at the end?',
+        'Will I receive the editable/source files?',
+        'Do you provide 3D packaging mockups?',
+        'Can you create realistic product images before the product is manufactured?'
+      ],
+      'Pricing & Timeline': [
+        'How many packaging concepts will I receive?',
+        'How long does a packaging project take?',
+        'What do you need from me to give an accurate quote?'
+      ]
+    };
+
+    const qLower = question.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+    for (const [cat, qs] of Object.entries(tabsMap)) {
+      if (qs.some(q => q.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === qLower)) {
+        return cat;
+      }
+    }
+    return 'Services & Capabilities'; // Fallback
+  };
+
+  const filteredFaqs = faqs.filter(faq => getCategoryForFaq(faq.question) === activeTab);
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -59,17 +112,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
           </div>
 
           <div className="space-y-3">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-3"
-              >
-                <p className="text-white hidden">Debug: Found {filteredFaqs.length} FAQs for {activeTab}</p>
-                {filteredFaqs.map((faq, index) => {
+            {filteredFaqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
@@ -119,9 +162,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
                   </AnimatePresence>
                 </motion.div>
               );
-                })}
-              </motion.div>
-            </AnimatePresence>
+            })}
           </div>
         </div>
 
