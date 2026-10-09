@@ -94,13 +94,13 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             FAQs
           </motion.h2>
 
-          {/* Tab Menu */}
-          <div className="flex flex-col items-start gap-3 mb-8">
+          {/* Tab Menu - 2x2 Grid Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
             {categories.map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabChange(tab)}
-                className={`snap-start whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`w-full whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-center sm:text-left ${
                   activeTab === tab
                     ? 'bg-[#bb031c] text-white shadow-[0_0_15px_rgba(187,3,28,0.4)]'
                     : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white border border-white/10'
