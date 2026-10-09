@@ -338,7 +338,7 @@ export default function ServicesSection() {
               </div>
 
               {/* Tools Badges Row (scaled by 20%) */}
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 overflow-visible">
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 overflow-visible">
                 {toolsList.map((tool, idx) => (
                   <motion.div
                     key={tool.name}
@@ -347,7 +347,7 @@ export default function ServicesSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: idx * 0.04, ease: 'easeOut' }}
                     whileHover={{ scale: 1.08, y: -2 }}
-                    className="group relative flex h-[48px] w-[48px] sm:h-[53px] sm:w-[53px] shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[#161616] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 hover:border-white/25 hover:bg-[#1f1f1f]"
+                    className="group relative flex h-[40px] w-[40px] sm:h-[53px] sm:w-[53px] shrink-0 items-center justify-center rounded-xl sm:rounded-2xl border border-white/10 bg-[#161616] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-200 hover:border-white/25 hover:bg-[#1f1f1f]"
                   >
                     {/* Tooltip */}
                     <span className="pointer-events-none absolute -top-10 left-1/2 z-30 -translate-x-1/2 rounded-md bg-[#bb031c] px-3 py-1.5 text-[13px] font-medium text-white opacity-0 shadow-lg transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-1 whitespace-nowrap">
@@ -358,7 +358,7 @@ export default function ServicesSection() {
                       <img
                         src={getAssetUrl(tool.src)}
                         alt={tool.name}
-                        className="h-[26px] w-[26px] sm:h-[29px] sm:w-[29px] object-contain"
+                        className="h-[22px] w-[22px] sm:h-[29px] sm:w-[29px] object-contain"
                       />
                     ) : tool.icon ? (
                       tool.icon()
