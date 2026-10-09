@@ -52,7 +52,7 @@ export default function TestimonialsSection() {
                 {'★★★★★'}
               </div>
               <span className="text-[11px] font-semibold text-neutral-300 mt-0.5 whitespace-nowrap">
-                99+ Happy clients
+                450+ Happy clients
               </span>
             </div>
           </motion.div>

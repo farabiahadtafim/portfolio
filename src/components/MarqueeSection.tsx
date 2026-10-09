@@ -29,10 +29,10 @@ const sortedLogos = Object.entries(logoModules)
 
 export default function MarqueeSection() {
   return (
-    <div className="relative w-full h-[76px] border-y border-[#2b2b2b] bg-[#141316] flex items-center overflow-hidden select-none">
-      <div className="site-container flex h-full min-w-0 items-center">
-        {/* Pinned Left: 5 Overlapping Client Avatars + 5 Stars + 99+ Happy clients */}
-        <div className="flex-shrink-0 z-20 h-full bg-[#141316] pr-6 sm:pr-10 flex items-center gap-4">
+    <div className="relative w-full border-y border-[#2b2b2b] bg-[#141316] overflow-hidden select-none">
+      <div className="site-container flex flex-col sm:flex-row h-auto sm:h-[76px] min-w-0 items-center py-4 sm:py-0 gap-4 sm:gap-0">
+        {/* Pinned Left (Center on Mobile): 5 Overlapping Client Avatars + 5 Stars + 450+ Happy clients */}
+        <div className="flex-shrink-0 z-20 h-auto sm:h-full bg-[#141316] pr-0 sm:pr-10 flex items-center justify-center w-full sm:w-auto gap-4">
           {/* 5 Stacked Avatars with -8px overlap */}
           <div className="flex -space-x-2 overflow-hidden">
             {clientProofAvatars.map((avatar, idx) => (
@@ -45,7 +45,7 @@ export default function MarqueeSection() {
             ))}
           </div>
 
-          {/* 5 Red/Pink Stars + 99+ Happy clients */}
+          {/* 5 Red/Pink Stars + 450+ Happy clients */}
           <div className="flex flex-col justify-center">
             <div className="flex text-[#bb031c] gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -53,13 +53,13 @@ export default function MarqueeSection() {
               ))}
             </div>
             <span className="text-[13px] sm:text-[14px] font-semibold text-white tracking-tight whitespace-nowrap mt-0.5 font-space">
-              99+ Happy clients
+              450+ Happy clients
             </span>
           </div>
         </div>
 
-        {/* Right Side: Continuous Sliding Logo Marquee */}
-        <div className="relative flex-1 overflow-hidden h-full flex items-center">
+        {/* Right Side (Bottom on Mobile): Continuous Sliding Logo Marquee */}
+        <div className="relative flex-1 overflow-hidden w-full h-[40px] sm:h-full flex items-center mt-2 sm:mt-0">
           {/* Subtle edge fades */}
           <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#141316] to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#141316] to-transparent z-10 pointer-events-none" />
