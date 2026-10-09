@@ -46,7 +46,8 @@ export default function ProjectShowcaseSection() {
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
     const totalImages = carouselImages.length;
-    const radius = Math.round((totalImages * 314) / (2 * Math.PI));
+    const cardWidth = window.innerWidth < 640 ? 160 : 314;
+    const radius = Math.round((totalImages * cardWidth) / (2 * Math.PI));
     const anglePerImage = 360 / totalImages;
 
     const getCardBgImage = (i: number) => {

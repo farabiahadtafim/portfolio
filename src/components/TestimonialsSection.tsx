@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
           {marqueeItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="w-[340px] sm:w-[380px] rounded-[28px] bg-[#141316] border border-white/[0.08] p-6 sm:p-7 flex flex-col justify-between flex-shrink-0 hover:border-white/20 transition-all duration-300 group shadow-xl"
+              className="w-[280px] sm:w-[380px] rounded-[28px] bg-[#141316] border border-white/[0.08] p-5 sm:p-7 flex flex-col justify-between flex-shrink-0 hover:border-white/20 transition-all duration-300 group shadow-xl"
             >
               <div>
                 {/* Double Quote Icon */}

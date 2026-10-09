@@ -31,6 +31,17 @@
   transform: translateX(-50%);
 }
 
+@media (max-width: 640px) {
+  .showcase-ring-wrapper {
+    height: 450px;
+  }
+  .showcase-ring-wrapper .ring-container {
+    width: 160px;
+    height: 220px;
+    top: 70px;
+  }
+}
+
 .showcase-ring-wrapper #ring,
 .showcase-ring-wrapper .img {
   top: 0;
