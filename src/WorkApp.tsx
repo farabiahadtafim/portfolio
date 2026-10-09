@@ -18,7 +18,7 @@ export default function WorkApp() {
 
   return (
     <PortfolioProvider>
-      <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white">
+      <div className="min-h-screen bg-[#141316] text-[#F3F4F6] relative selection:bg-[#bb031c] selection:text-white overflow-x-hidden">
         {/* Floating Glassmorphism Pill Navbar */}
         <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
@@ -26,7 +26,7 @@ export default function WorkApp() {
         <WorkHeroSection />
 
         {/* Main Content */}
-        <main className="relative z-10 w-full pt-[100vh] pointer-events-none">
+        <main className="relative z-10 w-full pt-[90vh] md:pt-[100vh] pointer-events-none">
           <div className="pointer-events-auto pb-24">
             <ProjectShowcaseSection />
 

@@ -151,7 +151,7 @@ export default function WorkHeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.95, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-[180px] sm:mt-[210px] md:mt-[240px] w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] md:w-[850px] md:h-[850px] lg:w-[1050px] lg:h-[1050px] rounded-full"
+          className="mt-[215px] sm:mt-[210px] md:mt-[240px] w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] md:w-[850px] md:h-[850px] lg:w-[1050px] lg:h-[1050px] rounded-full"
           style={{
             background:
               'radial-gradient(circle at center, #ff0000 0%, rgba(255, 0, 0, 0.6) 38%, rgba(20, 19, 22, 0) 72%)',
@@ -172,7 +172,7 @@ export default function WorkHeroSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-[85px] sm:mt-[95px] md:mt-[105px] w-[94%] sm:w-[90%] md:w-[86%] lg:w-[82%] max-w-[1450px] flex justify-center"
+          className="mt-[100px] sm:mt-[95px] md:mt-[105px] w-[94%] sm:w-[90%] md:w-[86%] lg:w-[82%] max-w-[1450px] flex justify-center"
         >
           <div className="relative w-full flex justify-center">
             <img
@@ -181,80 +181,9 @@ export default function WorkHeroSection() {
               className="w-full h-auto object-contain select-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
               draggable={false}
             />
-            {/* Progressive Blur on Bottom 75% of Typography */}
+            {/* Progressive Blur on Bottom 75% of Typography - Disabled per user request */}
             <div className="absolute bottom-0 left-0 w-full h-[75%] pointer-events-none">
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(0.5px)',
-                  WebkitBackdropFilter: 'blur(0.5px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(1px)',
-                  WebkitBackdropFilter: 'blur(1px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(2px)',
-                  WebkitBackdropFilter: 'blur(2px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(3px)',
-                  WebkitBackdropFilter: 'blur(3px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(5px)',
-                  WebkitBackdropFilter: 'blur(5px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%)',
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 87.5%, rgba(0,0,0,1) 100%)',
-                }}
-              />
+              {/* Blur divs removed to keep text sharp */}
             </div>
           </div>
         </motion.div>
@@ -300,12 +229,12 @@ export default function WorkHeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-30 w-full flex justify-center pointer-events-none pt-[70px] sm:pt-[80px]"
+        className="relative z-30 w-full flex justify-center pointer-events-none pt-[105px] sm:pt-[80px]"
       >
         <img
           src={mainImageUrl}
           alt="Farabi Ahad Tafim Portfolio"
-          className="w-full h-auto block object-top select-none pointer-events-none"
+          className="w-[140%] sm:w-full max-w-none sm:max-w-full flex-shrink-0 h-auto block object-top select-none pointer-events-none"
           style={{
             maskImage: 'linear-gradient(to bottom, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to bottom, black 65%, rgba(0, 0, 0, 0.8) 78%, rgba(0, 0, 0, 0.3) 90%, transparent 100%)',

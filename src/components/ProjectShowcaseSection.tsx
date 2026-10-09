@@ -46,7 +46,7 @@ export default function ProjectShowcaseSection() {
     const imgElements = wrapperRef.current.querySelectorAll('.img');
 
     const totalImages = carouselImages.length;
-    const cardWidth = window.innerWidth < 640 ? 160 : 314;
+    const cardWidth = 314; // Use desktop width always, then scale via CSS
     const radius = Math.round((totalImages * cardWidth) / (2 * Math.PI));
     const anglePerImage = 360 / totalImages;
 
@@ -152,14 +152,14 @@ export default function ProjectShowcaseSection() {
   }, [activeProjects, carouselImages]);
 
   return (
-    <section className="relative w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[150px] pt-[150px]">
+    <section className="relative z-30 w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[600px] sm:-mt-[150px] pt-[150px]">
       {/* Title Header */}
-      <div className="site-container relative z-10 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
+      <div className="site-container relative z-30 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/80 drop-shadow-md"
+          className="inline-block relative top-2 text-[10px] sm:text-sm font-semibold uppercase tracking-widest text-white/80 drop-shadow-md"
         >
           Selected Works
         </motion.span>
@@ -168,14 +168,14 @@ export default function ProjectShowcaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-space font-bold text-white tracking-tight mt-2 drop-shadow-lg"
+          className="text-3xl sm:text-5xl md:text-6xl font-space font-bold text-white tracking-tight mt-2 drop-shadow-lg"
         >
           Project Showcase
         </motion.h2>
       </div>
 
       {/* 3D Cylindrical Ring Gallery */}
-      <div ref={wrapperRef} className="showcase-ring-wrapper -mt-[150px]">
+      <div ref={wrapperRef} className="showcase-ring-wrapper -mt-4 sm:-mt-[150px]">
         <div className="container ring-container">
           <div id="ring" ref={ringRef}>
             {carouselImages.map((_, i) => (
@@ -187,14 +187,14 @@ export default function ProjectShowcaseSection() {
       </div>
 
       {/* Interactive Animated Folders directly below 3D Carousel */}
-      <div className="relative z-30 flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-0 pb-6 pointer-events-auto max-w-[1600px] mx-auto px-4">
+      <div className="relative z-30 grid grid-cols-2 sm:flex sm:flex-wrap place-items-center sm:items-center sm:justify-center gap-x-2 gap-y-4 sm:gap-8 md:gap-12 -mt-10 sm:mt-0 pb-6 pointer-events-auto max-w-[1600px] mx-auto px-2 sm:px-4">
         <Folder 
-          title="Supplements Labels Design" 
+          title="Supplement" 
           variant="mint" 
           onClick={() => document.getElementById('gallery-supplement')?.scrollIntoView({ behavior: 'smooth' })} 
         />
         <Folder 
-          title="Box Labels Design" 
+          title="Box" 
           variant="lavender" 
           onClick={() => document.getElementById('gallery-box')?.scrollIntoView({ behavior: 'smooth' })} 
           images={[
@@ -204,7 +204,7 @@ export default function ProjectShowcaseSection() {
           ]}
         />
         <Folder 
-          title="Can Labels Design" 
+          title="Can" 
           variant="peach" 
           onClick={() => document.getElementById('gallery-can')?.scrollIntoView({ behavior: 'smooth' })} 
           images={[
@@ -214,7 +214,7 @@ export default function ProjectShowcaseSection() {
           ]}
         />
         <Folder 
-          title="Pouch Label Design" 
+          title="Pouch" 
           variant="rose" 
           onClick={() => document.getElementById('gallery-pouch')?.scrollIntoView({ behavior: 'smooth' })} 
         />

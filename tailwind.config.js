@@ -7,6 +7,7 @@ export default {
         sans: ['Inter', 'sans-serif'],
         space: ['"Space Grotesk"', 'sans-serif'],
         handwriting: ['Caveat', 'cursive'],
+        bebas: ['"Bebas Neue"', 'sans-serif'],
         microphone: ['"Microphone Check Regular"', '"Microphone Check Regular Placeholder"', 'sans-serif'],
       },
       colors: {

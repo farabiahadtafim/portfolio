@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Folder.css';
 
 export type FolderVariant = 'mint' | 'lavender' | 'peach' | 'rose' | 'default';
@@ -50,7 +50,14 @@ export default function Folder({
     '/portfolio/image/projects/Supplement%20Label/Title/3.%20Supplement%20Label.webp'
   ]
 }: FolderProps) {
-  const handleClick = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleFolderClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (onClick) {
       onClick();
     } else {
@@ -64,7 +71,7 @@ export default function Folder({
   };
 
   return (
-    <div className={`folder-container ${className}`} data-variant={variant}>
+    <div className={`folder-container ${className} ${isOpen ? 'is-open' : ''}`} data-variant={variant}>
       {/* SVG Definitions for the Single Unified Tabbed Cutout & Specular Highlight */}
       <svg width="0" height="0" className="absolute pointer-events-none">
         <defs>
@@ -76,13 +83,13 @@ export default function Folder({
 
       <div
         className="folder-trigger"
-        onClick={handleClick}
+        onClick={handleFolderClick}
         role="button"
         tabIndex={0}
         aria-label="Open portfolio project folder"
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
-            handleClick();
+            handleFolderClick();
           }
         }}
       >
@@ -140,9 +147,9 @@ export default function Folder({
               {renderTopRightBadge(variant)}
             </div>
 
-            <div className="absolute bottom-5 left-6 flex flex-col text-left font-space z-40">
-              <span className="font-bold text-white text-[13px] tracking-wide">{title}</span>
-              <div className="flex items-center gap-1.5 mt-0.5">
+            <div className="absolute bottom-5 left-6 flex flex-col text-left z-40">
+              <span className="font-bebas font-bold uppercase text-white text-[32px] leading-[0.9] tracking-wide">{title}</span>
+              <div className="flex items-center gap-1.5 mt-1.5 font-space">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/80">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="10 8 14 12 10 16"></polyline>
@@ -152,7 +159,12 @@ export default function Folder({
             </div>
             
             {/* Pill Button */}
-            <div className="folder__pill absolute bottom-5 right-6 flex items-center justify-center w-8 h-8 rounded-full backdrop-blur-md border border-white/20 text-white shadow-inner pointer-events-auto z-40 transition-colors duration-300">
+            <div 
+              className="folder__pill absolute bottom-5 right-6 flex items-center justify-center w-8 h-8 rounded-full backdrop-blur-md border border-white/20 text-white shadow-inner pointer-events-auto z-40 transition-colors duration-300 cursor-pointer hover:bg-white/10"
+              onClick={handleButtonClick}
+              role="button"
+              tabIndex={0}
+            >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="13 17 18 12 13 7" />
                 <polyline points="6 17 11 12 6 7" />

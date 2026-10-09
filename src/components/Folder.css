@@ -7,6 +7,13 @@
   transform: scale(0.95);
 }
 
+@media (max-width: 640px) {
+  .folder-container {
+    transform: scale(0.45);
+    margin: -50px -65px;
+  }
+}
+
 .folder-trigger {
   position: relative;
   width: 275px;
@@ -26,7 +33,7 @@
   transform: translateZ(0);
 }
 
-.folder-trigger:hover .folder {
+.folder-container.is-open .folder {
   transform: translateY(-8px) translateZ(0);
 }
 
@@ -47,7 +54,7 @@
   transition: box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.folder-trigger:hover .folder__back {
+.folder-container.is-open .folder__back {
   box-shadow:
     0 24px 48px -8px rgba(251, 0, 0, 0.6),
     0 16px 30px -8px rgba(0, 0, 0, 0.75),
@@ -133,18 +140,18 @@
   z-index: 2;
 }
 
-/* Hover State (.folder-trigger:hover) */
-.folder-trigger:hover .paper--left {
+/* Hover State (.folder-container.is-open) */
+.folder-container.is-open .paper--left {
   transform: translate(-95%, -70px) rotate(-16deg);
 }
 
-.folder-trigger:hover .paper--center {
+.folder-container.is-open .paper--center {
   transform: translate(-50%, -90px) rotate(0deg);
   z-index: 4;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.85);
 }
 
-.folder-trigger:hover .paper--right {
+.folder-container.is-open .paper--right {
   transform: translate(-5%, -70px) rotate(16deg);
 }
 
@@ -179,7 +186,7 @@
   pointer-events: none;
 }
 
-.folder-trigger:hover .folder__front-single {
+.folder-container.is-open .folder__front-single {
   transform: rotateX(-12deg) translateZ(0);
 }
 /* =========================================
@@ -200,7 +207,7 @@
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
     inset 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
-.folder-container[data-variant="mint"] .folder-trigger:hover .folder__back {
+.folder-container[data-variant="mint"].is-open .folder__back {
   box-shadow: 
     0 24px 48px -8px rgba(43, 165, 147, 0.6), 
     0 16px 30px -8px rgba(0, 0, 0, 0.75), 
@@ -223,7 +230,7 @@
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
     inset 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
-.folder-container[data-variant="lavender"] .folder-trigger:hover .folder__back {
+.folder-container[data-variant="lavender"].is-open .folder__back {
   box-shadow: 
     0 24px 48px -8px rgba(124, 58, 237, 0.6), 
     0 16px 30px -8px rgba(0, 0, 0, 0.75), 
@@ -246,7 +253,7 @@
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
     inset 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
-.folder-container[data-variant="peach"] .folder-trigger:hover .folder__back {
+.folder-container[data-variant="peach"].is-open .folder__back {
   box-shadow: 
     0 24px 48px -8px rgba(234, 88, 12, 0.6), 
     0 16px 30px -8px rgba(0, 0, 0, 0.75), 
@@ -269,7 +276,7 @@
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
     inset 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
-.folder-container[data-variant="rose"] .folder-trigger:hover .folder__back {
+.folder-container[data-variant="rose"].is-open .folder__back {
   box-shadow: 
     0 24px 48px -8px rgba(219, 39, 119, 0.6), 
     0 16px 30px -8px rgba(0, 0, 0, 0.75), 

@@ -55,7 +55,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           strength={7}
           activeTransition="none"
           inactiveTransition="none"
-          className="absolute bottom-[-10px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
+          className="absolute bottom-[-35px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
           style={{
             filter: 'drop-shadow(79px 30px 42px rgba(0,0,0,0.35))',
           }}
@@ -68,14 +68,14 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
               y: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
               scale: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
             }}
-            className="w-full flex justify-center"
+            className="w-full flex justify-center relative"
           >
             <motion.img
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               src={getAssetUrl(avatarUrl)}
               alt="Character Avatar"
-              className="w-[105%] max-w-none h-auto object-contain select-none"
+              className="w-[105%] max-w-none h-auto object-contain select-none relative left-1/2 -translate-x-1/2"
             />
           </motion.div>
         </Magnet>

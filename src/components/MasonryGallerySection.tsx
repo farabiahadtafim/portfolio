@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import type { BoxProjectItem } from '../data/boxLabelProjects';
 
@@ -30,6 +30,7 @@ const RATIO_CYCLE: RatioConfig[] = [
 ];
 
 export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData, projects, imagePrefix = 'Portfolio' }: MasonryGallerySectionProps) {
+  const [visibleCount, setVisibleCount] = useState(30);
   // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1) or exact Box Project ratios
   const items = useMemo(() => {
     if (projects && projects.length > 0) {
@@ -67,14 +68,15 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
   const columnGroups = useMemo(() => {
     if (!projects || projects.length % 5 !== 0) return null;
     const colSize = projects.length / 5;
+    const visiblePerCol = Math.ceil(visibleCount / 5);
     return [
-      items.slice(0, colSize),               // Col 1
-      items.slice(colSize, colSize * 2),     // Col 2
-      items.slice(colSize * 2, colSize * 3), // Col 3
-      items.slice(colSize * 3, colSize * 4), // Col 4
-      items.slice(colSize * 4, projects.length), // Col 5
+      items.slice(0, colSize).slice(0, visiblePerCol),               // Col 1
+      items.slice(colSize, colSize * 2).slice(0, visiblePerCol),     // Col 2
+      items.slice(colSize * 2, colSize * 3).slice(0, visiblePerCol), // Col 3
+      items.slice(colSize * 3, colSize * 4).slice(0, visiblePerCol), // Col 4
+      items.slice(colSize * 4, projects.length).slice(0, visiblePerCol), // Col 5
     ];
-  }, [projects, items]);
+  }, [projects, items, visibleCount]);
 
   return (
     <section id={id} className="relative w-full py-16 px-4 sm:px-6 lg:px-8 z-20 scroll-mt-16 md:scroll-mt-20">
@@ -227,15 +229,13 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
             </div>
 
             {/* Mobile & Tablet: Responsive CSS masonry */}
-            <div className="columns-1 sm:columns-2 md:columns-3 lg:hidden gap-6">
-              {items.map((item) => (
+            <div className="columns-2 lg:hidden gap-3 sm:gap-4 md:gap-6">
+              {items.slice(0, visibleCount).map((item) => (
                 <div
                   key={item.id}
-                  className="break-inside-avoid mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
+                  className="break-inside-avoid mb-3 sm:mb-4 md:mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
                   style={{
                     aspectRatio: item.cssRatio,
-                    contentVisibility: 'auto',
-                    containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
                   }}
                 >
                   <img
@@ -260,15 +260,13 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
           </>
         ) : (
           /* Standard Pinterest-style CSS Columns Masonry */
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6">
-            {items.map((item) => (
+          <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 md:gap-6">
+            {items.slice(0, visibleCount).map((item) => (
               <div
                 key={item.id}
-                className="break-inside-avoid mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
+                className="break-inside-avoid mb-3 sm:mb-4 md:mb-6 relative group rounded-2xl overflow-hidden bg-[#1a191e]/90 border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#bb031c]/15"
                 style={{
                   aspectRatio: item.cssRatio,
-                  contentVisibility: 'auto',
-                  containIntrinsicSize: `300px ${Math.round(300 / (item.width / item.height))}px`,
                 }}
               >
                 <img
@@ -289,6 +287,18 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {visibleCount < items.length && (
+          <div className="mt-12 flex justify-center pb-8">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 30)}
+              className="px-8 py-3 rounded-full bg-white/5 text-white font-space text-sm md:text-base font-medium tracking-wide hover:bg-[#e60000] hover:text-white transition-colors duration-300 border border-white/10 hover:border-[#e60000]"
+            >
+              See More Projects
+            </button>
           </div>
         )}
       </div>
