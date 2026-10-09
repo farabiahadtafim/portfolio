@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Magnet from './Magnet';
 import { getAssetUrl } from '../utils/asset';
@@ -10,7 +10,17 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { homeSettings } = usePortfolioContent();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const headlineTop = homeSettings?.hero_headline_top || 'THINK';
   const headlineBottom = homeSettings?.hero_headline_bottom || 'CREATIVELY';
@@ -54,6 +64,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
             influenceRadius={520}
             smoothing={0.075}
             strength={7}
+            disabled={isMobile}
             activeTransition="none"
             inactiveTransition="none"
             className="w-full flex justify-center items-center"
