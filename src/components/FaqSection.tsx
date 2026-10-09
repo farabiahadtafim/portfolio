@@ -42,7 +42,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
           </motion.h2>
 
           {/* Tab Menu */}
-          <div className="flex overflow-x-auto hide-scrollbar gap-2 mb-8 pb-2 snap-x">
+          <div className="flex flex-col items-start gap-3 mb-8">
             {categories.map((tab) => (
               <button
                 key={tab}
