@@ -65,7 +65,12 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
       'Pricing & Timeline': [
         'How many packaging concepts will I receive?',
         'How long does a packaging project take?',
-        'What do you need from me to give an accurate quote?'
+        'What do you need from me to give an accurate quote?',
+        'Do you charge an hourly rate or a fixed project fee?',
+        'What is the typical investment for a packaging design project?',
+        'What is your standard payment structure?',
+        'Do you offer adjusted rates for multiple flavors or SKUs?',
+        'Are there any hidden costs I should know about?'
       ]
     };
 
