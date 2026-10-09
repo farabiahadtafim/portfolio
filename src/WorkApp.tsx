@@ -26,7 +26,7 @@ export default function WorkApp() {
         <WorkHeroSection />
 
         {/* Main Content */}
-        <main className="relative z-10 w-full pt-[90vh] md:pt-[100vh] pointer-events-none">
+        <main className="relative z-10 w-full pt-[100vh] pointer-events-none">
           <div className="pointer-events-auto pb-24">
             <ProjectShowcaseSection />
 
