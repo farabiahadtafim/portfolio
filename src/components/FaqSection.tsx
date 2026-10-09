@@ -139,7 +139,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
                   >
                     <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
                       <span className="text-xs sm:text-sm font-mono font-semibold text-neutral-400 flex-shrink-0">
-                        {faq.number}
+                        {String(index + 1).padStart(2, '0')}
                       </span>
                       <span className="text-sm sm:text-base font-bold text-white tracking-tight">
                         {faq.question}
