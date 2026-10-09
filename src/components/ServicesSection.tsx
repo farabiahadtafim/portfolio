@@ -294,10 +294,10 @@ export default function ServicesSection() {
   });
 
   return (
-    <section id="services" ref={containerRef} className="relative w-full text-white min-h-[290vh]">
+    <section id="services" ref={containerRef} className="relative w-full text-white min-h-[180vh] sm:min-h-[290vh]">
       {/* Sticky Viewport Container */}
       <div className="site-container sticky top-28 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Sticky heading & tools (scaled by 20%) */}
           <div className="lg:col-span-6 self-start">
@@ -319,7 +319,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-4 sm:mt-6 text-[0.88rem] sm:text-[0.92rem] lg:text-[0.95rem] leading-[1.65] text-neutral-400 max-w-xl"
+              className="mt-2 sm:mt-6 text-[0.88rem] sm:text-[0.92rem] lg:text-[0.95rem] leading-[1.65] text-neutral-400 max-w-xl"
             >
               From brand direction and visual identity to packaging systems, <br className="hidden sm:inline" />
               product visualization, and digital content, I create <br className="hidden sm:inline" />
@@ -331,9 +331,9 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-8 sm:mt-10"
+              className="mt-4 sm:mt-10"
             >
-              <div className="mb-5 text-[1.14rem] sm:text-[1.2rem] font-medium text-neutral-400">
+              <div className="mb-3 sm:mb-5 text-[1.14rem] sm:text-[1.2rem] font-medium text-neutral-400">
                 Tools that I use
               </div>
 
