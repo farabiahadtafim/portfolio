@@ -23,7 +23,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex flex-col items-center justify-between pt-[96px] pb-10 sm:pb-12 bg-[#141316] select-none overflow-hidden"
+      className="relative w-full h-[500px] sm:h-auto sm:min-h-screen flex flex-col items-center justify-between pt-[96px] pb-4 sm:pb-12 bg-[#141316] select-none overflow-hidden"
     >
       {/* Subtle radial ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[500px] sm:h-[650px] bg-[#bb031c]/10 blur-[160px] rounded-full pointer-events-none" />
@@ -82,15 +82,15 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
       </div>
 
       {/* Lower Row: Tagline on Left, "Book a call with me" Button on Right (.framer-q4zb98) */}
-      <div className="site-container relative z-20 flex flex-col sm:flex-row items-center sm:items-start justify-between pt-4 pb-2 gap-6">
+      <div className="site-container relative z-20 flex flex-row items-end justify-between pt-4 pb-2 gap-2 w-full px-4 sm:px-8">
         {/* Left Tagline: 305px width, 3 lines, color #b8b8b8 */}
         <motion.div
           initial={{ opacity: 0, x: -42 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative -top-6 w-full sm:w-[305px] text-center sm:text-left"
+          className="relative -top-2 sm:-top-6 w-[50%] sm:w-[305px] text-left"
         >
-          <p className="text-[18px] leading-[1.45] text-[#b8b8b8] font-normal font-space tracking-normal whitespace-pre-line">
+          <p className="text-[11px] sm:text-[18px] leading-[1.3] sm:leading-[1.45] text-[#b8b8b8] font-normal font-space tracking-normal whitespace-pre-line">
             {tagline}
           </p>
         </motion.div>
@@ -100,7 +100,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           initial={{ opacity: 0, x: 42 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 1.18, ease: [0.16, 1, 0.3, 1] }}
-          className="relative -top-6 flex-shrink-0"
+          className="relative -top-2 sm:-top-6 flex-shrink-0"
         >
           <motion.button
             type="button"
@@ -136,7 +136,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
               )}
             </AnimatePresence>
 
-            <span className="text-[15px] font-medium text-white tracking-tight whitespace-nowrap">
+            <span className="text-[12px] sm:text-[15px] font-medium text-white tracking-tight whitespace-nowrap">
               {ctaText}
             </span>
           </motion.button>
