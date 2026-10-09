@@ -48,37 +48,39 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
         </motion.div>
 
         {/* 3D Character Avatar: bottom: -145px, centered, with natural floating animation */}
-        <Magnet
-          maxOffset={86}
-          influenceRadius={520}
-          smoothing={0.075}
-          strength={7}
-          activeTransition="none"
-          inactiveTransition="none"
-          className="absolute bottom-[-35px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
-          style={{
-            filter: 'drop-shadow(79px 30px 42px rgba(0,0,0,0.35))',
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 70, scale: 0.86 }}
-            animate={{ opacity: 1, y: [70, -6, 0], scale: [0.86, 1.02, 1] }}
-            transition={{
-              opacity: { duration: 0.45, delay: 0.28 },
-              y: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
-              scale: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
+        <div className="absolute bottom-[-35px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center">
+          <Magnet
+            maxOffset={86}
+            influenceRadius={520}
+            smoothing={0.075}
+            strength={7}
+            activeTransition="none"
+            inactiveTransition="none"
+            className="w-full flex justify-center items-center"
+            style={{
+              filter: 'drop-shadow(79px 30px 42px rgba(0,0,0,0.35))',
             }}
-            className="w-full flex justify-center relative"
           >
-            <motion.img
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              src={getAssetUrl(avatarUrl)}
-              alt="Character Avatar"
-              className="w-[105%] max-w-none h-auto object-contain select-none relative left-1/2 -translate-x-1/2"
-            />
-          </motion.div>
-        </Magnet>
+            <motion.div
+              initial={{ opacity: 0, y: 70, scale: 0.86 }}
+              animate={{ opacity: 1, y: [70, -6, 0], scale: [0.86, 1.02, 1] }}
+              transition={{
+                opacity: { duration: 0.45, delay: 0.28 },
+                y: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
+                scale: { duration: 1.15, delay: 0.28, ease: [0.16, 1, 0.3, 1] },
+              }}
+              className="w-full flex justify-center relative"
+            >
+              <motion.img
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                src={getAssetUrl(avatarUrl)}
+                alt="Character Avatar"
+                className="w-[105%] max-w-none h-auto object-contain select-none relative left-1/2 -translate-x-1/2"
+              />
+            </motion.div>
+          </Magnet>
+        </div>
       </div>
 
       {/* Lower Row: Tagline on Left, "Book a call with me" Button on Right (.framer-q4zb98) */}
