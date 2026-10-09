@@ -83,6 +83,7 @@ export interface Testimonial {
 
 export interface FaqItem {
   number: string;
+  category?: string;
   question: string;
   answer: string;
 }

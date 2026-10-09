@@ -11,7 +11,16 @@ interface FaqSectionProps {
 
 export default function FaqSection({ onOpenContact }: FaqSectionProps) {
   const { faqs } = usePortfolio();
+  const categories = ['Services & Capabilities', 'Process & Collaboration', 'Deliverables & Files', 'Pricing & Timeline'];
+  const [activeTab, setActiveTab] = useState(categories[0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
+
+  const filteredFaqs = faqs.filter(faq => faq.category === activeTab || faq.category === 'Other');
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setOpenIndex(0);
+  };
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -32,8 +41,34 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             FAQs
           </motion.h2>
 
+          {/* Tab Menu */}
+          <div className="flex overflow-x-auto hide-scrollbar gap-2 mb-8 pb-2 snap-x">
+            {categories.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => handleTabChange(tab)}
+                className={`snap-start whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeTab === tab
+                    ? 'bg-[#bb031c] text-white shadow-[0_0_15px_rgba(187,3,28,0.4)]'
+                    : 'bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white border border-white/10'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
           <div className="space-y-3">
-            {faqs.map((faq, index) => {
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-3"
+              >
+                {filteredFaqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
@@ -84,7 +119,9 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
                   </AnimatePresence>
                 </motion.div>
               );
-            })}
+                })}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 

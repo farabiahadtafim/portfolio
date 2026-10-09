@@ -427,7 +427,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-6 mb-4 grid grid-cols-2 gap-x-4 gap-y-6 py-6 border-y border-white/[0.08]"
+            className="mt-6 mb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6 py-6 border-y border-white/[0.08]"
           >
             <div>
               <h4 className="text-2xl sm:text-3xl font-space font-bold text-[#bb031c]">

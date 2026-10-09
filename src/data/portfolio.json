@@ -321,162 +321,194 @@
     {
       "number": "01",
       "question": "How do we get started?",
-      "answer": "We start with a quick discussion about your product, brand, packaging requirements, target market, and project goals. Once I understand the scope, I recommend the right design approach, deliverables, timeline, and next steps."
+      "answer": "We start with a quick discussion about your product, brand, packaging requirements, target market, and project goals. Once I understand the scope, I recommend the right design approach, deliverables, timeline, and next steps.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "02",
       "question": "What information do you need before starting a packaging project?",
-      "answer": "Ideally, I need your brand assets, product information, packaging dimensions, required text/content, target market, printer specifications, and any existing dieline or structural template.\nIf some of these aren't ready yet, that's okay. I can help identify what is missing and guide you through the requirements."
+      "answer": "Ideally, I need your brand assets, product information, packaging dimensions, required text/content, target market, printer specifications, and any existing dieline or structural template.\nIf some of these aren't ready yet, that's okay. I can help identify what is missing and guide you through the requirements.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "03",
       "question": "Can you create the packaging dieline?",
-      "answer": "Yes. I can create or prepare packaging dielines based on your product dimensions, structural requirements, and printer specifications.\nIf your manufacturer already provides a dieline, I can also work directly on that template and ensure the artwork is properly aligned with the print areas, folds, cuts, bleeds, and safety zones.\nFor complex structural packaging, the final physical structure should always be confirmed with the manufacturer before production."
+      "answer": "Yes. I can create or prepare packaging dielines based on your product dimensions, structural requirements, and printer specifications.\nIf your manufacturer already provides a dieline, I can also work directly on that template and ensure the artwork is properly aligned with the print areas, folds, cuts, bleeds, and safety zones.\nFor complex structural packaging, the final physical structure should always be confirmed with the manufacturer before production.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "04",
       "question": "Can you work with an existing printer/manufacturer dieline?",
-      "answer": "Yes. If your printer or packaging manufacturer provides a dieline, you can send it to me and I can build the artwork directly on it.\nI can work with packaging specifications provided by manufacturers and prepare the design accordingly for production."
+      "answer": "Yes. If your printer or packaging manufacturer provides a dieline, you can send it to me and I can build the artwork directly on it.\nI can work with packaging specifications provided by manufacturers and prepare the design accordingly for production.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "05",
       "question": "What packaging formats do you design?",
-      "answer": "I work across a wide range of packaging formats, including:\nCans · Bottles · Boxes · Cartons · Pouches · Tubes · Jars · Supplement Containers · Stickers & Labels · Product Sleeves\nThe exact artwork setup depends on the packaging structure and manufacturer requirements."
+      "answer": "I work across a wide range of packaging formats, including:\nCans · Bottles · Boxes · Cartons · Pouches · Tubes · Jars · Supplement Containers · Stickers & Labels · Product Sleeves\nThe exact artwork setup depends on the packaging structure and manufacturer requirements.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "06",
       "question": "Do you design the whole packaging or only the front label?",
-      "answer": "I can handle both.\nDepending on the project, I can design a complete packaging system including front, back, sides, top/bottom panels, nutrition or information panels, ingredients, barcode areas, warnings, and other required content.\nFor simpler projects, I can also focus specifically on the primary label or front-facing artwork."
+      "answer": "I can handle both.\nDepending on the project, I can design a complete packaging system including front, back, sides, top/bottom panels, nutrition or information panels, ingredients, barcode areas, warnings, and other required content.\nFor simpler projects, I can also focus specifically on the primary label or front-facing artwork.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "07",
       "question": "Can you make the packaging print-ready?",
-      "answer": "Yes. I can prepare production-ready packaging artwork based on the printer's specifications.\nThis can include correct dimensions, bleed, trim/safe areas, color setup, linked assets, outlined fonts, image resolution, and other artwork requirements.\nFinal prepress requirements can vary between printers, so I recommend having the printer review/approve the final file before production."
+      "answer": "Yes. I can prepare production-ready packaging artwork based on the printer's specifications.\nThis can include correct dimensions, bleed, trim/safe areas, color setup, linked assets, outlined fonts, image resolution, and other artwork requirements.\nFinal prepress requirements can vary between printers, so I recommend having the printer review/approve the final file before production.",
+      "category": "Deliverables & Files"
     },
     {
       "number": "08",
       "question": "What files will I receive at the end?",
-      "answer": "Depending on the project, final deliverables can include:\nAI · PDF · EPS · SVG · PNG · JPG\nFor editable packaging artwork, I can provide the Adobe Illustrator source file where included in the agreed deliverables.\nFor production, I can also provide a print-ready PDF based on the manufacturer's specifications."
+      "answer": "Depending on the project, final deliverables can include:\nAI · PDF · EPS · SVG · PNG · JPG\nFor editable packaging artwork, I can provide the Adobe Illustrator source file where included in the agreed deliverables.\nFor production, I can also provide a print-ready PDF based on the manufacturer's specifications.",
+      "category": "Deliverables & Files"
     },
     {
       "number": "09",
       "question": "Will I receive the editable/source files?",
-      "answer": "Yes, editable source files can be included depending on the project/package agreed upon.\nFor packaging projects, the primary working file is generally Adobe Illustrator (AI), with linked/embedded assets and properly organized artwork."
+      "answer": "Yes, editable source files can be included depending on the project/package agreed upon.\nFor packaging projects, the primary working file is generally Adobe Illustrator (AI), with linked/embedded assets and properly organized artwork.",
+      "category": "Deliverables & Files"
     },
     {
       "number": "10",
       "question": "Do you provide 3D packaging mockups?",
-      "answer": "Yes. I create realistic 3D packaging visualizations and mockups for presentations, websites, Amazon listings, marketing materials, portfolios, and client approvals.\nDepending on the project, mockups can include cans, bottles, boxes, pouches, tubes, jars, and other product formats."
+      "answer": "Yes. I create realistic 3D packaging visualizations and mockups for presentations, websites, Amazon listings, marketing materials, portfolios, and client approvals.\nDepending on the project, mockups can include cans, bottles, boxes, pouches, tubes, jars, and other product formats.",
+      "category": "Deliverables & Files"
     },
     {
       "number": "11",
       "question": "Can you create the packaging concept from scratch?",
-      "answer": "Absolutely.\nIf you don't already have a visual direction, I can develop the concept based on your product, target audience, market positioning, competitors, and brand personality.\nThe process can include visual research, mood direction, typography, color direction, graphic elements, and packaging concept development."
+      "answer": "Absolutely.\nIf you don't already have a visual direction, I can develop the concept based on your product, target audience, market positioning, competitors, and brand personality.\nThe process can include visual research, mood direction, typography, color direction, graphic elements, and packaging concept development.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "12",
       "question": "What if I already have a logo and brand identity?",
-      "answer": "That's completely fine.\nI can work within your existing brand system and translate the logo, colors, typography, and brand guidelines into a cohesive packaging design.\nI can also recommend adjustments when certain brand elements need to work better within the physical packaging environment."
+      "answer": "That's completely fine.\nI can work within your existing brand system and translate the logo, colors, typography, and brand guidelines into a cohesive packaging design.\nI can also recommend adjustments when certain brand elements need to work better within the physical packaging environment.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "13",
       "question": "What if I don't have a brand identity yet?",
-      "answer": "I can help with that as well.\nDepending on the scope, I can develop the logo, typography, color system, visual language, packaging direction, and supporting brand assets before moving into the final packaging system."
+      "answer": "I can help with that as well.\nDepending on the scope, I can develop the logo, typography, color system, visual language, packaging direction, and supporting brand assets before moving into the final packaging system.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "14",
       "question": "Can you help with the packaging copy and content?",
-      "answer": "I can help with content organization, hierarchy, layout, and visual presentation, but the final product claims, ingredients, nutritional information, legal statements, certifications, barcodes, and regulatory copy should be supplied or approved by the client or appropriate regulatory professional.\nThis ensures the information is accurate and legally appropriate for the target market."
+      "answer": "I can help with content organization, hierarchy, layout, and visual presentation, but the final product claims, ingredients, nutritional information, legal statements, certifications, barcodes, and regulatory copy should be supplied or approved by the client or appropriate regulatory professional.\nThis ensures the information is accurate and legally appropriate for the target market.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "15",
       "question": "Do you have experience with international packaging markets?",
-      "answer": "Yes. My packaging experience includes projects targeting the UK, USA, Canada, and other international markets, covering beverage, food, supplement, and consumer product categories.\nI've worked with packaging requirements involving production artwork, print preparation, product visualization, and international commercial presentation."
+      "answer": "Yes. My packaging experience includes projects targeting the UK, USA, Canada, and other international markets, covering beverage, food, supplement, and consumer product categories.\nI've worked with packaging requirements involving production artwork, print preparation, product visualization, and international commercial presentation.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "16",
       "question": "Do you have experience with supplement and nutrition packaging?",
-      "answer": "Yes. I've worked on supplement bottles, tubs, pouches, labels, nutrition panels, ingredient layouts, and related packaging systems.\nI focus on clear information hierarchy and production-ready presentation while working from the client's approved product and regulatory content."
+      "answer": "Yes. I've worked on supplement bottles, tubs, pouches, labels, nutrition panels, ingredient layouts, and related packaging systems.\nI focus on clear information hierarchy and production-ready presentation while working from the client's approved product and regulatory content.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "17",
       "question": "Can you design FDA-compliant packaging?",
-      "answer": "I can create packaging artwork with FDA-related requirements and supplied regulatory information in mind, including appropriate information hierarchy and placement.\nHowever, I don't provide legal or regulatory certification. Final compliance should always be reviewed and approved by the brand's regulatory/compliance team or an appropriate specialist before production."
+      "answer": "I can create packaging artwork with FDA-related requirements and supplied regulatory information in mind, including appropriate information hierarchy and placement.\nHowever, I don't provide legal or regulatory certification. Final compliance should always be reviewed and approved by the brand's regulatory/compliance team or an appropriate specialist before production.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "18",
       "question": "Can you work directly with my printer or manufacturer?",
-      "answer": "Yes.\nIf your printer or manufacturer has specific requirements, you can share their specifications or connect us directly. I can prepare the artwork according to their dielines, dimensions, print specifications, and production requirements."
+      "answer": "Yes.\nIf your printer or manufacturer has specific requirements, you can share their specifications or connect us directly. I can prepare the artwork according to their dielines, dimensions, print specifications, and production requirements.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "19",
       "question": "Can you make revisions after I see the first concept?",
-      "answer": "Yes. The project includes a reasonable number of revision rounds based on the agreed scope.\nI encourage structured feedback so that revisions remain focused and the final design moves efficiently toward approval."
+      "answer": "Yes. The project includes a reasonable number of revision rounds based on the agreed scope.\nI encourage structured feedback so that revisions remain focused and the final design moves efficiently toward approval.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "20",
       "question": "How many packaging concepts will I receive?",
-      "answer": "That depends on the project scope.\nFor a new packaging project, I typically develop a focused initial design direction rather than producing many unrelated concepts. This allows us to invest more effort into developing a strong, commercially relevant solution.\nAdditional concepts can be discussed when the project requires them."
+      "answer": "That depends on the project scope.\nFor a new packaging project, I typically develop a focused initial design direction rather than producing many unrelated concepts. This allows us to invest more effort into developing a strong, commercially relevant solution.\nAdditional concepts can be discussed when the project requires them.",
+      "category": "Pricing & Timeline"
     },
     {
       "number": "21",
       "question": "How long does a packaging project take?",
-      "answer": "Timelines depend on the packaging format, number of SKUs, complexity, content readiness, and revision rounds.\nA simple label may take 1–2 weeks, while a complete packaging system or multi-SKU project can take 3–6 weeks or longer.\nI'll provide a clear estimated timeline after reviewing the project requirements."
+      "answer": "Timelines depend on the packaging format, number of SKUs, complexity, content readiness, and revision rounds.\nA simple label may take 1–2 weeks, while a complete packaging system or multi-SKU project can take 3–6 weeks or longer.\nI'll provide a clear estimated timeline after reviewing the project requirements.",
+      "category": "Pricing & Timeline"
     },
     {
       "number": "22",
       "question": "Can you design multiple flavors/SKUs under the same packaging system?",
-      "answer": "Yes. I can develop a master packaging system and extend it across multiple flavors, sizes, variants, or product lines while maintaining strong visual consistency.\nThis is particularly useful for beverage, supplement, food, and consumer product brands."
+      "answer": "Yes. I can develop a master packaging system and extend it across multiple flavors, sizes, variants, or product lines while maintaining strong visual consistency.\nThis is particularly useful for beverage, supplement, food, and consumer product brands.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "23",
       "question": "Can you redesign an existing package instead of starting from scratch?",
-      "answer": "Yes.\nIf you already have an existing package, I can either refine and modernize the current design or develop a completely new direction while maintaining important brand recognition."
+      "answer": "Yes.\nIf you already have an existing package, I can either refine and modernize the current design or develop a completely new direction while maintaining important brand recognition.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "24",
       "question": "Can you create packaging for Amazon/FBA products?",
-      "answer": "Yes. Along with the physical packaging design, I can create 3D product renders, product presentation visuals, Amazon listing graphics, and A+ content visuals where required."
+      "answer": "Yes. Along with the physical packaging design, I can create 3D product renders, product presentation visuals, Amazon listing graphics, and A+ content visuals where required.",
+      "category": "Services & Capabilities"
     },
     {
       "number": "25",
       "question": "Can you create realistic product images before the product is manufactured?",
-      "answer": "Yes. Using 3D visualization and digital rendering workflows, I can create realistic product visuals from the approved packaging artwork before physical samples are available.\nThese can be useful for marketing, presentations, websites, e-commerce listings, and product launches."
+      "answer": "Yes. Using 3D visualization and digital rendering workflows, I can create realistic product visuals from the approved packaging artwork before physical samples are available.\nThese can be useful for marketing, presentations, websites, e-commerce listings, and product launches.",
+      "category": "Deliverables & Files"
     },
     {
       "number": "26",
       "question": "What happens if I don't have the physical product yet?",
-      "answer": "That's not necessarily a problem.\nIf the packaging dimensions, structure, product information, and required specifications are available, I can develop the artwork and create digital product visualizations before physical production."
+      "answer": "That's not necessarily a problem.\nIf the packaging dimensions, structure, product information, and required specifications are available, I can develop the artwork and create digital product visualizations before physical production.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "27",
       "question": "Do you provide printing services?",
-      "answer": "My primary service is design and production-ready artwork, rather than physical printing.\nI can prepare the files according to your printer's specifications and coordinate with their requirements, but the actual printing and manufacturing are handled by the selected production partner."
+      "answer": "My primary service is design and production-ready artwork, rather than physical printing.\nI can prepare the files according to your printer's specifications and coordinate with their requirements, but the actual printing and manufacturing are handled by the selected production partner.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "28",
       "question": "Can you help choose the right packaging material or printing finish?",
-      "answer": "Yes, I can provide design-oriented recommendations around finishes such as matte, gloss, spot UV, embossing, foil, and other visual treatments based on the packaging concept.\nFinal material and manufacturing decisions should be confirmed with your packaging manufacturer because availability and technical specifications vary."
+      "answer": "Yes, I can provide design-oriented recommendations around finishes such as matte, gloss, spot UV, embossing, foil, and other visual treatments based on the packaging concept.\nFinal material and manufacturing decisions should be confirmed with your packaging manufacturer because availability and technical specifications vary.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "29",
       "question": "What if my printer rejects the artwork?",
-      "answer": "If the rejection is related to artwork setup or file preparation, I can review the printer's feedback and make the necessary corrections within the agreed project scope.\nFor this reason, I prefer working with the actual printer's specifications/dieline whenever possible."
+      "answer": "If the rejection is related to artwork setup or file preparation, I can review the printer's feedback and make the necessary corrections within the agreed project scope.\nFor this reason, I prefer working with the actual printer's specifications/dieline whenever possible.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "30",
       "question": "Can you work with international clients remotely?",
-      "answer": "Yes. I regularly work with clients remotely and can collaborate through email, messaging platforms, video calls, shared files, and online project management workflows."
+      "answer": "Yes. I regularly work with clients remotely and can collaborate through email, messaging platforms, video calls, shared files, and online project management workflows.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "31",
       "question": "How do you handle confidential product launches or unreleased brands?",
-      "answer": "Client confidentiality is important. If your product or brand is unreleased, we can discuss confidentiality requirements before sharing project materials publicly."
+      "answer": "Client confidentiality is important. If your product or brand is unreleased, we can discuss confidentiality requirements before sharing project materials publicly.",
+      "category": "Process & Collaboration"
     },
     {
       "number": "32",
       "question": "What do you need from me to give an accurate quote?",
-      "answer": "The most useful information is:\nPackaging type · Dimensions/dieline · Number of SKUs · Existing brand assets · Required content · Target market · 3D mockup requirements · Expected deliverables · Timeline\nOnce I have these details, I can provide a more accurate scope, timeline, and quotation."
+      "answer": "The most useful information is:\nPackaging type · Dimensions/dieline · Number of SKUs · Existing brand assets · Required content · Target market · 3D mockup requirements · Expected deliverables · Timeline\nOnce I have these details, I can provide a more accurate scope, timeline, and quotation.",
+      "category": "Pricing & Timeline"
     }
   ]
 }

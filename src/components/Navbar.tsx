@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../utils/asset';
+import { Menu, X } from 'lucide-react';
 
 
 interface NavbarProps {
@@ -10,6 +11,20 @@ interface NavbarProps {
 export default function Navbar({ onOpenContact }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+      if (window.innerWidth >= 640) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const isPortfolioPage =
     typeof window !== 'undefined' &&
@@ -29,7 +44,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isCollapsed = isScrolled && !isHovered;
+  const isCollapsed = (isScrolled && !isHovered) || (isMobile && !isMobileMenuOpen);
 
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
@@ -38,15 +53,16 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
         animate={{
           y: 0,
           opacity: 1,
-          width: isCollapsed ? 245 : 578,
+          width: isMobile ? (isMobileMenuOpen ? 280 : (isCollapsed ? 245 : 'calc(100vw - 32px)')) : (isCollapsed ? 245 : 578),
+          height: isMobileMenuOpen ? 180 : 56,
         }}
         transition={{
           duration: 0.35,
           ease: [0.16, 1, 0.3, 1],
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="pointer-events-auto flex items-center justify-between overflow-hidden rounded-[32px] p-2 sm:p-2.5 max-w-[calc(100vw-32px)]"
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
+        onMouseLeave={() => !isMobile && setIsHovered(false)}
+        className={`pointer-events-auto flex justify-between overflow-hidden rounded-[32px] p-2 sm:p-2.5 max-w-[calc(100vw-32px)] ${isMobileMenuOpen ? 'flex-col items-stretch' : 'items-center'}`}
         style={{
           backgroundColor: 'rgba(130, 130, 130, 0.1)',
           backdropFilter: 'blur(10px)',
@@ -62,8 +78,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
         }}
       >
         {/* Left: Avatar (real photo) + Name or Status */}
-        <div className="flex items-center gap-2.5 flex-shrink-0 pl-1">
-          <a
+        <div className={`flex items-center gap-2.5 flex-shrink-0 pl-1 ${isMobileMenuOpen ? 'justify-between' : ''}`}>
+          <div className="flex items-center gap-2.5">
+            <a
             href={homeHref}
             className="flex items-center group cursor-pointer transition-opacity hover:opacity-90 flex-shrink-0"
             aria-label="Home"
@@ -104,6 +121,16 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               </motion.a>
             )}
           </AnimatePresence>
+          </div>
+          
+          {isMobile && isMobileMenuOpen && (
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-white/60 hover:text-white p-1"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {/* Right side: Glowing Green Beacon when collapsed vs Full Menu */}
@@ -116,36 +143,40 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
               className="flex items-center justify-center pr-2.5 pl-1 cursor-pointer py-1"
-              onClick={onOpenContact}
-              title="Available for work - Click to contact"
-              aria-label="Available for work"
+              onClick={isMobile ? () => setIsMobileMenuOpen(true) : onOpenContact}
+              title={isMobile ? "Menu" : "Available for work - Click to contact"}
+              aria-label={isMobile ? "Menu" : "Available for work"}
             >
-              <div className="relative flex items-center justify-center w-6 h-6">
-                {/* Crisp circular spread disk exactly matching reference screenshot */}
-                <motion.span
-                  className="absolute w-2 h-2 rounded-full pointer-events-none"
-                  style={{
-                    backgroundColor: 'rgba(0, 255, 42, 0.22)',
-                  }}
-                  animate={{
-                    scale: [1, 1.2, 3.8, 4.2, 4.2],
-                    opacity: [0, 0.85, 0.35, 0, 0],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: 'easeOut',
-                    times: [0, 0.05, 0.45, 0.58, 1],
-                  }}
-                />
-                {/* Single crisp #00ff2a point light dot */}
-                <span
-                  className="relative w-2 h-2 rounded-full bg-[#00ff2a]"
-                  style={{
-                    boxShadow: '0 0 5px rgba(0, 255, 42, 0.8)',
-                  }}
-                />
-              </div>
+              {isMobile ? (
+                <Menu className="w-5 h-5 text-white/80" />
+              ) : (
+                <div className="relative flex items-center justify-center w-6 h-6">
+                  {/* Crisp circular spread disk exactly matching reference screenshot */}
+                  <motion.span
+                    className="absolute w-2 h-2 rounded-full pointer-events-none"
+                    style={{
+                      backgroundColor: 'rgba(0, 255, 42, 0.22)',
+                    }}
+                    animate={{
+                      scale: [1, 1.2, 3.8, 4.2, 4.2],
+                      opacity: [0, 0.85, 0.35, 0, 0],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: 'easeOut',
+                      times: [0, 0.05, 0.45, 0.58, 1],
+                    }}
+                  />
+                  {/* Single crisp #00ff2a point light dot */}
+                  <span
+                    className="relative w-2 h-2 rounded-full bg-[#00ff2a]"
+                    style={{
+                      boxShadow: '0 0 5px rgba(0, 255, 42, 0.8)',
+                    }}
+                  />
+                </div>
+              )}
             </motion.div>
           ) : (
             <motion.div
@@ -154,11 +185,12 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.25 }}
-              className="flex items-center gap-4 sm:gap-5 flex-shrink-0"
+              className={`flex flex-shrink-0 ${isMobileMenuOpen ? 'flex-col items-center gap-4 mt-6' : 'items-center gap-4 sm:gap-5'}`}
             >
-              <div className="flex items-center gap-3.5 sm:gap-4 text-[14px] font-normal text-[#b8b8b8]">
+              <div className={`flex text-[14px] font-normal text-[#b8b8b8] ${isMobileMenuOpen ? 'flex-col items-center gap-4' : 'items-center gap-3.5 sm:gap-4'}`}>
                 <a
                   href={workHref}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={`transition-colors duration-200 hover:text-white ${
                     isPortfolioPage ? 'text-white font-medium' : ''
                   }`}
@@ -167,6 +199,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 </a>
                 <a
                   href={servicesHref}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="transition-colors duration-200 hover:text-white"
                 >
                   Services
@@ -176,8 +209,11 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               {/* Contact Button */}
               <button
                 type="button"
-                onClick={onOpenContact}
-                className="h-[34px] min-w-[96px] cursor-pointer flex-shrink-0 whitespace-nowrap rounded-full px-6 text-[13px] sm:text-[14px] font-medium text-white transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenContact();
+                }}
+                className={`h-[34px] min-w-[96px] cursor-pointer flex-shrink-0 whitespace-nowrap rounded-full px-6 text-[13px] sm:text-[14px] font-medium text-white transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center ${isMobileMenuOpen ? 'w-full mt-2' : ''}`}
                 style={{
                   backgroundColor: 'rgb(187, 3, 28)',
                   boxShadow:
