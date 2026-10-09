@@ -59,8 +59,8 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Infinite Horizontal Marquee Container */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      {/* Desktop/Tablet Infinite Marquee Container */}
+      <div className="hidden md:block relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused] py-4">
           {marqueeItems.map((item, index) => (
             <div
@@ -106,6 +106,57 @@ export default function TestimonialsSection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Mobile Grid Layout (2 per row) */}
+      <div className="md:hidden site-container pb-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {testimonials.map((item, index) => {
+            const isLeft = index % 2 === 0;
+            return (
+              <motion.div
+                key={`mobile-${item.id}`}
+                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-10px" }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="rounded-2xl bg-[#141316] border border-white/[0.08] p-4 flex flex-col justify-between hover:border-white/20 shadow-lg"
+              >
+                <div>
+                  <div className="text-xl text-white/20 font-serif leading-none mb-2">
+                    “
+                  </div>
+                  <p className="text-[10px] xs:text-[11px] text-neutral-300 leading-relaxed font-normal line-clamp-6">
+                    {item.quote}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-white/[0.06]">
+                  <div className="flex text-[#bb031c] text-[9px] mb-2 tracking-wider">
+                    {'★★★★★'}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {item.avatar && (
+                      <img
+                        src={getAssetUrl(item.avatar)}
+                        alt={item.name}
+                        className="w-7 h-7 rounded-full object-cover ring-1 ring-white/10"
+                      />
+                    )}
+                    <div>
+                      <h4 className="text-[11px] font-bold text-white tracking-tight leading-tight">
+                        {item.name}
+                      </h4>
+                      <p className="text-[9px] text-neutral-400 leading-tight truncate">
+                        {item.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

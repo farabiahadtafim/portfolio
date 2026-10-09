@@ -111,7 +111,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
   }, []);
 
   return (
-    <footer id="contact" className="relative w-full pt-16 pb-12 overflow-hidden bg-[#0c0c0e]">
+    <footer id="contact" className="relative w-full pt-10 md:pt-16 pb-12 overflow-hidden bg-[#0c0c0e]">
       <div className="site-container relative z-10">
         
         {/* Main Footer Headline */}

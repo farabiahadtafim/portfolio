@@ -90,7 +90,7 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
   };
 
   return (
-    <section id="faq" className="site-container py-24">
+    <section id="faq" className="site-container pt-24 pb-8 md:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         {/* Left Column: FAQs Header and Accordion List */}
         <div className="lg:col-span-7">
@@ -128,9 +128,10 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
               return (
                 <motion.div
                   key={faq.number}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-20px" }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                   className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                     isOpen
                       ? 'bg-[#17161b] border-white/20'
@@ -195,15 +196,16 @@ export default function FaqSection({ onOpenContact }: FaqSectionProps) {
             {/* Gradient Overlay for Button Visibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-            {/* CTA Button at bottom left */}
-            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-7 z-10 flex items-center">
+            {/* CTA Button (Top-Right on Mobile, Bottom-Left on Desktop) */}
+            <div className="absolute top-4 right-4 sm:top-auto sm:right-auto sm:bottom-8 sm:left-7 z-10 flex items-center">
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141316] hover:bg-black text-white text-[11px] sm:text-xs font-semibold transition-all duration-200 cursor-pointer shadow-xl active:scale-95 border border-white/10 hover:border-white/20"
+                className="group inline-flex items-center justify-center sm:gap-2 p-3 sm:px-5 sm:py-2.5 rounded-full bg-[#141316] hover:bg-black text-white text-[11px] sm:text-xs font-semibold transition-all duration-200 cursor-pointer shadow-xl active:scale-95 border border-white/10 hover:border-white/20"
+                aria-label="Schedule Now"
               >
-                <Calendar className="w-3.5 h-3.5 text-white/80 group-hover:text-white transition-colors" />
-                <span>Schedule Now</span>
+                <Calendar className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-white/80 group-hover:text-white transition-colors" />
+                <span className="hidden sm:block">Schedule Now</span>
               </button>
             </div>
           </motion.div>
