@@ -55,7 +55,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           strength={7}
           activeTransition="none"
           inactiveTransition="none"
-          className="absolute bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[270px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
+          className="absolute bottom-[20px] sm:bottom-[-145px] left-1/2 -translate-x-1/2 z-10 w-[270px] sm:w-[350px] md:w-[420px] lg:w-[480px] pointer-events-none flex justify-center items-center"
           style={{
             filter: 'drop-shadow(79px 30px 42px rgba(0,0,0,0.35))',
           }}
