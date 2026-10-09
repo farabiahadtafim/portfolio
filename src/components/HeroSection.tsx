@@ -37,7 +37,7 @@ export default function HeroSection({ onOpenContact }: HeroSectionProps) {
           transition={{ duration: 0.9, delay: 0.72, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none"
         >
-          <h1 className="font-space font-semibold uppercase text-center select-none leading-[35px] sm:leading-[130px] md:leading-[145.5px] transform scale-y-[1.3] sm:scale-y-100 whitespace-nowrap">
+          <h1 className="font-space font-semibold uppercase text-center select-none leading-[65px] sm:leading-[130px] md:leading-[145.5px] whitespace-nowrap">
             <span className="relative -top-2 block text-[clamp(95px,22vw,239px)] tracking-[-0.04em] text-[#f7f7f7]">
               {headlineTop}
             </span>
