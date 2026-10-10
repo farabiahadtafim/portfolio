@@ -152,7 +152,7 @@ export default function ProjectShowcaseSection() {
   }, [activeProjects, carouselImages]);
 
   return (
-    <section className="relative z-30 w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[600px] sm:-mt-[150px] pt-[150px]">
+    <section className="relative z-30 w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[540px] sm:-mt-[150px] pt-[150px]">
       {/* Title Header */}
       <div className="site-container relative z-30 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
         <motion.span
