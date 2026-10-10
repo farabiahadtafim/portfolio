@@ -33,7 +33,7 @@ export default function ProjectShowcaseSection() {
   const draggerRef = useRef<HTMLDivElement>(null);
 
   const activeProjects = projects?.filter((p) => p.is_active && p.image_url) || [];
-  
+
   const carouselImages = settings.showcase_images && settings.showcase_images.length > 0
     ? settings.showcase_images
     : defaultImages;
@@ -126,7 +126,7 @@ export default function ProjectShowcaseSection() {
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const scrollDiff = currentScrollY - lastScrollY;
-        
+
         if (Math.abs(scrollDiff) > 0) {
           gsap.to(ring, {
             rotationY: '+=' + (scrollDiff * 0.2), // Adjust scroll sensitivity
@@ -137,13 +137,13 @@ export default function ProjectShowcaseSection() {
         }
         lastScrollY = currentScrollY;
       };
-      
+
       window.addEventListener('scroll', handleScroll, { passive: true });
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
-      
+
     }, wrapperRef);
 
     return () => {
@@ -152,73 +152,77 @@ export default function ProjectShowcaseSection() {
   }, [activeProjects, carouselImages]);
 
   return (
+<<<<<<< HEAD
     <section className="relative z-30 w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[540px] sm:-mt-[150px] pt-[150px]">
-      {/* Title Header */}
-      <div className="site-container relative z-30 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="inline-block relative top-2 text-[10px] sm:text-sm font-semibold uppercase tracking-widest text-white/80 drop-shadow-md"
-        >
-          Selected Works
-        </motion.span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-5xl md:text-6xl font-space font-bold text-white tracking-tight mt-2 drop-shadow-lg"
-        >
-          Project Showcase
-        </motion.h2>
-      </div>
-
-      {/* 3D Cylindrical Ring Gallery */}
-      <div ref={wrapperRef} className="showcase-ring-wrapper -mt-4 sm:-mt-[150px]">
-        <div className="container ring-container">
-          <div id="ring" ref={ringRef}>
-            {carouselImages.map((_, i) => (
-              <div key={i} className="img" />
-            ))}
-          </div>
+=======
+    <section className="relative z-30 w-full pb-12 sm:pb-20 overflow-hidden bg-transparent -mt-[150px] pt-[150px]">
+>>>>>>> dbdfe6b (Adjust portfolio work page mobile spacing and folder pill button size)
+        {/* Title Header */}
+        <div className="site-container relative z-30 pointer-events-none mb-2 sm:mb-6 text-center pt-2 sm:pt-14 mt-[20px] sm:mt-[200px]">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block relative top-2 text-[10px] sm:text-sm font-semibold uppercase tracking-widest text-white/80 drop-shadow-md"
+          >
+            Selected Works
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl md:text-6xl font-space font-bold text-white tracking-tight mt-2 drop-shadow-lg"
+          >
+            Project Showcase
+          </motion.h2>
         </div>
-        <div id="dragger" ref={draggerRef} />
-      </div>
 
-      {/* Interactive Animated Folders directly below 3D Carousel */}
-      <div className="relative z-30 grid grid-cols-2 sm:flex sm:flex-wrap place-items-center sm:items-center sm:justify-center gap-x-2 gap-y-4 sm:gap-8 md:gap-12 -mt-10 sm:mt-0 pb-6 pointer-events-auto max-w-[1600px] mx-auto px-2 sm:px-4">
-        <Folder 
-          title="Supplement" 
-          variant="mint" 
-          onClick={() => document.getElementById('gallery-supplement')?.scrollIntoView({ behavior: 'smooth' })} 
-        />
-        <Folder 
-          title="Box" 
-          variant="lavender" 
-          onClick={() => document.getElementById('gallery-box')?.scrollIntoView({ behavior: 'smooth' })} 
-          images={[
-            '/portfolio/image/projects/Box%20Label/Title/2.%20Box%20Label%20Design.webp',
-            '/portfolio/image/projects/Box%20Label/Title/1.%20Box%20Label%20Design.webp',
-            '/portfolio/image/projects/Box%20Label/Title/3.%20Box%20Label%20Design.webp'
-          ]}
-        />
-        <Folder 
-          title="Can" 
-          variant="peach" 
-          onClick={() => document.getElementById('gallery-can')?.scrollIntoView({ behavior: 'smooth' })} 
-          images={[
-            '/portfolio/image/projects/Can%20Label/Title/2.%20Can%20Label%20Design.webp',
-            '/portfolio/image/projects/Can%20Label/Title/1.%20Can%20Label%20Design.webp',
-            '/portfolio/image/projects/Can%20Label/Title/3.%20Can%20Label%20Design.webp'
-          ]}
-        />
-        <Folder 
-          title="Pouch" 
-          variant="rose" 
-          onClick={() => document.getElementById('gallery-pouch')?.scrollIntoView({ behavior: 'smooth' })} 
-        />
-      </div>
-    </section>
-  );
+        {/* 3D Cylindrical Ring Gallery */}
+        <div ref={wrapperRef} className="showcase-ring-wrapper -mt-4 sm:-mt-[150px]">
+          <div className="container ring-container">
+            <div id="ring" ref={ringRef}>
+              {carouselImages.map((_, i) => (
+                <div key={i} className="img" />
+              ))}
+            </div>
+          </div>
+          <div id="dragger" ref={draggerRef} />
+        </div>
+
+        {/* Interactive Animated Folders directly below 3D Carousel */}
+        <div className="relative z-30 grid grid-cols-2 sm:flex sm:flex-wrap place-items-center sm:items-center sm:justify-center gap-x-2 gap-y-4 sm:gap-8 md:gap-12 -mt-10 sm:mt-0 pb-6 pointer-events-auto max-w-[1600px] mx-auto px-2 sm:px-4">
+          <Folder
+            title="Supplement"
+            variant="mint"
+            onClick={() => document.getElementById('gallery-supplement')?.scrollIntoView({ behavior: 'smooth' })}
+          />
+          <Folder
+            title="Box"
+            variant="lavender"
+            onClick={() => document.getElementById('gallery-box')?.scrollIntoView({ behavior: 'smooth' })}
+            images={[
+              '/portfolio/image/projects/Box%20Label/Title/2.%20Box%20Label%20Design.webp',
+              '/portfolio/image/projects/Box%20Label/Title/1.%20Box%20Label%20Design.webp',
+              '/portfolio/image/projects/Box%20Label/Title/3.%20Box%20Label%20Design.webp'
+            ]}
+          />
+          <Folder
+            title="Can"
+            variant="peach"
+            onClick={() => document.getElementById('gallery-can')?.scrollIntoView({ behavior: 'smooth' })}
+            images={[
+              '/portfolio/image/projects/Can%20Label/Title/2.%20Can%20Label%20Design.webp',
+              '/portfolio/image/projects/Can%20Label/Title/1.%20Can%20Label%20Design.webp',
+              '/portfolio/image/projects/Can%20Label/Title/3.%20Can%20Label%20Design.webp'
+            ]}
+          />
+          <Folder
+            title="Pouch"
+            variant="rose"
+            onClick={() => document.getElementById('gallery-pouch')?.scrollIntoView({ behavior: 'smooth' })}
+          />
+        </div>
+      </section>
+      );
 }
