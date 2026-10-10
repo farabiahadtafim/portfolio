@@ -101,7 +101,7 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
 
             {/* Chat bubble SVG (floating over 'u') */}
             <motion.div 
-              className="absolute -top-4 left-[8%] md:-top-5 md:left-[9%] z-30 drop-shadow-lg transform origin-bottom-left"
+              className="absolute -top-8 left-[8%] md:-top-10 md:left-[9%] z-30 drop-shadow-lg transform origin-bottom-left"
               initial={{ scale: 0, rotate: -10 }}
               whileInView={{ scale: [0, 1.15, 1], rotate: [-10, 0] }}
               viewport={{ once: true }}
