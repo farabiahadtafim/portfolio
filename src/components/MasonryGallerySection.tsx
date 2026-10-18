@@ -10,6 +10,8 @@ interface MasonryGallerySectionProps {
   projectData?: { brand: string; product: string }[];
   projects?: BoxProjectItem[];
   imagePrefix?: string;
+  initialVisibleCount?: number;
+  bottomAligned?: boolean;
 }
 
 interface RatioConfig {
@@ -29,8 +31,18 @@ const RATIO_CYCLE: RatioConfig[] = [
   { ratio: '4:3', cssRatio: '4 / 3', width: 600, height: 450 },
 ];
 
-export default function MasonryGallerySection({ title, itemCount, id, imageFolder, projectData, projects, imagePrefix = 'Portfolio' }: MasonryGallerySectionProps) {
-  const [visibleCount, setVisibleCount] = useState(30);
+export default function MasonryGallerySection({
+  title,
+  itemCount,
+  id,
+  imageFolder,
+  projectData,
+  projects,
+  imagePrefix = 'Portfolio',
+  initialVisibleCount,
+  bottomAligned = false,
+}: MasonryGallerySectionProps) {
+  const [visibleCount, setVisibleCount] = useState(initialVisibleCount || 30);
   // Generate data with randomized Pinterest-style aspect ratios (4:3, 3:4, 1:1) or exact Box Project ratios
   const items = useMemo(() => {
     if (projects && projects.length > 0) {
@@ -42,7 +54,9 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
         height: item.height,
         brand: projectData && projectData[item.id - 1] ? projectData[item.id - 1].brand : item.brand,
         product: projectData && projectData[item.id - 1] ? projectData[item.id - 1].product : item.product,
-        imageUrl: `${import.meta.env.BASE_URL}image/projects/${imageFolder || 'Box Label'}/${item.filename}`,
+        imageUrl: imageFolder 
+          ? `${import.meta.env.BASE_URL}image/projects/${imageFolder}/${item.filename}`
+          : `https://placehold.co/${item.width}x${item.height}/1c1b20/FFF?text=Design+${item.id}`,
       }));
     }
 
@@ -193,9 +207,9 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
         {columnGroups ? (
           <>
             {/* Desktop: Exactly 5 columns matching Illustrator guide 1-24, 25-48, 49-72, 73-96, 97-120 */}
-            <div className="hidden lg:grid lg:grid-cols-5 gap-6">
+            <div className={`hidden lg:grid lg:grid-cols-5 gap-6 ${bottomAligned ? 'items-end' : ''}`}>
               {columnGroups.map((colItems, colIdx) => (
-                <div key={colIdx} className="flex flex-col gap-6">
+                <div key={colIdx} className={`flex flex-col gap-6 ${bottomAligned ? 'justify-end' : ''}`}>
                   {colItems.map((item) => (
                     <div
                       key={item.id}
@@ -212,6 +226,11 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.onerror = null;
+                          target.src = `https://placehold.co/${item.width}x${item.height}/1c1b20/FFF?text=Design+${item.id}`;
+                        }}
                       />
                       {/* Optional overlay on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
@@ -244,6 +263,11 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://placehold.co/${item.width}x${item.height}/1c1b20/FFF?text=Design+${item.id}`;
+                    }}
                   />
                   {/* Optional overlay on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
@@ -275,6 +299,11 @@ export default function MasonryGallerySection({ title, itemCount, id, imageFolde
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src = `https://placehold.co/${item.width}x${item.height}/1c1b20/FFF?text=Design+${item.id}`;
+                  }}
                 />
                 {/* Optional overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">

@@ -11,6 +11,7 @@ import { useLenis } from './hooks/useLenis';
 import { supplementProjects } from './data/supplementProjects';
 import { boxLabelProjects } from './data/boxLabelProjects';
 import { canLabelProjects } from './data/canLabelProjects';
+import { pouchLabelProjects } from './data/pouchLabelProjects';
 
 export default function WorkApp() {
   useLenis();
@@ -42,7 +43,14 @@ export default function WorkApp() {
                 <MasonryGallerySection id="gallery-supplement" title="Supplement Label Design" itemCount={51} imageFolder="Supplement Label" projectData={supplementProjects} />
                 <MasonryGallerySection id="gallery-box" title="Box Label Design" itemCount={120} imageFolder="Box Label" projects={boxLabelProjects} />
                 <MasonryGallerySection id="gallery-can" title="Can Label Design" itemCount={100} imageFolder="Can Label" projects={canLabelProjects} />
-                <MasonryGallerySection id="gallery-pouch" title="Pouch Label Design" itemCount={20} />
+                <MasonryGallerySection
+                  id="gallery-pouch"
+                  title="Pouch Label Design"
+                  itemCount={60}
+                  projects={pouchLabelProjects}
+                  initialVisibleCount={60}
+                  bottomAligned
+                />
               </div>
             </div>
           </div>
