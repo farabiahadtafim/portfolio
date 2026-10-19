@@ -217,6 +217,11 @@ export default function ProjectShowcaseSection() {
             title="Pouch"
             variant="rose"
             onClick={() => document.getElementById('gallery-pouch')?.scrollIntoView({ behavior: 'smooth' })}
+            images={[
+              '/portfolio/image/projects/Pouch%20Label/Title/1.%20Pouch%20Label.webp',
+              '/portfolio/image/projects/Pouch%20Label/Title/2.%20Pouch%20Label.webp',
+              '/portfolio/image/projects/Pouch%20Label/Title/3.%20Pouch%20Label.webp'
+            ]}
           />
         </div>
       </section>
