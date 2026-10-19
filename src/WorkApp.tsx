@@ -47,6 +47,7 @@ export default function WorkApp() {
                   id="gallery-pouch"
                   title="Pouch Label Design"
                   itemCount={60}
+                  imageFolder="Pouch Label"
                   projects={pouchLabelProjects}
                   initialVisibleCount={60}
                   bottomAligned
