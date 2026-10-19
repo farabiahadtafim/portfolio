@@ -4,7 +4,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   // --- COLUMN 1 (Items 1 - 12) ---
   {
     id: 1,
-    filename: 'Artboard 1.webp',
+    filename: 'Pouch label Design-01.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -14,7 +14,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 2,
-    filename: 'Artboard 9.webp',
+    filename: 'Pouch label Design-02.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -24,7 +24,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 3,
-    filename: 'Artboard 10.webp',
+    filename: 'Pouch label Design-03.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -34,7 +34,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 4,
-    filename: 'Artboard 11.webp',
+    filename: 'Pouch label Design-04.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -44,7 +44,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 5,
-    filename: 'Artboard 12.webp',
+    filename: 'Pouch label Design-05.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -54,7 +54,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 6,
-    filename: 'Artboard 13.webp',
+    filename: 'Pouch label Design-06.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -64,7 +64,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 7,
-    filename: 'Artboard 14.webp',
+    filename: 'Pouch label Design-07.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -74,7 +74,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 8,
-    filename: 'Artboard 15.webp',
+    filename: 'Pouch label Design-08.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -84,7 +84,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 9,
-    filename: 'Artboard 16.webp',
+    filename: 'Pouch label Design-09.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -94,7 +94,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 10,
-    filename: 'Artboard 17.webp',
+    filename: 'Pouch label Design-10.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -104,7 +104,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 11,
-    filename: 'Artboard 18.webp',
+    filename: 'Pouch label Design-11.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -114,7 +114,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 12,
-    filename: 'Artboard 19.webp',
+    filename: 'Pouch label Design-12.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -122,11 +122,10 @@ export const pouchLabelProjects: BoxProjectItem[] = [
     brand: 'Pouch Label Design',
     product: 'Design 12'
   },
-
   // --- COLUMN 2 (Items 13 - 24) ---
   {
     id: 13,
-    filename: 'Artboard 20.webp',
+    filename: 'Pouch label Design-13.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -136,7 +135,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 14,
-    filename: 'Artboard 21.webp',
+    filename: 'Pouch label Design-14.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -146,7 +145,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 15,
-    filename: 'Artboard 22.webp',
+    filename: 'Pouch label Design-15.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -156,7 +155,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 16,
-    filename: 'Artboard 23.webp',
+    filename: 'Pouch label Design-16.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -166,7 +165,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 17,
-    filename: 'Artboard 24.webp',
+    filename: 'Pouch label Design-17.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -176,7 +175,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 18,
-    filename: 'Artboard 25.webp',
+    filename: 'Pouch label Design-18.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -186,7 +185,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 19,
-    filename: 'Artboard 26.webp',
+    filename: 'Pouch label Design-19.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -196,7 +195,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 20,
-    filename: 'Artboard 27.webp',
+    filename: 'Pouch label Design-20.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -206,7 +205,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 21,
-    filename: 'Artboard 28.webp',
+    filename: 'Pouch label Design-21.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -216,7 +215,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 22,
-    filename: 'Artboard 29.webp',
+    filename: 'Pouch label Design-22.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -226,7 +225,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 23,
-    filename: 'Artboard 30.webp',
+    filename: 'Pouch label Design-23.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -236,7 +235,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 24,
-    filename: 'Artboard 31.webp',
+    filename: 'Pouch label Design-24.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -244,11 +243,10 @@ export const pouchLabelProjects: BoxProjectItem[] = [
     brand: 'Pouch Label Design',
     product: 'Design 24'
   },
-
   // --- COLUMN 3 (Items 25 - 36) ---
   {
     id: 25,
-    filename: 'Artboard 32.webp',
+    filename: 'Pouch label Design-25.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -258,7 +256,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 26,
-    filename: 'Artboard 33.webp',
+    filename: 'Pouch label Design-26.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -268,7 +266,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 27,
-    filename: 'Artboard 34.webp',
+    filename: 'Pouch label Design-27.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -278,7 +276,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 28,
-    filename: 'Artboard 35.webp',
+    filename: 'Pouch label Design-28.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -288,7 +286,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 29,
-    filename: 'Artboard 36.webp',
+    filename: 'Pouch label Design-29.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -298,7 +296,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 30,
-    filename: 'Artboard 37.webp',
+    filename: 'Pouch label Design-30.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -308,7 +306,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 31,
-    filename: 'Artboard 38.webp',
+    filename: 'Pouch label Design-31.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -318,7 +316,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 32,
-    filename: 'Artboard 39.webp',
+    filename: 'Pouch label Design-32.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -328,7 +326,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 33,
-    filename: 'Artboard 40.webp',
+    filename: 'Pouch label Design-33.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -338,7 +336,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 34,
-    filename: 'Artboard 41.webp',
+    filename: 'Pouch label Design-34.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -348,7 +346,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 35,
-    filename: 'Artboard 42.webp',
+    filename: 'Pouch label Design-35.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -358,7 +356,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 36,
-    filename: 'Artboard 43.webp',
+    filename: 'Pouch label Design-36.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -366,11 +364,10 @@ export const pouchLabelProjects: BoxProjectItem[] = [
     brand: 'Pouch Label Design',
     product: 'Design 36'
   },
-
   // --- COLUMN 4 (Items 37 - 48) ---
   {
     id: 37,
-    filename: 'Artboard 44.webp',
+    filename: 'Pouch label Design-37.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -380,7 +377,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 38,
-    filename: 'Artboard 45.webp',
+    filename: 'Pouch label Design-38.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -390,7 +387,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 39,
-    filename: 'Artboard 46.webp',
+    filename: 'Pouch label Design-39.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -400,7 +397,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 40,
-    filename: 'Artboard 47.webp',
+    filename: 'Pouch label Design-40.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -410,7 +407,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 41,
-    filename: 'Artboard 48.webp',
+    filename: 'Pouch label Design-41.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -420,7 +417,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 42,
-    filename: 'Artboard 49.webp',
+    filename: 'Pouch label Design-42.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -430,7 +427,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 43,
-    filename: 'Artboard 50.webp',
+    filename: 'Pouch label Design-43.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -440,7 +437,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 44,
-    filename: 'Artboard 51.webp',
+    filename: 'Pouch label Design-44.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -450,7 +447,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 45,
-    filename: 'Artboard 52.webp',
+    filename: 'Pouch label Design-45.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -460,7 +457,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 46,
-    filename: 'Artboard 53.webp',
+    filename: 'Pouch label Design-46.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -470,7 +467,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 47,
-    filename: 'Artboard 54.webp',
+    filename: 'Pouch label Design-47.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -480,7 +477,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 48,
-    filename: 'Artboard 55.webp',
+    filename: 'Pouch label Design-48.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -488,11 +485,10 @@ export const pouchLabelProjects: BoxProjectItem[] = [
     brand: 'Pouch Label Design',
     product: 'Design 48'
   },
-
   // --- COLUMN 5 (Items 49 - 60) ---
   {
     id: 49,
-    filename: 'Artboard 56.webp',
+    filename: 'Pouch label Design-49.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -502,7 +498,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 50,
-    filename: 'Artboard 57.webp',
+    filename: 'Pouch label Design-50.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -512,7 +508,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 51,
-    filename: 'Artboard 58.webp',
+    filename: 'Pouch label Design-51.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -522,7 +518,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 52,
-    filename: 'Artboard 59.webp',
+    filename: 'Pouch label Design-52.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -532,7 +528,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 53,
-    filename: 'Artboard 60.webp',
+    filename: 'Pouch label Design-53.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
@@ -542,7 +538,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 54,
-    filename: 'Artboard 61.webp',
+    filename: 'Pouch label Design-54.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -552,7 +548,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 55,
-    filename: 'Artboard 62.webp',
+    filename: 'Pouch label Design-55.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -562,7 +558,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 56,
-    filename: 'Artboard 63.webp',
+    filename: 'Pouch label Design-56.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -572,7 +568,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 57,
-    filename: 'Artboard 64.webp',
+    filename: 'Pouch label Design-57.webp',
     width: 1441,
     height: 1441,
     ratio: '1:1',
@@ -582,7 +578,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 58,
-    filename: 'Artboard 65.webp',
+    filename: 'Pouch label Design-58.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -592,7 +588,7 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 59,
-    filename: 'Artboard 66.webp',
+    filename: 'Pouch label Design-59.webp',
     width: 1441,
     height: 1081,
     ratio: '4:3',
@@ -602,12 +598,12 @@ export const pouchLabelProjects: BoxProjectItem[] = [
   },
   {
     id: 60,
-    filename: 'Artboard 67.webp',
+    filename: 'Pouch label Design-60.webp',
     width: 1441,
     height: 1921,
     ratio: '3:4',
     cssRatio: '3 / 4',
     brand: 'Pouch Label Design',
     product: 'Design 60'
-  }
+  },
 ];
